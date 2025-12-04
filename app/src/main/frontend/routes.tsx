@@ -2,6 +2,7 @@ import LoginView from "Frontend/views/LoginView";
 import MainLayout from "Frontend/views/MainLayout";
 import HomeView from "Frontend/views/HomeView";
 import SetupView from "Frontend/views/SetupView";
+import i18n from "Frontend/i18n";
 import {ThemeSelector} from "Frontend/components/theming/ThemeSelector";
 import App from "Frontend/App";
 import {LibraryManagement} from "Frontend/components/administration/LibraryManagement";
@@ -43,17 +44,17 @@ export const {router, routes} = new RouterConfigurationBuilder()
                         {
                             path: 'search',
                             element: <SearchView/>,
-                            handle: {title: 'Search'}
+                            handle: {title: () => i18n.t('routes.search')}
                         },
                         {
                             path: 'recently-added',
                             element: <RecentlyAddedView/>,
-                            handle: {title: 'Recently Added'}
+                            handle: {title: () => i18n.t('routes.recentlyAdded')}
                         },
                         {
                             path: '/requests',
                             element: <GameRequestView/>,
-                            handle: {title: 'Game requests'}
+                            handle: {title: () => i18n.t('routes.requests')}
                         },
                         {
                             path: 'library/:libraryId',
@@ -66,74 +67,74 @@ export const {router, routes} = new RouterConfigurationBuilder()
                         {
                             path: 'settings',
                             element: <ProfileView/>,
-                            handle: {title: 'Profile'},
+                            handle: {title: () => i18n.t('routes.profile')},
                             children: [
                                 {
                                     path: 'profile',
                                     element: <ProfileManagement/>,
-                                    handle: {title: 'Profile Settings'}
+                                    handle: {title: () => i18n.t('routes.profileSettings')}
                                 },
                                 {
                                     path: 'appearance',
                                     element: <ThemeSelector/>,
-                                    handle: {title: 'Appearance'}
+                                    handle: {title: () => i18n.t('routes.appearance')}
                                 }
                             ]
                         },
                         {
                             path: 'administration',
                             element: <AdministrationView/>,
-                            handle: {title: 'Administration'},
+                            handle: {title: () => i18n.t('routes.administration')},
                             children: [
                                 {
                                     path: 'libraries',
                                     element: <LibraryManagement/>,
-                                    handle: {title: 'Administration - Libraries'}
+                                    handle: {title: () => i18n.t('routes.adminLibraries')}
                                 },
                                 {
                                     path: 'libraries/library/:libraryId',
                                     element: <LibraryManagementView/>,
-                                    handle: {title: 'Administration - Library'}
+                                    handle: {title: () => i18n.t('routes.adminLibrary')}
                                 },
                                 {
                                     path: 'requests',
                                     element: <GameRequestManagement/>,
-                                    handle: {title: 'Administration - Game Requests'}
+                                    handle: {title: () => i18n.t('routes.adminRequests')}
                                 },
                                 {
                                     path: 'downloads',
                                     element: <DownloadManagement/>,
-                                    handle: {title: 'Administration - Downloads'}
+                                    handle: {title: () => i18n.t('routes.adminDownloads')}
                                 },
                                 {
                                     path: 'users',
                                     element: <UserManagement/>,
-                                    handle: {title: 'Administration - Users'}
+                                    handle: {title: () => i18n.t('routes.adminUsers')}
                                 },
                                 {
                                     path: 'sso',
                                     element: <SsoManagement/>,
-                                    handle: {title: 'Administration - SSO'}
+                                    handle: {title: () => i18n.t('routes.adminSSO')}
                                 },
                                 {
                                     path: 'messages',
                                     element: <MessageManagement/>,
-                                    handle: {title: 'Administration - Messages'}
+                                    handle: {title: () => i18n.t('routes.adminMessages')}
                                 },
                                 {
                                     path: 'plugins',
                                     element: <PluginManagement/>,
-                                    handle: {title: 'Administration - Plugins'}
+                                    handle: {title: () => i18n.t('routes.adminPlugins')}
                                 },
                                 {
                                     path: 'logs',
                                     element: <LogManagement/>,
-                                    handle: {title: 'Administration - Logs'}
+                                    handle: {title: () => i18n.t('routes.adminLogs')}
                                 },
                                 {
                                     path: 'system',
                                     element: <SystemManagement/>,
-                                    handle: {title: 'Administration - System'}
+                                    handle: {title: () => i18n.t('routes.adminSystem')}
                                 }
                             ]
                         }
@@ -142,32 +143,32 @@ export const {router, routes} = new RouterConfigurationBuilder()
                 {
                     path: 'login',
                     element: <LoginView/>,
-                    handle: {title: 'Login'}
+                    handle: {title: () => i18n.t('routes.login')}
                 },
                 {
                     path: 'setup',
                     element: <SetupView/>,
-                    handle: {title: 'Setup'}
+                    handle: {title: () => i18n.t('routes.setup')}
                 },
                 {
                     path: 'accept-invitation',
                     element: <InvitationRegistrationView/>,
-                    handle: {title: 'You have been invited to Gameyfin!'}
+                    handle: {title: () => i18n.t('routes.invitation')}
                 },
                 {
                     path: 'reset-password',
                     element: <PasswordResetView/>,
-                    handle: {title: 'Reset Password'}
+                    handle: {title: () => i18n.t('routes.resetPassword')}
                 },
                 {
                     path: 'confirm-email',
                     element: <EmailConfirmationView/>,
-                    handle: {title: 'Confirm Email'}
+                    handle: {title: () => i18n.t('routes.confirmEmail')}
                 },
                 {
                     path: '*',
                     element: <ErrorView/>,
-                    handle: {title: 'Error'}
+                    handle: {title: () => i18n.t('routes.error')}
                 }
             ]
         }

@@ -1,6 +1,6 @@
 <mjml>
     <mj-head>
-        <mj-title>Please confirm your email address</mj-title>
+        <mj-title>请确认您的邮箱地址</mj-title>
         <mj-attributes>
             <mj-all font-family="Arial, sans-serif"/>
             <mj-text font-size="16px"/>
@@ -13,11 +13,11 @@
                 <mj-image alt="Gameyfin Logo" title="Gameyfin Logo" height="2px" padding-bottom="20px"
                           src="{gradient}"/>
 
-                <mj-text font-size="20px" font-family="helvetica">Hey {username},
+                <mj-text font-size="20px" font-family="helvetica">您好 {username}，
                     <br/>
                     <br/>
                 </mj-text>
-                <mj-text>please confirm your email address using the following link: {confirmationLink}
+                <mj-text>请使用以下链接确认您的邮箱地址：{confirmationLink}
                 </mj-text>
 
             </mj-column>

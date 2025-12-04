@@ -1,6 +1,6 @@
 <mjml>
     <mj-head>
-        <mj-title>[Gameyfin] Welcome</mj-title>
+        <mj-title>[Gameyfin] 欢迎</mj-title>
         <mj-attributes>
             <mj-all font-family="Arial, sans-serif"/>
             <mj-text font-size="16px"/>
@@ -13,13 +13,13 @@
                 <mj-image alt="Gameyfin Logo" title="Gameyfin Logo" height="2px" padding-bottom="20px"
                           src="{gradient}"/>
 
-                <mj-text font-size="20px" font-family="helvetica">Hello there {username},
+                <mj-text font-size="20px" font-family="helvetica">您好 {username}，
                     <br/>
                     <br/>
                 </mj-text>
-                <mj-text>your account has been enabled!
+                <mj-text>您的账户已被启用！
                     <br/>
-                    You can now start browsing games in <a href="{baseUrl}">Gameyfin</a>.
+                    您现在可以开始在 <a href="{baseUrl}">Gameyfin</a> 中浏览游戏了。
                 </mj-text>
 
             </mj-column>

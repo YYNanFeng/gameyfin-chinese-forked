@@ -1,0 +1,119 @@
+services:
+  gameyfin:
+    # 使用本地构建的镜像
+    image: gameyfin/gameyfin:latest
+    
+    # 如果要使用官方镜像，取消下面这行的注释
+    # image: ghcr.io/gameyfin/gameyfin:2
+    
+    container_name: gameyfin
+    restart: unless-stopped
+    
+    # 环境变量配置
+    environment:
+      # ⚠️ 必填：生成命令 openssl rand -base64 32
+      APP_KEY: "CHANGE_ME_USE_OPENSSL_RAND_BASE64_32"
+      
+      # 可选：如果使用反向代理，设置完整 URL
+      APP_URL: "http://localhost:8080"
+      
+      # 可选：自定义运行用户 ID（解决权限问题）
+      # PUID: 1000
+      # PGID: 1000
+      
+      # 可选：JVM 内存设置
+      # JAVA_OPTS: "-Xms512m -Xmx2048m -XX:+UseG1GC"
+      
+      # 可选：时区设置
+      TZ: "Asia/Shanghai"
+    
+    # 端口映射
+    ports:
+      # Web 界面端口
+      - "8080:8080"
+      
+      # 如果使用种子下载插件，取消以下注释
+      # - "6969:6969"  # Tracker 端口
+      # - "6881:6881"  # BT 端口
+    
+    # 数据卷挂载
+    volumes:
+      # 数据库文件
+      - "./gameyfin-data/db:/opt/gameyfin/db"
+      
+      # 媒体文件（封面、截图等）
+      - "./gameyfin-data/data:/opt/gameyfin/data"
+      
+      # 插件数据
+      - "./gameyfin-data/plugindata:/opt/gameyfin/plugindata"
+      
+      # 日志文件
+      - "./gameyfin-data/logs:/opt/gameyfin/logs"
+      
+      # 游戏库目录（根据实际情况修改）
+      # Windows 路径示例：
+      # - "D:/Games:/games:ro"
+      # - "E:/SteamLibrary:/steam:ro"
+      
+      # Linux 路径示例：
+      # - "/mnt/storage/games:/games:ro"
+      # - "/home/user/games:/mygames:ro"
+      
+      # ⚠️ 请在下面添加你的游戏库路径
+      - "./game-library:/games"
+    
+    # 资源限制（可选）
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 1G
+    
+    # 健康检查
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    
+    # 日志配置
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# 可选：如果需要使用数据库容器（默认使用 H2 文件数据库）
+# 如果要使用 PostgreSQL 或 MySQL，可以在这里添加
+
+# networks:
+#   gameyfin-net:
+#     driver: bridge
+
+---
+# 使用说明：
+# 
+# 1. 首次部署前的准备：
+#    - 生成 APP_KEY: openssl rand -base64 32
+#    - 修改上面的 APP_KEY 值
+#    - 配置游戏库路径（volumes 部分）
+# 
+# 2. 启动服务：
+#    docker-compose up -d
+# 
+# 3. 查看日志：
+#    docker-compose logs -f gameyfin
+# 
+# 4. 访问应用：
+#    http://localhost:8080
+# 
+# 5. 停止服务：
+#    docker-compose down
+# 
+# 6. 更新镜像：
+#    docker-compose pull
+#    docker-compose up -d

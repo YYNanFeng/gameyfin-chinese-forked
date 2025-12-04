@@ -27,7 +27,8 @@ export default function App() {
     const routeMetadata = useRouteMetadata();
 
     useEffect(() => {
-        document.title = routeMetadata?.title ?? "Gameyfin";
+        const title = routeMetadata?.title;
+        document.title = (typeof title === 'function' ? title() : title) ?? "Gameyfin";
     }, [routeMetadata, window.location.href]);
 
     return (

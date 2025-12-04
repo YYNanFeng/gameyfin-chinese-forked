@@ -63,7 +63,7 @@ class MessageService(
             val auth = getCurrentAuth() ?: throw IllegalStateException("No authentication found")
             val user = userService.getByUsername(auth.name) ?: throw IllegalStateException("User not found")
             val template = templateService.getMessageTemplate(templateKey)
-            sendNotification(user.email, "[Gameyfin] Test Notification", template, placeholders)
+            sendNotification(user.email, "[Gameyfin] 测试通知", template, placeholders)
         } catch (e: Exception) {
             log.error { "Failed to send test message: ${e.message}" }
             log.debug(e) {}
@@ -88,7 +88,7 @@ class MessageService(
         val resetLink = event.baseUrl + "/reset-password?token=${token.secret}"
         sendNotification(
             token.creator.email,
-            "[Gameyfin] Password Reset Request",
+            "[Gameyfin] 密码重置请求",
             MessageTemplates.PasswordResetRequest,
             mapOf("username" to token.creator.username, "resetLink" to resetLink)
         )
@@ -108,7 +108,7 @@ class MessageService(
         val user = event.newUser
         sendNotification(
             user.email,
-            "[Gameyfin] Waiting for Approval",
+            "[Gameyfin] 等待审批",
             MessageTemplates.WaitingForApproval,
             mapOf("username" to user.username)
         )
@@ -130,14 +130,14 @@ class MessageService(
         if (event.user.enabled) {
             sendNotification(
                 user.email,
-                "[Gameyfin] Your account has been enabled",
+                "[Gameyfin] 您的账户已启用",
                 MessageTemplates.AccountEnabled,
                 mapOf("username" to user.username, "baseUrl" to event.baseUrl)
             )
         } else {
             sendNotification(
                 user.email,
-                "[Gameyfin] Your account has been disabled",
+                "[Gameyfin] 您的账户已禁用",
                 MessageTemplates.AccountDisabled,
                 mapOf("username" to user.username, "baseUrl" to event.baseUrl)
             )
@@ -158,7 +158,7 @@ class MessageService(
         val user = event.existingUser
         sendNotification(
             user.email,
-            "[Gameyfin] Account alert",
+            "[Gameyfin] 账户警告",
             MessageTemplates.RegistrationAttemptWithExistingEmail,
             mapOf("username" to user.username, "passwordResetLink" to event.baseUrl)
         )
@@ -179,7 +179,7 @@ class MessageService(
         val confirmationLink = event.baseUrl + "/confirm-email?token=${event.token.secret}"
         sendNotification(
             user.email,
-            "[Gameyfin] Email Confirmation",
+            "[Gameyfin] 邮箱确认",
             MessageTemplates.EmailConfirmation,
             mapOf("username" to user.username, "confirmationLink" to confirmationLink)
         )
@@ -199,7 +199,7 @@ class MessageService(
         val invitationLink = event.baseUrl + "/accept-invitation?token=${event.token.secret}"
         sendNotification(
             event.email,
-            "[Gameyfin] You've been invited!",
+            "[Gameyfin] 您已被邀请！",
             MessageTemplates.UserInvitation,
             mapOf("invitationLink" to invitationLink)
         )
@@ -218,7 +218,7 @@ class MessageService(
 
         sendNotification(
             event.user.email,
-            "[Gameyfin] Your account has been deleted",
+            "[Gameyfin] 您的账户已删除",
             MessageTemplates.AccountDeleted,
             mapOf("username" to event.user.username, "baseUrl" to event.baseUrl)
         )
