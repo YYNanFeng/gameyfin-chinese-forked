@@ -9,8 +9,10 @@ import { InfoIcon, UserPlusIcon } from "@phosphor-icons/react";
 import {Button, Divider, Tooltip, useDisclosure} from "@heroui/react";
 import InviteUserModal from "Frontend/components/general/modals/InviteUserModal";
 import ExtendedUserInfoDto from "Frontend/generated/org/gameyfin/app/users/dto/ExtendedUserInfoDto";
+import {useTranslation} from "react-i18next";
 
 function UserManagementLayout({getConfig, formik}: any) {
+    const {t} = useTranslation();
     const inviteUserModal = useDisclosure();
     const [users, setUsers] = useState<ExtendedUserInfoDto[]>([]);
 
@@ -23,7 +25,7 @@ function UserManagementLayout({getConfig, formik}: any) {
     return (
         <div className="flex flex-col grow">
 
-            <Section title="Sign-Ups"/>
+            <Section title={t('users.signUps')}/>
             <div className="flex flex-row">
                 <ConfigFormField configElement={getConfig("users.sign-ups.allow")}/>
                 <ConfigFormField configElement={getConfig("users.sign-ups.confirmation-required")}
@@ -31,12 +33,12 @@ function UserManagementLayout({getConfig, formik}: any) {
             </div>
 
             <div className="flex flex-row items-baseline justify-between">
-                <h2 className="text-xl font-bold mt-8 mb-1">Users</h2>
+                <h2 className="text-xl font-bold mt-8 mb-1">{t('users.users')}</h2>
                 {!getConfig("sso.oidc.auto-register-new-users").value &&
                     <SmallInfoField className="mb-4 text-warning" icon={InfoIcon}
-                                    message="Automatic user registration for SSO users is disabled"/>
+                                    message={t('users.ssoAutoRegisterDisabled')}/>
                 }
-                <Tooltip content="Invite new user">
+                <Tooltip content={t('users.inviteNewUser')}>
                     <Button isIconOnly variant="flat" onPress={inviteUserModal.onOpen}>
                         <UserPlusIcon/>
                     </Button>
@@ -51,4 +53,6 @@ function UserManagementLayout({getConfig, formik}: any) {
     );
 }
 
-export const UserManagement = withConfigPage(UserManagementLayout, "User Management");
+import i18n from "Frontend/i18n";
+
+export const UserManagement = withConfigPage(UserManagementLayout, () => i18n.t('admin.pages.users'));

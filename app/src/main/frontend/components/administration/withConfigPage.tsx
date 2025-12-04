@@ -8,12 +8,16 @@ import {SmallInfoField} from "Frontend/components/general/SmallInfoField";
 import {configState, initializeConfigState, NestedConfig} from "Frontend/state/ConfigState";
 import {useSnapshot} from "valtio/react";
 
-export default function withConfigPage(WrappedComponent: React.ComponentType<any>, title: String, validationSchema?: any) {
+export default function withConfigPage(WrappedComponent: React.ComponentType<any>, title: string | (() => string), validationSchema?: any) {
     return function ConfigPage(props: any) {
         const [configSaved, setConfigSaved] = useState(false);
         const [saveMessage, setSaveMessage] = useState<string>();
 
         const state = useSnapshot(configState);
+
+        const getTitle = () => {
+            return typeof title === 'function' ? title() : title;
+        };
 
         useEffect(() => {
             initializeConfigState();
@@ -93,7 +97,7 @@ export default function withConfigPage(WrappedComponent: React.ComponentType<any
                         {(formik) => (
                             <Form>
                                 <div className="flex flex-row grow justify-between">
-                                    <h1 className="text-2xl font-bold">{title}</h1>
+                                    <h1 className="text-2xl font-bold">{getTitle()}</h1>
 
                                     <div className="flex flex-row items-center gap-4">
                                         {saveMessage && <SmallInfoField icon={InfoIcon}

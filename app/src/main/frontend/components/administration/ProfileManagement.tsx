@@ -11,8 +11,10 @@ import {EmailConfirmationEndpoint, MessageEndpoint, UserEndpoint} from "Frontend
 import {SmallInfoField} from "Frontend/components/general/SmallInfoField";
 import {removeAvatar, uploadAvatar} from "Frontend/endpoints/AvatarEndpoint";
 import Avatar from "Frontend/components/general/Avatar";
+import {useTranslation} from "react-i18next";
 
 export default function ProfileManagement() {
+    const {t} = useTranslation();
     const auth = useAuth();
     const [avatar, setAvatar] = useState<any>();
     const [configSaved, setConfigSaved] = useState(false);
@@ -48,8 +50,8 @@ export default function ProfileManagement() {
 
         if (values.newPassword.length > 0) {
             addToast({
-                title: "Password changed",
-                description: "Please log in again",
+                title: t('profile.passwordChanged'),
+                description: t('profile.pleaseLoginAgain'),
                 color: "success"
             });
             setTimeout(() => {
@@ -70,27 +72,27 @@ export default function ProfileManagement() {
                 onSubmit={handleSubmit}
                 validationSchema={Yup.object({
                     username: Yup.string()
-                        .required('Required'),
+                        .required(t('common.validation.required')),
                     newPassword: Yup.string()
-                        .min(8, 'Password must be at least 8 characters long'),
+                        .min(8, t('profile.validation.passwordMinLength')),
                     email: Yup.string()
                         .email()
-                        .required('Required'),
+                        .required(t('common.validation.required')),
                     passwordRepeat: Yup.string()
-                        .equals([Yup.ref('newPassword')], 'Passwords do not match')
+                        .equals([Yup.ref('newPassword')], t('profile.validation.passwordsNoMatch'))
                 })}
             >
                 {(formik: { values: any; isSubmitting: any; dirty: boolean; }) => (
                     <Form>
                         <div className="flex flex-row grow justify-between mb-8">
-                            <h2 className="text-2xl font-bold">My Profile</h2>
+                            <h2 className="text-2xl font-bold">{t('profile.myProfile')}</h2>
                             {auth.state.user?.managedBySso &&
-                                <p className="text-warning">Your account is managed externally.</p>}
+                                <p className="text-warning">{t('profile.managedExternally')}</p>}
 
                             <div className="flex flex-row items-center gap-4">
                                 {formik.values.newPassword.length > 0 &&
                                     <SmallInfoField icon={InfoIcon}
-                                                    message="You will be logged out of all current sessions"
+                                                    message={t('profile.logoutAllSessions')}
                                                     className="text-default-500"
                                     />
                                 }
@@ -100,7 +102,7 @@ export default function ProfileManagement() {
                                     isDisabled={!formik.dirty || formik.isSubmitting || configSaved || auth.state.user?.managedBySso}
                                     type="submit"
                                 >
-                                    {formik.isSubmitting ? "" : configSaved ? <CheckIcon/> : "Save"}
+                                    {formik.isSubmitting ? "" : configSaved ? <CheckIcon/> : t('common.save')}
                                 </Button>
                             </div>
                         </div>
@@ -114,8 +116,8 @@ export default function ProfileManagement() {
                                     <NextUiInput type="file" accept="image/*" onChange={onFileSelected}
                                                  isDisabled={auth.state.user?.managedBySso}/>
                                     <Button onPress={() => uploadAvatar(avatar)} isDisabled={avatar == null}
-                                            color="success">Upload</Button>
-                                    <Tooltip content="Remove your current avatar">
+                                            color="success">{t('profile.upload')}</Button>
+                                    <Tooltip content={t('profile.removeAvatar')}>
                                         <Button onPress={removeAvatar} isIconOnly color="danger"
                                                 isDisabled={auth.state.user?.managedBySso}><TrashIcon/></Button>
                                     </Tooltip>
@@ -123,20 +125,20 @@ export default function ProfileManagement() {
                             </div>
 
                             <div className="flex flex-col grow">
-                                <Section title="Personal information"/>
-                                <Input name="username" label="Username" type="text" autocomplete="username"
+                                <Section title={t('profile.personalInformation')}/>
+                                <Input name="username" label={t('profile.username')} type="text" autocomplete="username"
                                        isDisabled={auth.state.user?.managedBySso}/>
                                 <div className="flex flex-row gap-4">
-                                    <Input name="email" label="Email" type="email" autocomplete="email"
+                                    <Input name="email" label={t('profile.email')} type="email" autocomplete="email"
                                            isDisabled={auth.state.user?.managedBySso || !messagesEnabled}/>
                                     {(auth.state.user?.emailConfirmed === false && !auth.state.user.managedBySso) &&
-                                        <Tooltip content="Resend email confirmation message">
+                                        <Tooltip content={t('profile.resendEmailConfirmation')}>
                                             <Button isIconOnly
                                                     onPress={() => {
                                                         EmailConfirmationEndpoint.resendEmailConfirmation().then(
                                                             () => addToast({
-                                                                title: "Email confirmation message sent",
-                                                                description: "Please check your inbox",
+                                                                title: t('profile.emailConfirmationSent'),
+                                                                description: t('profile.checkInbox'),
                                                                 color: "success"
                                                             })
                                                         )
@@ -154,14 +156,14 @@ export default function ProfileManagement() {
                                     <div className="flex flex-row gap-2 text-warning -mt-5">
                                         <InfoIcon/>
                                         <small>
-                                            Email services are disabled. Please contact your administrator.
+                                            {t('profile.emailServicesDisabled')}
                                         </small>
                                     </div>
                                 }
-                                <Section title="Security"/>
-                                <Input name="newPassword" label="New Password" type="password"
+                                <Section title={t('profile.security')}/>
+                                <Input name="newPassword" label={t('profile.newPassword')} type="password"
                                        autocomplete="new-password" isDisabled={auth.state.user?.managedBySso}/>
-                                <Input name="passwordRepeat" label="Repeat password" type="password"
+                                <Input name="passwordRepeat" label={t('profile.repeatPassword')} type="password"
                                        autocomplete="new-password" isDisabled={auth.state.user?.managedBySso}/>
                             </div>
                         </div>

@@ -5,18 +5,20 @@ import ConfigFormField from "Frontend/components/administration/ConfigFormField"
 import Section from "Frontend/components/general/Section";
 import {Button} from "@heroui/react";
 import {useNavigate} from "react-router";
+import {useTranslation} from "react-i18next";
 
 function GameRequestManagementLayout({getConfig, formik}: any) {
+    const {t} = useTranslation();
     const navigate = useNavigate();
 
     return (
         <div className="flex flex-col">
             <div className="flex flex-row">
                 <div className="flex flex-col flex-1">
-                    <Section title="Game requests configuration"/>
+                    <Section title={t('gameRequests.configuration')}/>
                     <ConfigFormField configElement={getConfig("requests.games.enabled")}/>
 
-                    <Section title="Permissions"/>
+                    <Section title={t('gameRequests.permissions')}/>
                     <div className="flex flex-row items-center gap-4">
                         <ConfigFormField
                             configElement={getConfig("requests.games.allow-guests-to-request-games")}
@@ -25,7 +27,7 @@ function GameRequestManagementLayout({getConfig, formik}: any) {
                     </div>
 
                     <Button onPress={() => navigate("/requests")}>
-                        Manage game requests
+                        {t('gameRequests.manageButton')}
                     </Button>
                 </div>
             </div>
@@ -46,4 +48,6 @@ const validationSchema = Yup.object({
     }).required("Required"),
 });
 
-export const GameRequestManagement = withConfigPage(GameRequestManagementLayout, "Game Requests", validationSchema);
+import i18n from "Frontend/i18n";
+
+export const GameRequestManagement = withConfigPage(GameRequestManagementLayout, () => i18n.t('admin.pages.gameRequests'), validationSchema);

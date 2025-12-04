@@ -94,4 +94,6 @@ const validationSchema = Yup.object({
     })
 });
 
-export const LogManagement = withConfigPage(LogManagementLayout, "Logging", validationSchema);
+import i18n from "Frontend/i18n";
+
+export const LogManagement = withConfigPage(LogManagementLayout, () => i18n.t('admin.pages.logs'), validationSchema);

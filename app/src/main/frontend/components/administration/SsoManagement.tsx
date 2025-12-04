@@ -5,12 +5,14 @@ import ConfigFormField from "Frontend/components/administration/ConfigFormField"
 import Section from "Frontend/components/general/Section";
 import {addToast, Button, Checkbox, CheckboxGroup, Tooltip} from "@heroui/react";
 import { MagicWandIcon, WarningIcon } from "@phosphor-icons/react";
+import {useTranslation} from "react-i18next";
 
 function SsoManagementLayout({getConfig, formik, setSaveMessage}: any) {
+    const {t} = useTranslation();
 
     useEffect(() => {
         if (formik.dirty) {
-            setSaveMessage("Gameyfin must be restarted for the changes to take effect");
+            setSaveMessage(t('sso.restartRequired'));
         } else {
             setSaveMessage(null);
         }
@@ -35,7 +37,7 @@ function SsoManagementLayout({getConfig, formik, setSaveMessage}: any) {
             formik.setFieldValue("sso.oidc.jwks-url", data.jwks_uri);
         } catch (e) {
             addToast({
-                title: "Failed to auto-populate SSO configuration",
+                title: t('sso.autoPopulateFailed'),
                 color: "warning"
             });
         }
@@ -45,18 +47,18 @@ function SsoManagementLayout({getConfig, formik, setSaveMessage}: any) {
         <div className="flex flex-col">
             <div className="flex flex-row">
                 <div className="flex flex-col flex-1">
-                    <Section title="SSO configuration"/>
+                    <Section title={t('sso.configuration')}/>
                     <ConfigFormField configElement={getConfig("sso.oidc.enabled")}/>
 
-                    <Section title="SSO user handling"/>
+                    <Section title={t('sso.userHandling')}/>
                     <div className="flex flex-row items-baseline mb-4">
                         <CheckboxGroup className="flex flex-col flex-1 items-baseline gap-2"
                                        value={["auto-register-new-users"]}>
                             <div className="flex flex-row gap-2">
                                 <Checkbox className="items-baseline" value="auto-register-new-users" isDisabled>
-                                    Automatically create new users after registration
+                                    {t('sso.autoRegisterUsers')}
                                 </Checkbox>
-                                <Tooltip content={"Currently not configurable (always enabled)"} placement="right">
+                                <Tooltip content={t('sso.notConfigurable')} placement="right">
                                     <WarningIcon weight="fill"/>
                                 </Tooltip>
                             </div>
@@ -77,7 +79,7 @@ function SsoManagementLayout({getConfig, formik, setSaveMessage}: any) {
                                          isDisabled={!formik.values.sso.oidc.enabled}/>
                     </div>
 
-                    <Section title="SSO provider configuration"/>
+                    <Section title={t('sso.providerConfiguration')}/>
                     <ConfigFormField configElement={getConfig("sso.oidc.client-id")}
                                      isDisabled={!formik.values.sso.oidc.enabled}/>
                     <ConfigFormField configElement={getConfig("sso.oidc.client-secret")}
@@ -89,7 +91,7 @@ function SsoManagementLayout({getConfig, formik, setSaveMessage}: any) {
                         <Button
                             isDisabled={isAutoPopulateDisabled()}
                             onPress={autoPopulate}
-                            className="h-14"><MagicWandIcon className="min-w-5"/>Auto-populate</Button>
+                            className="h-14"><MagicWandIcon className="min-w-5"/>{t('sso.autoPopulate')}</Button>
                     </div>
                     <ConfigFormField configElement={getConfig("sso.oidc.authorize-url")}
                                      isDisabled={!formik.values.sso.oidc.enabled}/>
@@ -114,31 +116,33 @@ const validationSchema = Yup.object({
             "auto-register-new-users": Yup.boolean().required(),
             "match-existing-users-by": Yup.string().required(),
             "client-id": Yup.string().when("enabled", ([enabled], schema) =>
-                enabled ? schema.required("Client ID is required") : schema
+                enabled ? schema.required(i18n.t('sso.validation.clientIdRequired')) : schema
             ),
             "client-secret": Yup.string().when("enabled", ([enabled], schema) =>
-                enabled ? schema.required("Client Secret is required") : schema
+                enabled ? schema.required(i18n.t('sso.validation.clientSecretRequired')) : schema
             ),
             "issuer-url": Yup.string().when("enabled", ([enabled], schema) =>
-                enabled ? schema.required("Issuer URL is required") : schema
+                enabled ? schema.required(i18n.t('sso.validation.issuerUrlRequired')) : schema
             ),
             "authorize-url": Yup.string().when("enabled", ([enabled], schema) =>
-                enabled ? schema.required("Authorize URL is required") : schema
+                enabled ? schema.required(i18n.t('sso.validation.authorizeUrlRequired')) : schema
             ),
             "token-url": Yup.string().when("enabled", ([enabled], schema) =>
-                enabled ? schema.required("Token URL is required") : schema
+                enabled ? schema.required(i18n.t('sso.validation.tokenUrlRequired')) : schema
             ),
             "userinfo-url": Yup.string().when("enabled", ([enabled], schema) =>
-                enabled ? schema.required("Userinfo URL is required") : schema
+                enabled ? schema.required(i18n.t('sso.validation.userinfoUrlRequired')) : schema
             ),
             "logout-url": Yup.string().when("enabled", ([enabled], schema) =>
-                enabled ? schema.required("Logout URL is required") : schema
+                enabled ? schema.required(i18n.t('sso.validation.logoutUrlRequired')) : schema
             ),
             "jwks-url": Yup.string().when("enabled", ([enabled], schema) =>
-                enabled ? schema.required("JWKS URL is required") : schema
+                enabled ? schema.required(i18n.t('sso.validation.jwksUrlRequired')) : schema
             )
         })
     })
 });
 
-export const SsoManagement = withConfigPage(SsoManagementLayout, "Single Sign-On", validationSchema);
+import i18n from "Frontend/i18n";
+
+export const SsoManagement = withConfigPage(SsoManagementLayout, () => i18n.t('admin.pages.sso'), validationSchema);

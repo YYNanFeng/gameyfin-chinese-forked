@@ -17,6 +17,7 @@ import PasswordResetView from "Frontend/views/PasswordResetView";
 import EmailConfirmationView from "Frontend/views/EmailConfirmationView";
 import InvitationRegistrationView from "Frontend/views/InvitationRegistrationView";
 import PluginManagement from "Frontend/components/administration/PluginManagement";
+import ProxySettings from "Frontend/components/administration/ProxySettings";
 import {SystemManagement} from "Frontend/components/administration/SystemManagement";
 import GameView from "Frontend/views/GameView";
 import LibraryManagementView from "Frontend/views/LibraryManagementView";
@@ -125,6 +126,11 @@ export const {router, routes} = new RouterConfigurationBuilder()
                                     path: 'plugins',
                                     element: <PluginManagement/>,
                                     handle: {title: () => i18n.t('routes.adminPlugins')}
+                                },
+                                {
+                                    path: 'proxy',
+                                    element: <ProxySettings/>,
+                                    handle: {title: () => i18n.t('routes.adminProxy')}
                                 },
                                 {
                                     path: 'logs',

@@ -13,16 +13,19 @@ import LibraryUpdateDto from "Frontend/generated/org/gameyfin/app/libraries/dto/
 import LibraryDto from "Frontend/generated/org/gameyfin/app/libraries/dto/LibraryDto";
 import {useSnapshot} from "valtio/react";
 import {libraryState} from "Frontend/state/LibraryState";
+import {useTranslation} from "react-i18next";
+import i18n from "Frontend/i18n";
 
 function LibraryManagementLayout({getConfig, formik}: any) {
+    const {t} = useTranslation();
     const libraryCreationModal = useDisclosure();
     const state = useSnapshot(libraryState);
 
     async function updateLibrary(library: LibraryUpdateDto) {
         await LibraryEndpoint.updateLibrary(library);
         addToast({
-            title: "Library updated",
-            description: `Library ${library.name} has been updated.`,
+            title: t('library.updateSuccess'),
+            description: t('library.updateSuccessDesc', {name: library.name}),
             color: "success"
         })
     }
@@ -30,18 +33,18 @@ function LibraryManagementLayout({getConfig, formik}: any) {
     async function removeLibrary(library: LibraryDto) {
         await LibraryEndpoint.deleteLibrary(library.id);
         addToast({
-            title: "Library removed",
-            description: `Library ${library.name} has been removed.`,
+            title: t('library.removeSuccess'),
+            description: t('library.removeSuccessDesc', {name: library.name}),
             color: "success"
         })
     }
 
     return (
         <div className="flex flex-col">
-            <Section title="Permissions"/>
+            <Section title={t('library.permissions')}/>
             <ConfigFormField configElement={getConfig("library.allow-public-access")}/>
 
-            <Section title="Scanning"/>
+            <Section title={t('library.scanning')}/>
             <div className="flex flex-col gap-4">
                 <ConfigFormField configElement={getConfig("library.scan.enable-filesystem-watcher")} isDisabled/>
                 <ConfigFormField configElement={getConfig("library.scan.scan-empty-directories")}/>
@@ -54,7 +57,7 @@ function LibraryManagementLayout({getConfig, formik}: any) {
                 <ConfigFormField configElement={getConfig("library.scan.game-file-extensions")}/>
             </div>
 
-            <Section title="Metadata"/>
+            <Section title={t('library.metadata')}/>
             <div className="flex flex-row items-baseline">
                 <ConfigFormField configElement={getConfig("library.metadata.update.enabled")}/>
                 <ConfigFormField configElement={getConfig("library.metadata.update.schedule")}
@@ -62,8 +65,8 @@ function LibraryManagementLayout({getConfig, formik}: any) {
             </div>
 
             <div className="flex flex-row items-baseline justify-between">
-                <h2 className="text-xl font-bold mt-8 mb-1">Libraries</h2>
-                <Tooltip content="Add new library">
+                <h2 className="text-xl font-bold mt-8 mb-1">{t('library.libraries')}</h2>
+                <Tooltip content={t('library.addNewLibrary')}>
                     <Button isIconOnly variant="flat" onPress={libraryCreationModal.onOpen}>
                         <PlusIcon/>
                     </Button>
@@ -79,7 +82,7 @@ function LibraryManagementLayout({getConfig, formik}: any) {
                                              removeLibrary={removeLibrary} key={library.name}/>
                     )}
                 </div> :
-                <p className="mt-4 text-center text-default-500">No libraries found</p>
+                <p className="mt-4 text-center text-default-500">{t('library.noLibrariesFound')}</p>
             }
 
             <LibraryCreationModal
@@ -112,4 +115,4 @@ const validationSchema = Yup.object({
     })
 });
 
-export const LibraryManagement = withConfigPage(LibraryManagementLayout, "Library Management", validationSchema);
+export const LibraryManagement = withConfigPage(LibraryManagementLayout, () => i18n.t('library.title'), validationSchema);

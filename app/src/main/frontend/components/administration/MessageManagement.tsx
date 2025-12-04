@@ -9,8 +9,10 @@ import MessageTemplateDto from "Frontend/generated/org/gameyfin/app/messages/tem
 import SendTestNotificationModal from "Frontend/components/administration/messages/SendTestNotificationModal";
 import EditTemplateModal from "Frontend/components/administration/messages/EditTemplateModel";
 import * as Yup from "yup";
+import {useTranslation} from "react-i18next";
 
 function MessageManagementLayout({getConfig, formik}: any) {
+    const {t} = useTranslation();
 
     const editorModal = useDisclosure();
     const testNotificationModal = useDisclosure();
@@ -41,12 +43,12 @@ function MessageManagementLayout({getConfig, formik}: any) {
 
         if (areCredentialsValid) {
             addToast({
-                title: "Credentials are valid",
+                title: t('messages.credentialsValid'),
                 color: "success"
             });
         } else {
             addToast({
-                title: "Credentials are invalid",
+                title: t('messages.credentialsInvalid'),
                 color: "warning"
             });
         }
@@ -68,7 +70,7 @@ function MessageManagementLayout({getConfig, formik}: any) {
                 <div className="flex flex-col flex-1">
                     <div className="flex flex-row gap-8">
                         <div className="flex flex-col flex-1 h-fit">
-                            <Section title="E-Mail"/>
+                            <Section title={t('messages.email')}/>
                             <ConfigFormField configElement={getConfig("messages.providers.email.enabled")}
                                              className="mb-2"/>
                             <ConfigFormField configElement={getConfig("messages.providers.email.host")}
@@ -85,14 +87,14 @@ function MessageManagementLayout({getConfig, formik}: any) {
                                         formik.values.messages.providers.email.enabled &&
                                         formik.values.messages.providers.email.host &&
                                         formik.values.messages.providers.email.port &&
-                                        formik.values.messages.providers.email.username)}>Test</Button>
+                                        formik.values.messages.providers.email.username)}>{t('common.test')}</Button>
                         </div>
                         <div className="flex flex-col flex-1 h-fit">
-                            <Section title="Message Templates"/>
+                            <Section title={t('messages.messageTemplates')}/>
                             <div className="flex flex-col gap-4">
                                 {availableTemplates.map((template: MessageTemplateDto) =>
                                     <Card className="flex flex-row items-center gap-2 p-4" key={template.key}>
-                                        <Tooltip content="Edit template">
+                                        <Tooltip content={t('messages.editTemplate')}>
                                             <Button isIconOnly
                                                     size="sm"
                                                     onPress={() => openEditor(template)}
@@ -100,7 +102,7 @@ function MessageManagementLayout({getConfig, formik}: any) {
                                                 <PencilIcon/>
                                             </Button>
                                         </Tooltip>
-                                        <Tooltip content="Send test notification">
+                                        <Tooltip content={t('messages.sendTestNotification')}>
                                             <Button isIconOnly
                                                     size="sm"
                                                     onPress={() => openTestNotification(template)}
@@ -137,16 +139,18 @@ const validationSchema = Yup.object({
     messages: Yup.object({
         providers: Yup.object({
             email: Yup.object({
-                enabled: Yup.boolean().required("Required"),
-                host: Yup.string().required("Host is required"),
-                port: Yup.number().required("Port is required")
-                    .min(0, "Port must be between 0 and 65535")
-                    .max(65535, "Port must be between 0 and 65535"),
+                enabled: Yup.boolean().required(i18n.t('common.validation.required')),
+                host: Yup.string().required(i18n.t('messages.validation.hostRequired')),
+                port: Yup.number().required(i18n.t('messages.validation.portRequired'))
+                    .min(0, i18n.t('messages.validation.portRange'))
+                    .max(65535, i18n.t('messages.validation.portRange')),
                 username: Yup.string()
-                    .required("Username is required"),
+                    .required(i18n.t('messages.validation.usernameRequired')),
             })
         })
     })
 });
 
-export const MessageManagement = withConfigPage(MessageManagementLayout, "Messages", validationSchema);
+import i18n from "Frontend/i18n";
+
+export const MessageManagement = withConfigPage(MessageManagementLayout, () => i18n.t('admin.pages.messages'), validationSchema);

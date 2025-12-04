@@ -1,0 +1,254 @@
+2025-12-04T19:20:01.496 ERROR o.g.app.core.security.AppKeyValidator    : APP_KEY environment variable is not set or empty
+2025-12-04T19:28:24.198 ERROR o.s.boot.SpringApplication               : Application run failed
+java.lang.IllegalArgumentException: Illegal base64 character 2d
+	at java.base/java.util.Base64$Decoder.decode0(Base64.java:852)
+	at java.base/java.util.Base64$Decoder.decode(Base64.java:570)
+	at java.base/java.util.Base64$Decoder.decode(Base64.java:593)
+	at org.gameyfin.app.core.security.AppKeyValidator.hasValidAppKey(AppKeyValidator.kt:26)
+	at org.gameyfin.app.core.security.AppKeyValidator.run(AppKeyValidator.kt:17)
+	at org.springframework.boot.SpringApplication.lambda$callRunner$5(SpringApplication.java:788)
+	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82)
+	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60)
+	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:796)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:787)
+	at org.springframework.boot.SpringApplication.lambda$callRunners$3(SpringApplication.java:772)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:571)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:636)
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:772)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at org.gameyfin.app.GameyfinApplicationKt.main(GameyfinApplication.kt:17)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+2025-12-04T19:31:01.556 WARN  org.pf4j.AbstractPluginManager           : No 'plugins' root
+2025-12-04T19:31:01.558 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: []
+2025-12-04T19:31:01.601 INFO  org.gameyfin.app.core.SetupDataLoader    : Looks like this is the first time you're starting Gameyfin.
+2025-12-04T19:31:01.603 INFO  org.gameyfin.app.core.SetupDataLoader    : Visit http://DESKTOP-T6M7IA5:8080/setup to complete the setup
+2025-12-04T19:31:01.603 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-04T19:31:01.617 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-04T19:38:16.695 WARN  org.pf4j.AbstractPluginManager           : No 'plugins' root
+2025-12-04T19:38:16.698 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: []
+2025-12-04T19:38:16.745 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-04T19:38:16.760 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-04T19:38:47.091 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/components/administration/ProxySettings.tsx from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
+2025-12-04T19:38:47.091 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/views/PasswordResetView.tsx from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
+2025-12-04T19:38:47.091 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/views/EmailConfirmationView.tsx from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
+2025-12-04T19:38:47.091 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/components/administration/LogManagement.tsx from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
+2025-12-04T19:38:47.092 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/views/InvitationRegistrationView.tsx from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
+2025-12-04T19:38:47.094 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/views/GameView.tsx from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
+2025-12-04T19:38:47.094 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/views/SearchView.tsx from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
+2025-12-04T19:38:47.094 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/@fs/E:/Project/gameyfin/app/node_modules/.vite/deps/@vaadin_hilla-file-router_runtime__js.js from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
+2025-12-04T19:38:47.095 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/@fs/E:/Project/gameyfin/app/node_modules/.vite/deps/formik.js from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
+2025-12-04T19:38:47.097 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/@fs/E:/Project/gameyfin/app/node_modules/.vite/deps/@heroui_react.js from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
+2025-12-04T20:46:44.412+08:00 ERROR %PARSER_ERROR[pid] --- [  restartedMain] o.s.boot.SpringApplication               : Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@5cdffb88 - There is no conversion supplier registered for conversion word [pid]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@5cdffb88 - [pid] is not a valid conversion word
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@5c35dd0b - There is no conversion supplier registered for conversion word [pid]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@5c35dd0b - [pid] is not a valid conversion word
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:347)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:138)
+	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:81)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:64)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:63)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:353)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:313)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at org.gameyfin.app.GameyfinApplicationKt.main(GameyfinApplication.kt:17)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@5cdffb88 - There is no conversion supplier registered for conversion word [pid]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@5cdffb88 - [pid] is not a valid conversion word
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@5c35dd0b - There is no conversion supplier registered for conversion word [pid]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@5c35dd0b - [pid] is not a valid conversion word
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:289)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:267)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:81)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:61)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:195)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:332)
+	... 22 common frames omitted
+2025-12-04T20:47:00.052+08:00 ERROR %PARSER_ERROR[pid] --- [  restartedMain] o.s.boot.SpringApplication               : Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@5cdffb88 - There is no conversion supplier registered for conversion word [pid]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@5cdffb88 - [pid] is not a valid conversion word
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@5c35dd0b - There is no conversion supplier registered for conversion word [pid]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@5c35dd0b - [pid] is not a valid conversion word
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:347)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:138)
+	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:81)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:64)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:63)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:353)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:313)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at org.gameyfin.app.GameyfinApplicationKt.main(GameyfinApplication.kt:17)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@5cdffb88 - There is no conversion supplier registered for conversion word [pid]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@5cdffb88 - [pid] is not a valid conversion word
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@5c35dd0b - There is no conversion supplier registered for conversion word [pid]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@5c35dd0b - [pid] is not a valid conversion word
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:289)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:267)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:81)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:61)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:195)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:332)
+	... 22 common frames omitted
+2025-12-04T20:47:45.388+08:00 ERROR %PARSER_ERROR[pid] --- [  restartedMain] o.s.boot.SpringApplication               : Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@e78aeae - There is no conversion supplier registered for conversion word [pid]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@e78aeae - [pid] is not a valid conversion word
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@2da10c76 - There is no conversion supplier registered for conversion word [pid]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@2da10c76 - [pid] is not a valid conversion word
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:347)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:138)
+	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:81)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:64)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:63)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:353)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:313)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at org.gameyfin.app.GameyfinApplicationKt.main(GameyfinApplication.kt:17)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@e78aeae - There is no conversion supplier registered for conversion word [pid]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@e78aeae - [pid] is not a valid conversion word
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@2da10c76 - There is no conversion supplier registered for conversion word [pid]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@2da10c76 - [pid] is not a valid conversion word
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:289)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:267)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:81)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:61)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:195)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:332)
+	... 22 common frames omitted
+2025-12-04T20:48:18.223+08:00 ERROR %PARSER_ERROR[pid] --- [  restartedMain] o.s.boot.SpringApplication               : Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@e78aeae - There is no conversion supplier registered for conversion word [pid]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@e78aeae - [pid] is not a valid conversion word
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@2da10c76 - There is no conversion supplier registered for conversion word [pid]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@2da10c76 - [pid] is not a valid conversion word
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:347)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:138)
+	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:81)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:64)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:63)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:353)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:313)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at org.gameyfin.app.GameyfinApplicationKt.main(GameyfinApplication.kt:17)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@e78aeae - There is no conversion supplier registered for conversion word [pid]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@e78aeae - [pid] is not a valid conversion word
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@2da10c76 - There is no conversion supplier registered for conversion word [pid]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@2da10c76 - [pid] is not a valid conversion word
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:289)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:267)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:81)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:61)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:195)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:332)
+	... 22 common frames omitted
+2025-12-04T20:49:10.277+08:00  INFO 27524 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 27524 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-04T20:49:10.279+08:00  INFO 27524 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-04T20:49:12.132+08:00  INFO 27524 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.013s)
+2025-12-04T20:49:12.137+08:00  INFO 27524 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 2.3.0.1
+2025-12-04T20:49:12.138+08:00  INFO 27524 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
+2025-12-04T20:49:17.127+08:00  INFO 27524 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 7.194 seconds (process running for 7.52)
+2025-12-04T20:49:17.216 WARN  org.pf4j.AbstractPluginManager           : No 'plugins' root
+2025-12-04T20:49:17.219 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: []
+2025-12-04T20:49:17.274 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-04T20:49:17.297 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-04T20:54:08.056+08:00  INFO 60648 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 60648 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-04T20:54:08.057+08:00  INFO 60648 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-04T20:54:09.886+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.010s)
+2025-12-04T20:54:09.906+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": << Empty Schema >>
+2025-12-04T20:54:09.914+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.0.0 - Initial schema creation"
+2025-12-04T20:54:09.955+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.1 - Drop game image uniques and rename constraints"
+2025-12-04T20:54:09.972+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.2 - Create game requests table"
+2025-12-04T20:54:09.977+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.1 - Recreate game image fks without unique indexes"
+2025-12-04T20:54:09.985+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.1 - Fix game images uniqueness"
+2025-12-04T20:54:09.988+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.2 - Cleanup unreferenced images"
+2025-12-04T20:54:09.994+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.1 - Remove obsolete library games table"
+2025-12-04T20:54:09.999+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.2 - Disable length limit for config values"
+2025-12-04T20:54:10.004+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.3 - Multi platform support"
+2025-12-04T20:54:10.010+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.4 - Refactor unmatched paths to ignored paths"
+2025-12-04T20:54:10.015+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.3.0.1 - Create proxy config table"
+2025-12-04T20:54:10.025+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Successfully applied 11 migrations to schema "PUBLIC", now at version v2.3.0.1 (execution time 00:00.068s)
+2025-12-04T20:54:15.124+08:00  INFO 60648 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 7.437 seconds (process running for 7.776)
+2025-12-04T20:54:15.313 INFO  org.gameyfin.app.core.SetupDataLoader    : Looks like this is the first time you're starting Gameyfin.
+2025-12-04T20:54:15.312 WARN  org.pf4j.AbstractPluginManager           : No 'plugins' root
+2025-12-04T20:54:15.316 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: []
+2025-12-04T20:54:15.316 INFO  org.gameyfin.app.core.SetupDataLoader    : Visit http://DESKTOP-T6M7IA5:8080/setup to complete the setup
+2025-12-04T20:54:15.316 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-04T20:54:15.335 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-04T20:57:57.122 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\2'
+2025-12-04T20:57:57.122 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\赛博朋克'
+2025-12-04T20:57:57.122 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆'
+2025-12-04T20:58:10.349 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\2'
+2025-12-04T20:58:10.349 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\赛博朋克'
+2025-12-04T20:58:10.349 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆'

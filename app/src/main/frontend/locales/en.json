@@ -28,6 +28,7 @@
     "adminSSO": "Administration - SSO",
     "adminMessages": "Administration - Messages",
     "adminPlugins": "Administration - Plugins",
+    "adminProxy": "Administration - Proxy",
     "adminLogs": "Administration - Logs",
     "adminSystem": "Administration - System",
     "login": "Login",
@@ -77,7 +78,11 @@
     "finish": "Finish",
     "continue": "Continue",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "test": "Test",
+    "validation": {
+      "required": "Required"
+    }
   },
   "login": {
     "username": "Username",
@@ -86,5 +91,157 @@
     "signUp": "Sign up",
     "logIn": "Log in",
     "invalidCredentials": "Invalid username and/or password."
+  },
+  "proxy": {
+    "title": "Proxy Server Settings",
+    "description": "Configure proxy server for external API access",
+    "enabled": "Enable Proxy",
+    "type": "Proxy Type",
+    "host": "Proxy Host",
+    "port": "Proxy Port",
+    "username": "Username (Optional)",
+    "password": "Password (Optional)",
+    "testConnection": "Test Connection",
+    "testing": "Testing...",
+    "testSuccess": "Proxy connection successful",
+    "testFailed": "Proxy connection failed",
+    "responseTime": "Response Time",
+    "milliseconds": "ms",
+    "hostPlaceholder": "e.g., proxy.example.com",
+    "portPlaceholder": "e.g., 8080",
+    "saveSuccess": "Proxy settings saved",
+    "saveFailed": "Failed to save proxy settings",
+    "types": {
+      "HTTP": "HTTP",
+      "HTTPS": "HTTPS",
+      "SOCKS": "SOCKS"
+    }
+  },
+  "admin": {
+    "menu": {
+      "libraries": "Libraries",
+      "requests": "Game Requests",
+      "downloads": "Downloads",
+      "users": "Users",
+      "sso": "SSO",
+      "messages": "Messages",
+      "plugins": "Plugins",
+      "proxy": "Proxy",
+      "logs": "Logs",
+      "system": "System"
+    },
+    "pages": {
+      "gameRequests": "Game Requests",
+      "downloads": "Downloads",
+      "users": "User Management",
+      "sso": "Single Sign-On",
+      "messages": "Messages",
+      "plugins": "Plugins",
+      "logs": "Logging",
+      "system": "System"
+    }
+  },
+  "home": {
+    "recentlyAdded": "Recently added"
+  },
+  "library": {
+    "title": "Library Management",
+    "permissions": "Permissions",
+    "scanning": "Scanning",
+    "metadata": "Metadata",
+    "libraries": "Libraries",
+    "addNewLibrary": "Add new library",
+    "noLibrariesFound": "No libraries found",
+    "updateSuccess": "Library updated",
+    "updateSuccessDesc": "Library {{name}} has been updated.",
+    "removeSuccess": "Library removed",
+    "removeSuccessDesc": "Library {{name}} has been removed."
+  },
+  "gameRequests": {
+    "configuration": "Game requests configuration",
+    "permissions": "Permissions",
+    "manageButton": "Manage game requests"
+  },
+  "downloads": {
+    "bandwidthLimiting": "Bandwidth limiting",
+    "experimentalFeature": "Experimental Feature",
+    "experimentalDescription": "Bandwidth limiting is an experimental feature and may not work as expected. Please report any issues you encounter.",
+    "openIssues": "Open Issues",
+    "liveView": "Live View",
+    "sumLast24Hours": "Sum over the last 24 hours",
+    "noActiveSessions": "No active download sessions.",
+    "validation": {
+      "minMbps": "Must be at least 1 Mbps"
+    }
+  },
+  "messages": {
+    "email": "E-Mail",
+    "messageTemplates": "Message Templates",
+    "editTemplate": "Edit template",
+    "sendTestNotification": "Send test notification",
+    "credentialsValid": "Credentials are valid",
+    "credentialsInvalid": "Credentials are invalid",
+    "validation": {
+      "hostRequired": "Host is required",
+      "portRequired": "Port is required",
+      "portRange": "Port must be between 0 and 65535",
+      "usernameRequired": "Username is required"
+    }
+  },
+  "sso": {
+    "configuration": "SSO configuration",
+    "userHandling": "SSO user handling",
+    "providerConfiguration": "SSO provider configuration",
+    "autoRegisterUsers": "Automatically create new users after registration",
+    "notConfigurable": "Currently not configurable (always enabled)",
+    "autoPopulate": "Auto-populate",
+    "autoPopulateFailed": "Failed to auto-populate SSO configuration",
+    "restartRequired": "Gameyfin must be restarted for the changes to take effect",
+    "validation": {
+      "clientIdRequired": "Client ID is required",
+      "clientSecretRequired": "Client Secret is required",
+      "issuerUrlRequired": "Issuer URL is required",
+      "authorizeUrlRequired": "Authorize URL is required",
+      "tokenUrlRequired": "Token URL is required",
+      "userinfoUrlRequired": "Userinfo URL is required",
+      "logoutUrlRequired": "Logout URL is required",
+      "jwksUrlRequired": "JWKS URL is required"
+    }
+  },
+  "system": {
+    "restartGameyfin": "Restart Gameyfin",
+    "restart": "Restart",
+    "restarting": "Restarting",
+    "restartingDescription": "Gameyfin is restarting. This may take a few moments."
+  },
+  "users": {
+    "signUps": "Sign-Ups",
+    "users": "Users",
+    "ssoAutoRegisterDisabled": "Automatic user registration for SSO users is disabled",
+    "inviteNewUser": "Invite new user"
+  },
+  "profile": {
+    "myProfile": "My Profile",
+    "managedExternally": "Your account is managed externally.",
+    "logoutAllSessions": "You will be logged out of all current sessions",
+    "upload": "Upload",
+    "removeAvatar": "Remove your current avatar",
+    "personalInformation": "Personal information",
+    "username": "Username",
+    "email": "Email",
+    "security": "Security",
+    "newPassword": "New Password",
+    "repeatPassword": "Repeat password",
+    "passwordChanged": "Password changed",
+    "pleaseLoginAgain": "Please log in again",
+    "resendEmailConfirmation": "Resend email confirmation message",
+    "emailConfirmationSent": "Email confirmation message sent",
+    "checkInbox": "Please check your inbox",
+    "emailServicesDisabled": "Email services are disabled. Please contact your administrator.",
+    "validation": {
+      "passwordMinLength": "Password must be at least 8 characters long",
+      "passwordsNoMatch": "Passwords do not match"
+    }
   }
 }
+

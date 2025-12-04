@@ -4,8 +4,10 @@ import {useSnapshot} from "valtio/react";
 import {libraryState} from "Frontend/state/LibraryState";
 import {gameState} from "Frontend/state/GameState";
 import {useNavigate} from "react-router";
+import {useTranslation} from "react-i18next";
 
 export default function HomeView() {
+    const {t} = useTranslation();
     const navigate = useNavigate();
     const librariesState = useSnapshot(libraryState);
     const gamesState = useSnapshot(gameState);
@@ -15,7 +17,7 @@ export default function HomeView() {
     return (
         <div className="w-full">
             <div className="flex flex-col gap-2">
-                <CoverRow title="Recently added" games={recentlyAddedGames}
+                <CoverRow title={t('home.recentlyAdded')} games={recentlyAddedGames}
                           onPressShowMore={() => navigate("/recently-added")}/>
                 {librariesState.libraries.map((library) => (
                     <CoverRow key={library.id} title={library.name}

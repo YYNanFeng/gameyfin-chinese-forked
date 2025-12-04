@@ -41,6 +41,15 @@ spring:
     open-in-view: true
   mustache:
     check-template-location: false
+  # 设置 HTTP 编码
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  # 设置消息编码
+  messages:
+    encoding: UTF-8
   sql.init.mode: always
   datasource:
     username: gfadmin

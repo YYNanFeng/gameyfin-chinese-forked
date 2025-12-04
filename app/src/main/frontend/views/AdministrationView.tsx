@@ -3,6 +3,7 @@ import {
     DownloadSimpleIcon,
     EnvelopeIcon,
     GameControllerIcon,
+    GlobeIcon,
     LockKeyIcon,
     LogIcon,
     PlugIcon,
@@ -10,50 +11,56 @@ import {
     WrenchIcon
 } from "@phosphor-icons/react";
 import withSideMenu, {MenuItem} from "Frontend/components/general/withSideMenu";
+import i18n from "Frontend/i18n";
 
 const menuItems: MenuItem[] = [
     {
-        title: "Libraries",
+        title: () => i18n.t('admin.menu.libraries'),
         url: "libraries",
         icon: <GameControllerIcon/>
     },
     {
-        title: "Game Requests",
+        title: () => i18n.t('admin.menu.requests'),
         url: "requests",
         icon: <DiscIcon/>
     },
     {
-        title: "Downloads",
+        title: () => i18n.t('admin.menu.downloads'),
         url: "downloads",
         icon: <DownloadSimpleIcon/>
     },
     {
-        title: "Users",
+        title: () => i18n.t('admin.menu.users'),
         url: "users",
         icon: <UsersIcon/>
     },
     {
-        title: "SSO",
+        title: () => i18n.t('admin.menu.sso'),
         url: "sso",
         icon: <LockKeyIcon/>
     },
     {
-        title: "Messages",
+        title: () => i18n.t('admin.menu.messages'),
         url: "messages",
         icon: <EnvelopeIcon/>
     },
     {
-        title: "Plugins",
+        title: () => i18n.t('admin.menu.plugins'),
         url: "plugins",
         icon: <PlugIcon/>
     },
     {
-        title: "Logs",
+        title: () => i18n.t('admin.menu.proxy'),
+        url: "proxy",
+        icon: <GlobeIcon/>
+    },
+    {
+        title: () => i18n.t('admin.menu.logs'),
         url: "logs",
         icon: <LogIcon/>
     },
     {
-        title: "System",
+        title: () => i18n.t('admin.menu.system'),
         url: "system",
         icon: <WrenchIcon/>
     }

@@ -79,10 +79,40 @@ class BangumiPlugin(wrapper: PluginWrapper) : ConfigurableGameyfinPlugin(wrapper
                 isLenient = true
             }
 
-            private val httpClient = OkHttpClient.Builder()
-                .connectTimeout(Duration.ofSeconds(30))
-                .readTimeout(Duration.ofSeconds(30))
-                .build()
+            private val httpClient: OkHttpClient
+                get() = createHttpClient()
+
+            private fun createHttpClient(): OkHttpClient {
+                val builder = OkHttpClient.Builder()
+                    .connectTimeout(Duration.ofSeconds(30))
+                    .readTimeout(Duration.ofSeconds(30))
+
+                // Configure proxy from system properties
+                val proxyHost = System.getProperty("http.proxyHost")
+                val proxyPort = System.getProperty("http.proxyPort")?.toIntOrNull()
+
+                if (proxyHost != null && proxyPort != null) {
+                    val proxy = java.net.Proxy(
+                        java.net.Proxy.Type.HTTP,
+                        java.net.InetSocketAddress(proxyHost, proxyPort)
+                    )
+                    builder.proxy(proxy)
+
+                    // Add proxy authentication if configured
+                    val proxyUser = System.getProperty("http.proxyUser")
+                    val proxyPassword = System.getProperty("http.proxyPassword")
+                    if (proxyUser != null && proxyPassword != null) {
+                        builder.proxyAuthenticator { _, response ->
+                            val credential = okhttp3.Credentials.basic(proxyUser, proxyPassword)
+                            response.request.newBuilder()
+                                .header("Proxy-Authorization", credential)
+                                .build()
+                        }
+                    }
+                }
+
+                return builder.build()
+            }
         }
 
         override val supportedPlatforms: Set<Platform>

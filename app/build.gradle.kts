@@ -72,6 +72,7 @@ dependencies {
     // Utils
     implementation("org.apache.tika:tika-core:3.1.0")
     implementation("me.xdrop:fuzzywuzzy:1.4.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
     // Development
     developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -98,4 +99,22 @@ dependencyManagement {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+// 设置 Kotlin 编译选项
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+    }
+}
+
+// 设置 Java 编译编码为 UTF-8
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
+// 设置运行时编码
+tasks.named<org.springframework.boot.gradle.tasks.run.BootRun>("bootRun") {
+    systemProperty("file.encoding", "UTF-8")
+    systemProperty("console.encoding", "UTF-8")
 }

@@ -4,7 +4,7 @@ import {Listbox, ListboxItem} from "@heroui/react";
 import {ReactElement, useState} from "react";
 
 export type MenuItem = {
-    title: string,
+    title: string | (() => string),
     url: string,
     icon: ReactElement<Icon>
 }
@@ -40,6 +40,13 @@ export default function withSideMenu(baseUrl: string, menuItems: MenuItem[]) {
             return afterBase.replace(/^\/+/, "").split("/")[0] || "";
         }
 
+        /**
+         * Get the title text, whether it's a string or a function
+         */
+        function getTitle(item: MenuItem): string {
+            return typeof item.title === 'function' ? item.title() : item.title;
+        }
+
         return (
             <div className="flex flex-row">
                 <div className="flex flex-col pr-8">
@@ -48,7 +55,7 @@ export default function withSideMenu(baseUrl: string, menuItems: MenuItem[]) {
                             <ListboxItem key={key(i.url)} startContent={i.icon} href={link(i.url)}
                                          onPress={() => setSelectedItem(i.url)}
                                          className={`h-12 ${key(i.url) === selectedItem ? "bg-primary" : ""}`}>
-                                <p>{i.title}</p>
+                                <p>{getTitle(i)}</p>
                             </ListboxItem>
                         ))}
                     </Listbox>

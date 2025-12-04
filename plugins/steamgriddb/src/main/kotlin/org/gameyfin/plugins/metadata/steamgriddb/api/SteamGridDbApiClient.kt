@@ -25,9 +25,25 @@ class SteamGridDbApiClient(private val apiKey: String) {
         private const val COVER_SIZES = "600x900,342x482,660x930"
     }
 
-    private val client = HttpClient(CIO) {
-        install(ContentNegotiation) {
-            json(json)
+    private val client: HttpClient
+        get() = createHttpClient()
+
+    private fun createHttpClient(): HttpClient {
+        return HttpClient(CIO) {
+            install(ContentNegotiation) {
+                json(json)
+            }
+
+            // Configure proxy from system properties
+            engine {
+                proxy = io.ktor.client.engine.ProxyBuilder.http(
+                    System.getProperty("http.proxyHost")?.let { host ->
+                        System.getProperty("http.proxyPort")?.toIntOrNull()?.let { port ->
+                            java.net.URL("http://$host:$port")
+                        }
+                    } ?: return@http null
+                )
+            }
         }
     }
 

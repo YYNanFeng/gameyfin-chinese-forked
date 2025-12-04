@@ -52,12 +52,28 @@ class SteamPlugin(wrapper: PluginWrapper) : GameyfinPlugin(wrapper) {
     class SteamMetadataProvider : GameMetadataProvider {
         private val log = LoggerFactory.getLogger(javaClass)
 
-        private val client = HttpClient(CIO) {
-            // Use a fake browser user agent to avoid being blocked by Steam
-            BrowserUserAgent()
+        private val client: HttpClient
+            get() = createHttpClient()
 
-            install(ContentNegotiation) {
-                json(json)
+        private fun createHttpClient(): HttpClient {
+            return HttpClient(CIO) {
+                // Use a fake browser user agent to avoid being blocked by Steam
+                BrowserUserAgent()
+
+                install(ContentNegotiation) {
+                    json(json)
+                }
+
+                // Configure proxy from system properties
+                engine {
+                    proxy = io.ktor.client.engine.ProxyBuilder.http(
+                        System.getProperty("http.proxyHost")?.let { host ->
+                            System.getProperty("http.proxyPort")?.toIntOrNull()?.let { port ->
+                                java.net.URL("http://$host:$port")
+                            }
+                        } ?: return@http null
+                    )
+                }
             }
         }
 

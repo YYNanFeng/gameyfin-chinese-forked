@@ -10,8 +10,10 @@ import {downloadSessionState} from "Frontend/state/DownloadSessionState";
 import SessionStatsDto from "Frontend/generated/org/gameyfin/app/core/download/bandwidth/SessionStatsDto";
 import {DownloadSessionCard} from "Frontend/components/general/cards/DownloadSessionCard";
 import {humanFileSize} from "Frontend/util/utils";
+import {useTranslation} from "react-i18next";
 
 function DownloadManagementLayout({getConfig, formik}: any) {
+    const {t} = useTranslation();
     const sessions = useSnapshot(downloadSessionState).all as SessionStatsDto[];
     const [lastDaySum, setLastDaySum] = React.useState<number>(0);
 
@@ -23,8 +25,8 @@ function DownloadManagementLayout({getConfig, formik}: any) {
     return (
         <div className="flex flex-col">
             <Alert
-                title="Experimental Feature"
-                description="Bandwidth limiting is an experimental feature and may not work as expected. Please report any issues you encounter."
+                title={t('downloads.experimentalFeature')}
+                description={t('downloads.experimentalDescription')}
                 variant="solid"
                 hideIconWrapper={true}
                 icon={<FlaskIcon size={24}/>}
@@ -32,7 +34,7 @@ function DownloadManagementLayout({getConfig, formik}: any) {
                     <Button variant="flat"
                             className="bg-default-400"
                             onPress={() => window.open("https://github.com/gameyfin/gameyfin/issues", "_blank")}>
-                        Open Issues
+                        {t('downloads.openIssues')}
                     </Button>
 
                 }
@@ -41,7 +43,7 @@ function DownloadManagementLayout({getConfig, formik}: any) {
                     base: "mt-6"
                 }}
             />
-            <Section title="Bandwidth limiting"/>
+            <Section title={t('downloads.bandwidthLimiting')}/>
             <div className="flex flex-col gap-4">
                 <div className="flex flex-row items-baseline gap-4">
                     <ConfigFormField configElement={getConfig("downloads.bandwidth-limit.enabled")}/>
@@ -50,8 +52,8 @@ function DownloadManagementLayout({getConfig, formik}: any) {
                 </div>
             </div>
             <div className="flex flex-row justify-between items-end">
-                <h2 className="text-xl font-bold mt-8 mb-1">Live View</h2>
-                <Tooltip content="Sum over the last 24 hours" placement="left">
+                <h2 className="text-xl font-bold mt-8 mb-1">{t('downloads.liveView')}</h2>
+                <Tooltip content={t('downloads.sumLast24Hours')} placement="left">
                     <div className="flex flex-row gap-1">
                         <SigmaIcon size={26} weight="bold"/>
                         <p className="font-semibold">{humanFileSize(lastDaySum)}</p>
@@ -60,7 +62,7 @@ function DownloadManagementLayout({getConfig, formik}: any) {
             </div>
             <Divider className="mb-4"/>
             {sessions.length === 0 &&
-                <p className="text-center text-default-500">No active download sessions.</p>
+                <p className="text-center text-default-500">{t('downloads.noActiveSessions')}</p>
             }
             <div className="flex flex-col gap-2">
                 {sessions.map((session: SessionStatsDto) =>
@@ -74,11 +76,13 @@ function DownloadManagementLayout({getConfig, formik}: any) {
 const validationSchema = Yup.object({
     downloads: Yup.object({
         "bandwidth-limit": Yup.object({
-            enabled: Yup.boolean().required("Required"),
+            enabled: Yup.boolean().required(i18n.t('common.validation.required')),
             mbps: Yup.number()
-                .min(1, "Must be at least 1 Mbps")
-                .required("Required"),
-        }).required("Required")
+                .min(1, i18n.t('downloads.validation.minMbps'))
+                .required(i18n.t('common.validation.required')),
+        }).required(i18n.t('common.validation.required'))
     })
 });
-export const DownloadManagement = withConfigPage(DownloadManagementLayout, "Downloads", validationSchema);
+import i18n from "Frontend/i18n";
+
+export const DownloadManagement = withConfigPage(DownloadManagementLayout, () => i18n.t('admin.pages.downloads'), validationSchema);
