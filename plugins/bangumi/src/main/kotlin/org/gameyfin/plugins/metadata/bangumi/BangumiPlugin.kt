@@ -9,17 +9,21 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import me.xdrop.fuzzywuzzy.FuzzySearch
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.gameyfin.pluginapi.core.config.ConfigMetadata
 import org.gameyfin.pluginapi.core.config.PluginConfigMetadata
 import org.gameyfin.pluginapi.core.wrapper.ConfigurableGameyfinPlugin
 import org.gameyfin.pluginapi.gamemetadata.*
 import org.pf4j.Extension
 import org.pf4j.PluginWrapper
+import java.net.URI
 import java.time.Duration
+import java.time.Instant
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
+import java.time.ZoneId
 
 class BangumiPlugin(wrapper: PluginWrapper) : ConfigurableGameyfinPlugin(wrapper) {
 
@@ -28,15 +32,13 @@ class BangumiPlugin(wrapper: PluginWrapper) : ConfigurableGameyfinPlugin(wrapper
             key = "userAgent",
             type = String::class.java,
             label = "User Agent",
-            description = "自定义 User Agent（建议格式：AppName/Version）",
-            defaultValue = "Gameyfin/2.2.1"
+            description = "自定义 User Agent（建议格式：AppName/Version）"
         ),
         ConfigMetadata(
             key = "apiBaseUrl",
             type = String::class.java,
             label = "API Base URL",
-            description = "Bangumi API 地址",
-            defaultValue = "https://api.bgm.tv"
+            description = "Bangumi API 地址"
         )
     )
 
@@ -53,10 +55,12 @@ class BangumiPlugin(wrapper: PluginWrapper) : ConfigurableGameyfinPlugin(wrapper
     class BangumiMetadataProvider : GameMetadataProvider {
 
         companion object {
+            private val log = org.slf4j.LoggerFactory.getLogger(BangumiMetadataProvider::class.java)
+            
             private const val API_BASE_URL = "https://api.bgm.tv"
             private const val DEFAULT_USER_AGENT = "Gameyfin/2.2.1"
 
-            // Bangumi API 限流：每分钟最多 60 请求
+            // Bangumi API 限流：每秒1请求
             private val rateLimiter: RateLimiter = RateLimiter.of(
                 "bangumi-api",
                 RateLimiterConfig.custom()
@@ -98,7 +102,7 @@ class BangumiPlugin(wrapper: PluginWrapper) : ConfigurableGameyfinPlugin(wrapper
                     )
                     builder.proxy(proxy)
 
-                    // Add proxy authentication if configured
+                    // Add proxy authentication if credentials are provided
                     val proxyUser = System.getProperty("http.proxyUser")
                     val proxyPassword = System.getProperty("http.proxyPassword")
                     if (proxyUser != null && proxyPassword != null) {
@@ -115,189 +119,255 @@ class BangumiPlugin(wrapper: PluginWrapper) : ConfigurableGameyfinPlugin(wrapper
             }
         }
 
-        override val supportedPlatforms: Set<Platform>
-            get() = setOf(
-                Platform.PC,
-                Platform.PLAYSTATION,
-                Platform.PLAYSTATION_2,
-                Platform.PLAYSTATION_3,
-                Platform.PLAYSTATION_4,
-                Platform.PLAYSTATION_5,
-                Platform.PLAYSTATION_VITA,
-                Platform.PSP,
-                Platform.XBOX,
-                Platform.XBOX_360,
-                Platform.XBOX_ONE,
-                Platform.XBOX_SERIES,
-                Platform.NINTENDO_SWITCH,
-                Platform.WII,
-                Platform.WII_U,
-                Platform.NINTENDO_3DS,
-                Platform.NINTENDO_DS,
-                Platform.GAME_BOY,
-                Platform.GAME_BOY_ADVANCE,
-                Platform.ANDROID,
-                Platform.IOS
-            )
+        override val supportedPlatforms: Set<Platform> = setOf(
+            Platform.PC_MICROSOFT_WINDOWS,
+            Platform.PLAYSTATION_5,
+            Platform.PLAYSTATION_4,
+            Platform.PLAYSTATION_3,
+            Platform.PLAYSTATION_2,
+            Platform.PLAYSTATION,
+            Platform.PLAYSTATION_VITA,
+            Platform.PLAYSTATION_PORTABLE,
+            Platform.XBOX_SERIES_X_S,
+            Platform.XBOX_ONE,
+            Platform.XBOX_360,
+            Platform.XBOX,
+            Platform.NINTENDO_SWITCH,
+            Platform.WII_U,
+            Platform.WII,
+            Platform.NINTENDO_GAMECUBE,
+            Platform.NINTENDO_64,
+            Platform.NINTENDO_3DS,
+            Platform.NINTENDO_DS,
+            Platform.GAME_BOY_ADVANCE,
+            Platform.GAME_BOY,
+            Platform.ANDROID,
+            Platform.IOS,
+            Platform.MAC,
+            Platform.LINUX
+        )
 
         override fun fetchByTitle(
             gameTitle: String,
             platformFilter: Set<Platform>,
             maxResults: Int
         ): List<GameMetadata> {
+            return Decorators.ofSupplier<List<GameMetadata>> {
+                searchInternal(gameTitle, maxResults)
+            }
+                .withRateLimiter(rateLimiter)
+                .withBulkhead(bulkhead)
+                .get()
+        }
+
+        override fun fetchById(id: String): GameMetadata? {
+            return Decorators.ofSupplier<GameMetadata?> {
+                fetchByIdInternal(id)
+            }
+                .withRateLimiter(rateLimiter)
+                .withBulkhead(bulkhead)
+                .get()
+        }
+
+        private fun searchInternal(title: String, maxResults: Int): List<GameMetadata> {
             try {
-                // 搜索游戏
-                val searchResults = searchGames(gameTitle, maxResults * 2)
-
-                if (searchResults.isEmpty()) return emptyList()
-
-                // 使用模糊匹配找到最佳匹配
-                val bestMatches = FuzzySearch.extractTop(
-                    gameTitle,
-                    searchResults.map { it.name },
-                    maxResults
-                )
-
-                val bestMatchIds = searchResults
-                    .filter { game -> bestMatches.any { it.string == game.name } }
-                    .map { it.id }
-
-                // 获取详细信息
-                return bestMatchIds.mapNotNull { id ->
-                    try {
-                        fetchById(id.toString())
-                    } catch (e: Exception) {
-                        null
+                // 使用 POST 请求搜索游戏 (type=4 表示游戏)
+                val searchBody = """
+                    {
+                        "keyword": "${title.replace("\"", "\\\"")}",
+                        "filter": {
+                            "type": [4]
+                        }
                     }
-                }.take(maxResults)
+                """.trimIndent()
 
+                val mediaType = "application/json; charset=utf-8".toMediaType()
+                val requestBody = searchBody.toRequestBody(mediaType)
+                
+                val request = Request.Builder()
+                    .url("$API_BASE_URL/v0/search/subjects?limit=${maxResults * 2}")
+                    .header("User-Agent", DEFAULT_USER_AGENT)
+                    .header("Accept", "application/json")
+                    .post(requestBody)
+                    .build()
+
+                httpClient.newCall(request).execute().use { response ->
+                    if (!response.isSuccessful) {
+                        log.warn("Bangumi search failed: HTTP ${response.code} - ${response.message}")
+                        return emptyList()
+                    }
+
+                    val body = response.body?.string() ?: return emptyList()
+                    val searchResponse = json.decodeFromString<BangumiSearchResponse>(body)
+
+                    // 使用模糊匹配排序结果
+                    val results = searchResponse.data?.mapNotNull { subject ->
+                        val displayName = if (subject.nameCn.isNullOrBlank()) subject.name else subject.nameCn
+                        val matchScore = FuzzySearch.tokenSetRatio(title.lowercase(), displayName.lowercase())
+                        
+                        // 获取详细信息并转换为 GameMetadata
+                        try {
+                            fetchByIdInternal(subject.id.toString())?.let { metadata ->
+                                metadata to matchScore
+                            }
+                        } catch (e: Exception) {
+                            log.warn("Failed to fetch details for subject ${subject.id}: ${e.message}")
+                            null
+                        }
+                    }
+                        ?.sortedByDescending { it.second }
+                        ?.take(maxResults)
+                        ?.map { it.first }
+                        ?: emptyList()
+
+                    return results
+                }
             } catch (e: Exception) {
-                log.error("Error fetching games from Bangumi: ${e.message}", e)
+                log.error("Error searching Bangumi: ${e.message}", e)
                 return emptyList()
             }
         }
 
-        override fun fetchById(id: String): GameMetadata? {
-            return try {
-                val subject = getSubjectById(id.toInt())
-                subject?.let { mapToGameMetadata(it) }
-            } catch (e: Exception) {
-                log.error("Error fetching game by id from Bangumi: ${e.message}", e)
-                null
-            }
-        }
-
-        private fun searchGames(keyword: String, limit: Int = 10): List<BangumiSearchResult> {
-            val url = "$API_BASE_URL/v0/search/subjects?type=4&keyword=${
-                java.net.URLEncoder.encode(keyword, "UTF-8")
-            }&limit=$limit"
-
-            return executeRequest(url) { response ->
-                val body = response.body?.string() ?: return@executeRequest emptyList()
-                val searchResponse = json.decodeFromString<BangumiSearchResponse>(body)
-                searchResponse.data ?: emptyList()
-            } ?: emptyList()
-        }
-
-        private fun getSubjectById(id: Int): BangumiSubject? {
-            val url = "$API_BASE_URL/v0/subjects/$id"
-
-            return executeRequest(url) { response ->
-                val body = response.body?.string() ?: return@executeRequest null
-                json.decodeFromString<BangumiSubject>(body)
-            }
-        }
-
-        private fun <T> executeRequest(url: String, handler: (okhttp3.Response) -> T): T? {
-            return try {
-                Decorators.ofSupplier {
-                    val request = Request.Builder()
-                        .url(url)
-                        .header("User-Agent", DEFAULT_USER_AGENT)
-                        .header("Accept", "application/json")
-                        .build()
-
-                    httpClient.newCall(request).execute()
-                }
-                    .withRateLimiter(rateLimiter)
-                    .withBulkhead(bulkhead)
+        private fun fetchByIdInternal(id: String): GameMetadata? {
+            try {
+                val request = Request.Builder()
+                    .url("$API_BASE_URL/v0/subjects/$id")
+                    .header("User-Agent", DEFAULT_USER_AGENT)
+                    .header("Accept", "application/json")
                     .get()
-                    .use { response ->
-                        if (response.isSuccessful) {
-                            handler(response)
-                        } else {
-                            log.warn("Bangumi API request failed: ${response.code} ${response.message}")
-                            null
-                        }
+                    .build()
+
+                httpClient.newCall(request).execute().use { response ->
+                    if (!response.isSuccessful) {
+                        log.warn("Bangumi metadata fetch failed: HTTP ${response.code}")
+                        return null
                     }
+
+                    val body = response.body?.string() ?: return null
+                    val subject = json.decodeFromString<BangumiSubject>(body)
+
+                    return mapToGameMetadata(subject)
+                }
             } catch (e: Exception) {
-                log.error("Error executing Bangumi API request: ${e.message}", e)
-                null
+                log.error("Error fetching Bangumi metadata: ${e.message}", e)
+                return null
             }
         }
 
         private fun mapToGameMetadata(subject: BangumiSubject): GameMetadata {
-            val platforms = mutableSetOf<Platform>()
-            
-            // 尝试从标签或平台信息推断平台
-            subject.tags?.forEach { tag ->
-                when {
-                    tag.name.contains("PC", ignoreCase = true) -> platforms.add(Platform.PC)
-                    tag.name.contains("PS5", ignoreCase = true) -> platforms.add(Platform.PLAYSTATION_5)
-                    tag.name.contains("PS4", ignoreCase = true) -> platforms.add(Platform.PLAYSTATION_4)
-                    tag.name.contains("PS3", ignoreCase = true) -> platforms.add(Platform.PLAYSTATION_3)
-                    tag.name.contains("PS2", ignoreCase = true) -> platforms.add(Platform.PLAYSTATION_2)
-                    tag.name.contains("Switch", ignoreCase = true) -> platforms.add(Platform.NINTENDO_SWITCH)
-                    tag.name.contains("Xbox", ignoreCase = true) -> platforms.add(Platform.XBOX)
-                    tag.name.contains("iOS", ignoreCase = true) -> platforms.add(Platform.IOS)
-                    tag.name.contains("Android", ignoreCase = true) -> platforms.add(Platform.ANDROID)
+            // 解析发行日期
+            val releaseInstant = subject.date?.let { dateStr ->
+                try {
+                    LocalDate.parse(dateStr).atStartOfDay(ZoneId.systemDefault()).toInstant()
+                } catch (e: Exception) {
+                    null
                 }
             }
 
-            // 如果没有找到平台，默认为 PC
-            if (platforms.isEmpty()) {
-                platforms.add(Platform.PC)
-            }
+            // 解析用户评分 (Bangumi 评分是 0-10 分,我们转换为 0-100)
+            val userRating = subject.rating?.score?.times(10)?.toInt()
+
+            // 解析封面图
+            val coverUrls = subject.images?.large?.let { setOf(URI.create(it)) }
+
+            // 解析标签作为关键词
+            val keywords = subject.tags?.map { it.name }?.toSet()
+
+            // 尝试从平台字段推断平台
+            val platforms = subject.platform?.let { parsePlatforms(it) } ?: setOf(Platform.PC_MICROSOFT_WINDOWS)
 
             return GameMetadata(
-                id = subject.id.toString(),
-                title = subject.name,
-                description = subject.summary,
-                releaseDate = parseDate(subject.date),
+                originalId = subject.id.toString(),
+                title = if (subject.nameCn.isNullOrBlank()) subject.name else subject.nameCn,
                 platforms = platforms,
-                rating = subject.rating?.score?.toDouble()?.div(10.0), // Bangumi 评分是 10 分制
-                coverImageUrl = subject.images?.large,
-                screenshotUrls = emptyList(), // Bangumi 没有直接的截图 API
-                videoUrls = emptyList(),
-                genres = subject.tags?.map { Genre(it.name, it.name) } ?: emptyList(),
-                keywords = emptyList(),
-                themes = emptyList(),
-                gameModes = emptyList(),
-                perspectives = emptyList(),
-                companies = emptyList(),
-                artworkUrls = emptyList(),
-                involvedCompanies = emptyList(),
-                providerMetadata = mapOf(
-                    "bangumiId" to subject.id.toString(),
-                    "bangumiUrl" to "https://bgm.tv/subject/${subject.id}",
-                    "rank" to (subject.rating?.rank?.toString() ?: ""),
-                    "ratingCount" to (subject.rating?.total?.toString() ?: "")
-                )
+                description = subject.summary,
+                coverUrls = coverUrls,
+                headerUrls = null,
+                release = releaseInstant,
+                userRating = userRating,
+                criticRating = null,
+                developedBy = null,
+                publishedBy = null,
+                genres = null,
+                themes = null,
+                keywords = keywords,
+                screenshotUrls = null,
+                videoUrls = null,
+                features = null,
+                perspectives = null
             )
         }
 
-        private fun parseDate(dateString: String?): LocalDate? {
-            if (dateString.isNullOrBlank()) return null
-            return try {
-                LocalDate.parse(dateString, DateTimeFormatter.ISO_DATE)
-            } catch (e: Exception) {
-                null
+        private fun parsePlatforms(platformStr: String): Set<Platform> {
+            val platformLower = platformStr.lowercase()
+            val detected = mutableSetOf<Platform>()
+
+            // PC 平台
+            if (platformLower.contains("pc") || platformLower.contains("windows") || 
+                platformLower.contains("steam")) {
+                detected.add(Platform.PC_MICROSOFT_WINDOWS)
             }
+
+            // PlayStation 系列
+            when {
+                platformLower.contains("ps5") || platformLower.contains("playstation 5") -> 
+                    detected.add(Platform.PLAYSTATION_5)
+                platformLower.contains("ps4") || platformLower.contains("playstation 4") -> 
+                    detected.add(Platform.PLAYSTATION_4)
+                platformLower.contains("ps3") || platformLower.contains("playstation 3") -> 
+                    detected.add(Platform.PLAYSTATION_3)
+                platformLower.contains("ps2") || platformLower.contains("playstation 2") -> 
+                    detected.add(Platform.PLAYSTATION_2)
+                platformLower.contains("psp") -> 
+                    detected.add(Platform.PLAYSTATION_PORTABLE)
+                platformLower.contains("vita") || platformLower.contains("psv") -> 
+                    detected.add(Platform.PLAYSTATION_VITA)
+            }
+
+            // Xbox 系列
+            when {
+                platformLower.contains("xbox series") || platformLower.contains("series x") || 
+                platformLower.contains("series s") || platformLower.contains("xsx") -> 
+                    detected.add(Platform.XBOX_SERIES_X_S)
+                platformLower.contains("xbox one") -> 
+                    detected.add(Platform.XBOX_ONE)
+                platformLower.contains("xbox 360") -> 
+                    detected.add(Platform.XBOX_360)
+                platformLower.contains("xbox") -> 
+                    detected.add(Platform.XBOX)
+            }
+
+            // Nintendo 系列
+            when {
+                platformLower.contains("switch") || platformLower.contains("ns") -> 
+                    detected.add(Platform.NINTENDO_SWITCH)
+                platformLower.contains("wii u") -> 
+                    detected.add(Platform.WII_U)
+                platformLower.contains("wii") && !platformLower.contains("wii u") -> 
+                    detected.add(Platform.WII)
+                platformLower.contains("3ds") -> 
+                    detected.add(Platform.NINTENDO_3DS)
+                platformLower.contains("nds") || platformLower.contains("nintendo ds") -> 
+                    detected.add(Platform.NINTENDO_DS)
+                platformLower.contains("gba") || platformLower.contains("game boy advance") -> 
+                    detected.add(Platform.GAME_BOY_ADVANCE)
+            }
+
+            // 移动平台
+            if (platformLower.contains("android")) detected.add(Platform.ANDROID)
+            if (platformLower.contains("ios") || platformLower.contains("iphone") || 
+                platformLower.contains("ipad")) detected.add(Platform.IOS)
+
+            // Mac/Linux
+            if (platformLower.contains("mac") || platformLower.contains("osx")) detected.add(Platform.MAC)
+            if (platformLower.contains("linux")) detected.add(Platform.LINUX)
+
+            return if (detected.isEmpty()) setOf(Platform.PC_MICROSOFT_WINDOWS) else detected
         }
     }
 }
 
-// Bangumi API 数据模型
+// Bangumi API v0 数据模型
 @Serializable
 data class BangumiSearchResponse(
     val total: Int? = null,
@@ -319,10 +389,12 @@ data class BangumiSearchResult(
 @Serializable
 data class BangumiSubject(
     val id: Int,
+    val type: Int,
     val name: String,
     @SerialName("name_cn") val nameCn: String? = null,
     val summary: String? = null,
     val date: String? = null,
+    val platform: String? = null,
     val images: BangumiImages? = null,
     val rating: BangumiRating? = null,
     val tags: List<BangumiTag>? = null

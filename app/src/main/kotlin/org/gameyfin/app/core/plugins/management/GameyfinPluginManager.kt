@@ -119,9 +119,10 @@ class GameyfinPluginManager(
                 else -> PluginTrustLevel.BUNDLED
             }
 
-            // If the plugin is official or bundled, we can enable it and start it by default
+            // If the plugin is official, bundled, or third-party, we can enable it and start it by default
             if (pluginManagementEntry.trustLevel == PluginTrustLevel.OFFICIAL
                 || pluginManagementEntry.trustLevel == PluginTrustLevel.BUNDLED
+                || pluginManagementEntry.trustLevel == PluginTrustLevel.THIRD_PARTY
             ) {
                 pluginManagementEntry.enabled = true
                 log.info { "Plugin ${pluginWrapper.pluginId} verified, starting" }

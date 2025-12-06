@@ -48,6 +48,9 @@ out/
 /packaged_plugins
 /logs
 /templates
+
+### Playnite Plugin (独立项目) ###
+/playnite/
 /docker/docker-compose.yml
 /app/src/main/bundles/
 /app/src/main/frontend/**/*.js

@@ -8,6 +8,7 @@ import PluginIcon from "Frontend/components/general/plugin/PluginIcon";
 import {useSnapshot} from "valtio/react";
 import {pluginState} from "Frontend/state/PluginState";
 import PluginDto from "Frontend/generated/org/gameyfin/app/core/plugins/dto/PluginDto";
+import {useTranslation} from "react-i18next";
 
 interface GameCoverPickerModalProps {
     game: GameDto;
@@ -17,6 +18,7 @@ interface GameCoverPickerModalProps {
 }
 
 export function GameCoverPickerModal({game, isOpen, onOpenChange, setCoverUrl}: GameCoverPickerModalProps) {
+    const {t} = useTranslation();
     const [coverUrl, setCoverUrlState] = useState("");
 
     const [searchTerm, setSearchTerm] = useState(game.title);
@@ -45,12 +47,12 @@ export function GameCoverPickerModal({game, isOpen, onOpenChange, setCoverUrl}: 
                 {(onClose) => {
                     return (<>
                         <ModalHeader>
-                            Enter a URL or search for a cover
+                            {t('modals.gameCoverPicker.title')}
                         </ModalHeader>
                         <ModalBody className="flex flex-col gap-4">
                             <div className="flex flex-row gap-2 mb-4">
                                 <Input isClearable
-                                       placeholder="Enter a URL"
+                                       placeholder={t('modals.gameCoverPicker.urlPlaceholder')}
                                        value={coverUrl}
                                        onValueChange={setCoverUrlState}
                                        onClear={() => setCoverUrlState("")}
@@ -63,7 +65,7 @@ export function GameCoverPickerModal({game, isOpen, onOpenChange, setCoverUrl}: 
                                 </Button>
                             </div>
                             <div className="flex flex-row gap-2 mb-4">
-                                <Input placeholder="Search"
+                                <Input placeholder={t('modals.gameCoverPicker.searchPlaceholder')}
                                        value={searchTerm}
                                        onValueChange={setSearchTerm}
                                        onKeyDown={async (e) => {
@@ -78,10 +80,10 @@ export function GameCoverPickerModal({game, isOpen, onOpenChange, setCoverUrl}: 
                                 </Button>
                             </div>
                             {searchResults.length === 0 && !isSearching &&
-                                <p className="text-center">No results found.</p>
+                                <p className="text-center">{t('modals.gameCoverPicker.noResults')}</p>
                             }
                             {searchResults.length === 0 && isSearching &&
-                                <p className="text-center text-default-500">Searching...</p>
+                                <p className="text-center text-default-500">{t('modals.gameCoverPicker.searching')}</p>
                             }
                             <ScrollShadow
                                 className="grid grid-cols-auto-fill gap-4 h-96 overflow-y-scroll justify-evenly">

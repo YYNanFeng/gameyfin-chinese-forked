@@ -19,6 +19,7 @@ import {
     TriangleDashedIcon
 } from "@phosphor-icons/react";
 import {useAuth} from "Frontend/util/auth";
+import {useTranslation} from "react-i18next";
 import MatchGameModal from "Frontend/components/general/modals/MatchGameModal";
 import EditGameMetadataModal from "Frontend/components/general/modals/EditGameMetadataModal";
 import GameUpdateDto from "Frontend/generated/org/gameyfin/app/games/dto/GameUpdateDto";
@@ -29,6 +30,7 @@ import ChipList from "Frontend/components/general/ChipList";
 
 export default function GameView() {
     const {gameId} = useParams();
+    const {t} = useTranslation();
 
     const navigate = useNavigate();
     const auth = useAuth();
@@ -123,7 +125,7 @@ export default function GameView() {
                             <div className="flex flex-row items-center gap-2">
                                 <p className="text-default-500">
                                     {game.release !== undefined ? new Date(game.release).getFullYear() :
-                                        <p className="text-default-500">no data</p>}
+                                        <p className="text-default-500">{t('game.noData')}</p>}
                                 </p>
                                 <ChipList items={game.platforms} maxVisible={1}/>
                                 <Tooltip
@@ -138,24 +140,24 @@ export default function GameView() {
                         {isAdmin(auth) && <div className="flex flex-row gap-2">
                             <Button isIconOnly onPress={toggleMatchConfirmed}>
                                 {game.metadata.matchConfirmed ?
-                                    <Tooltip content="Unconfirm match">
+                                    <Tooltip content={t('game.unconfirmMatch')}>
                                         <CheckCircleIcon weight="fill" className="fill-success"/>
                                     </Tooltip> :
-                                    <Tooltip content="Confirm match">
+                                    <Tooltip content={t('game.confirmMatch')}>
                                         <CheckCircleIcon/>
                                     </Tooltip>}
                             </Button>
-                            <Tooltip content="Edit metadata">
+                            <Tooltip content={t('game.editMetadata')}>
                                 <Button isIconOnly onPress={editGameModal.onOpenChange}>
                                     <PencilIcon/>
                                 </Button>
                             </Tooltip>
-                            <Tooltip content="Search for metadata">
+                            <Tooltip content={t('game.searchMetadata')}>
                                 <Button isIconOnly onPress={matchGameModal.onOpenChange}>
                                     <MagnifyingGlassIcon/>
                                 </Button>
                             </Tooltip>
-                            <Tooltip content="Remove from library">
+                            <Tooltip content={t('game.removeFromLibrary')}>
                                 <Button isIconOnly color="danger"
                                         onPress={async () => {
                                             await deleteGame();
@@ -211,7 +213,7 @@ export default function GameView() {
                                 className="text-left w-full table-auto border-separate border-spacing-y-1">
                                 <tbody>
                                 <tr>
-                                    <td className="text-default-500 w-0 min-w-32">Developed by</td>
+                                    <td className="text-default-500 w-0 min-w-32">{t('game.developedBy')}</td>
                                     <td className="flex flex-row gap-1">
                                         {game.developers && game.developers.length > 0
                                             ? [...game.developers].sort().map((dev, index) =>
@@ -223,18 +225,18 @@ export default function GameView() {
                                                     {index !== game.developers!!.length - 1 && <p>/</p>}
                                                 </>
                                             )
-                                            : <Tooltip content="Missing data" color="foreground" placement="right">
+                                            : <Tooltip content={t('game.missingData')} color="foreground" placement="right">
                                                 <TriangleDashedIcon className="fill-default-500 h-6 bottom-0"/>
                                             </Tooltip>
                                         }
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td className="text-default-500 w-0 min-w-32">Published by</td>
+                                    <td className="text-default-500 w-0 min-w-32">{t('game.publishedBy')}</td>
                                     <td className="flex flex-row gap-1">
                                         {game.publishers && game.publishers.length > 0
                                             ? [...game.publishers].sort().join(" / ")
-                                            : <Tooltip content="Missing data" color="foreground" placement="right">
+                                            : <Tooltip content={t('game.missingData')} color="foreground" placement="right">
                                                 <TriangleDashedIcon className="fill-default-500 h-6 bottom-0"/>
                                             </Tooltip>
                                         }
@@ -252,7 +254,7 @@ export default function GameView() {
                                                     </Chip>
                                                 </Link>
                                             )
-                                            : <Tooltip content="Missing data" color="foreground" placement="right">
+                                            : <Tooltip content={t('game.missingData')} color="foreground" placement="right">
                                                 <TriangleDashedIcon className="fill-default-500 h-6 bottom-0"/>
                                             </Tooltip>
                                         }
@@ -270,7 +272,7 @@ export default function GameView() {
                                                     </Chip>
                                                 </Link>
                                             )
-                                            : <Tooltip content="Missing data" color="foreground" placement="right">
+                                            : <Tooltip content={t('game.missingData')} color="foreground" placement="right">
                                                 <TriangleDashedIcon className="fill-default-500 h-6 bottom-0"/>
                                             </Tooltip>
                                         }
@@ -289,7 +291,7 @@ export default function GameView() {
                                                     </Chip>
                                                 </Link>
                                             )
-                                            : <Tooltip content="Missing data" color="foreground" placement="right">
+                                            : <Tooltip content={t('game.missingData')} color="foreground" placement="right">
                                                 <TriangleDashedIcon className="fill-default-500 h-6 bottom-0"/>
                                             </Tooltip>
                                         }

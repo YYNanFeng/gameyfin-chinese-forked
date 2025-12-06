@@ -26,6 +26,7 @@ import PluginDto from "Frontend/generated/org/gameyfin/app/core/plugins/dto/Plug
 import GameRequestCreationDto from "Frontend/generated/org/gameyfin/app/requests/dto/GameRequestCreationDto";
 import Platform from "Frontend/generated/org/gameyfin/pluginapi/gamemetadata/Platform";
 import {platformState} from "Frontend/state/PlatformState";
+import {useTranslation} from "react-i18next";
 
 interface RequestGameModalProps {
     isOpen: boolean;
@@ -39,6 +40,7 @@ export default function RequestGameModal({
                                              isOpen,
                                              onOpenChange
                                          }: RequestGameModalProps) {
+    const {t} = useTranslation();
     const [selectedPlatform, setSelectedPlatform] = useState<string>(DEFAULT_PLATFORM_FOR_NEW_REQUESTS);
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState<GameSearchResultDto[]>([]);
@@ -92,10 +94,10 @@ export default function RequestGameModal({
                 {(onClose) => (
                     <ModalBody className="my-4">
                         <div className="flex flex-col items-center">
-                            <h2 className="text-xl font-semibold">Request a game</h2>
+                            <h2 className="text-xl font-semibold">{t('modals.requestGame.title')}</h2>
                         </div>
                         <Autocomplete
-                            label="Platform"
+                            label={t('modals.requestGame.platform')}
                             size="sm"
                             allowsCustomValue={false}
                             selectedKey={selectedPlatform}
@@ -138,7 +140,7 @@ export default function RequestGameModal({
                                     <TableColumn>Sources</TableColumn>
                                     <TableColumn width={1}> </TableColumn>
                                 </TableHeader>
-                                <TableBody emptyContent="Your search did not match any games." items={searchResults}>
+                                <TableBody emptyContent={t('requestsView.noMatchGames')} items={searchResults}>
                                     {(item) => (
                                         <TableRow key={item.id}>
                                             <TableCell>
@@ -167,7 +169,7 @@ export default function RequestGameModal({
                                                 </div>
                                             </TableCell>
                                             <TableCell>
-                                                <Tooltip content="Pick this result">
+                                                <Tooltip content={t('requestsView.pickResult')}>
                                                     <Button isIconOnly size="sm"
                                                             isDisabled={isRequesting !== null}
                                                             isLoading={isRequesting === item.id}

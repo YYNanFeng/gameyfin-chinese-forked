@@ -16,8 +16,10 @@ import GameDto from "Frontend/generated/org/gameyfin/app/games/dto/GameDto";
 import LibraryDto from "Frontend/generated/org/gameyfin/app/libraries/dto/LibraryDto";
 import CoverGrid from "Frontend/components/general/covers/CoverGrid";
 import {compoundRating} from "Frontend/util/utils";
+import {useTranslation} from "react-i18next";
 
 export default function SearchView() {
+    const {t} = useTranslation();
     const games = useSnapshot(gameState).sortedAlphabetically as GameDto[];
     const knownDevelopers = useSnapshot(gameState).knownDevelopers as Set<string>;
     const knownGenres = useSnapshot(gameState).knownGenres;
@@ -272,7 +274,7 @@ export default function SearchView() {
                     inputWrapper:
                         "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
                 }}
-                placeholder="Type to search..."
+                placeholder={t('search.typePlaceholder')}
                 startContent={<MagnifyingGlassIcon/>}
                 type="search"
                 value={searchTerm}
@@ -300,17 +302,17 @@ export default function SearchView() {
                     <SelectItem key="updated_desc">Last Updated (Newest)</SelectItem>
                     <SelectItem key="updated_asc">Last Updated (Oldest)</SelectItem>
                 </Select>
-                <Tooltip content={showFilters ? "Hide Filters" : "Show Filters"}>
+                <Tooltip content={showFilters ? t('search.hideFilters') : t('search.showFilters')}>
                     <Button isIconOnly
                             variant={showFilters ? "solid" : "bordered"}
                             color={showFilters ? "primary" : "default"}
                             onPress={() => setShowFilters(!showFilters)}
-                            aria-label="Toggle Filters"
+                            aria-label={t('search.toggleFilters')}
                     >
                         <FunnelSimpleIcon/>
                     </Button>
                 </Tooltip>
-                <Tooltip content="Clear All Filters">
+                <Tooltip content={t('search.clearAllFilters')}>
                     <Button isIconOnly
                             onPress={() => {
                                 setSelectedLibraries(new Set());
@@ -322,7 +324,7 @@ export default function SearchView() {
                                 setSelectedKeywords(new Set());
                                 setMinRating(1);
                             }}
-                            aria-label="Clear All Filters"
+                            aria-label={t('search.clearFilters')}
                     >
                         <FunnelSimpleXIcon/>
                     </Button>
@@ -341,8 +343,8 @@ export default function SearchView() {
             <Select
                 size="sm"
                 selectionMode="multiple"
-                label="Libraries"
-                placeholder="Filter by library"
+                label={t('search.libraries')}
+                placeholder={t('search.filterByLibrary')}
                 selectedKeys={selectedLibraries}
                 //@ts-ignore
                 onSelectionChange={setSelectedLibraries}
@@ -354,8 +356,8 @@ export default function SearchView() {
             <Select
                 size="sm"
                 selectionMode="single"
-                label="Minimum Rating"
-                placeholder="Minimum rating"
+                label={t('search.minRating')}
+                placeholder={t('search.minRatingPlaceholder')}
                 disallowEmptySelection
                 selectedKeys={[minRating.toString()]}
                 onSelectionChange={keys => setMinRating(parseInt(Array.from(keys)[0] as string, 10))}
@@ -372,8 +374,8 @@ export default function SearchView() {
             <Select
                 size="sm"
                 selectionMode="multiple"
-                label="Developers"
-                placeholder="Filter by developer"
+                label={t('search.developers')}
+                placeholder={t('search.filterByDeveloper')}
                 selectedKeys={selectedDevelopers}
                 //@ts-ignore
                 onSelectionChange={setSelectedDevelopers}
@@ -385,8 +387,8 @@ export default function SearchView() {
             <Select
                 size="sm"
                 selectionMode="multiple"
-                label="Genres"
-                placeholder="Filter by genre"
+                label={t('search.genres')}
+                placeholder={t('search.filterByGenre')}
                 selectedKeys={selectedGenres}
                 //@ts-ignore
                 onSelectionChange={setSelectedGenres}
@@ -398,8 +400,8 @@ export default function SearchView() {
             <Select
                 size="sm"
                 selectionMode="multiple"
-                label="Themes"
-                placeholder="Filter by theme"
+                label={t('search.themes')}
+                placeholder={t('search.filterByTheme')}
                 selectedKeys={selectedThemes}
                 //@ts-ignore
                 onSelectionChange={setSelectedThemes}
@@ -411,8 +413,8 @@ export default function SearchView() {
             <Select
                 size="sm"
                 selectionMode="multiple"
-                label="Features"
-                placeholder="Filter by feature"
+                label={t('search.features')}
+                placeholder={t('search.filterByFeature')}
                 selectedKeys={selectedFeatures}
                 //@ts-ignore
                 onSelectionChange={setSelectedFeatures}
@@ -424,8 +426,8 @@ export default function SearchView() {
             <Select
                 size="sm"
                 selectionMode="multiple"
-                label="Perspectives"
-                placeholder="Filter by perspective"
+                label={t('search.perspectives')}
+                placeholder={t('search.filterByPerspective')}
                 selectedKeys={selectedPerspectives}
                 //@ts-ignore
                 onSelectionChange={setSelectedPerspectives}
@@ -437,8 +439,8 @@ export default function SearchView() {
             <Select
                 size="sm"
                 selectionMode="multiple"
-                label="Keywords"
-                placeholder="Filter by keyword"
+                label={t('search.keywords')}
+                placeholder={t('search.filterByKeyword')}
                 selectedKeys={selectedKeywords}
                 //@ts-ignore
                 onSelectionChange={setSelectedKeywords}

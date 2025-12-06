@@ -7,8 +7,10 @@ import {PasswordResetEndpoint} from "Frontend/generated/endpoints";
 import React, {useEffect, useState} from "react";
 import {WarningIcon} from "@phosphor-icons/react";
 import TokenValidationResult from "Frontend/generated/org/gameyfin/app/core/token/TokenValidationResult";
+import {useTranslation} from "react-i18next";
 
 export default function PasswordResetView() {
+    const {t} = useTranslation();
     const [searchParams] = useSearchParams();
     const [token, setToken] = useState<string>();
     const navigate = useNavigate();
@@ -25,26 +27,26 @@ export default function PasswordResetView() {
         switch (result) {
             case TokenValidationResult.VALID:
                 addToast({
-                    title: "Password reset",
-                    description: "Password reset successfully",
+                    title: t('passwordReset.success'),
+                    description: t('passwordReset.successDesc'),
                     color: "success"
-                })
+                });
                 navigate("/", {replace: true});
                 break;
             case TokenValidationResult.EXPIRED:
                 addToast({
-                    title: "Token expired",
-                    description: "Token is expired",
+                    title: t('passwordReset.tokenExpired'),
+                    description: t('passwordReset.tokenExpiredDesc'),
                     color: "warning"
-                })
+                });
                 break;
             case TokenValidationResult.INVALID:
             default:
                 addToast({
-                    title: "Invalid token",
-                    description: "Token is invalid",
+                    title: t('passwordReset.invalidToken'),
+                    description: t('passwordReset.invalidTokenDesc'),
                     color: "danger"
-                })
+                });
                 break
         }
     }
@@ -77,15 +79,15 @@ export default function PasswordResetView() {
                             onSubmit={resetPassword}>
                             {(formik: { values: any; isSubmitting: any; isValid: boolean; }) => (
                                 <Form>
-                                    <p className="text-xl text-center mb-8">Reset your password</p>
-                                    <Input label="Password" name="password" type="password"
+                                    <p className="text-xl text-center mb-8">{t('passwordReset.title')}</p>
+                                    <Input label={t('passwordReset.newPassword')} name="password" type="password"
                                            autoComplete="new-password"/>
-                                    <Input label="Password (repeat)" name="passwordRepeat" type="password"
+                                    <Input label={t('invitation.passwordRepeat')} name="passwordRepeat" type="password"
                                            autoComplete="new-password"/>
                                     <Button type="submit" className="w-full mt-4" color="primary"
                                             isDisabled={!formik.isValid || formik.isSubmitting}
                                             isLoading={formik.isSubmitting}>
-                                        {formik.isSubmitting ? "" : "Reset password"}
+                                        {formik.isSubmitting ? "" : t('passwordReset.resetButton')}
                                     </Button>
                                 </Form>
                             )}
@@ -93,7 +95,7 @@ export default function PasswordResetView() {
                         :
                         <p className="flex flex-row grow justify-center items-center gap-2 text-danger text-2xl font-bold">
                             <WarningIcon weight="fill"/>
-                            Invalid token
+                            {t('passwordReset.invalidToken')}
                         </p>
                     }
                 </CardBody>

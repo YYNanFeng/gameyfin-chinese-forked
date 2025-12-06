@@ -5,6 +5,7 @@ import React from "react";
 import PluginPrioritiesModal from "Frontend/components/general/modals/PluginPrioritiesModal";
 import {camelCaseToTitle} from "Frontend/util/utils";
 import PluginDto from "Frontend/generated/org/gameyfin/app/core/plugins/dto/PluginDto";
+import {useTranslation} from "react-i18next";
 
 interface PluginManagementSectionProps {
     type: string;
@@ -12,6 +13,7 @@ interface PluginManagementSectionProps {
 }
 
 export function PluginManagementSection({type, plugins = []}: PluginManagementSectionProps) {
+    const {t} = useTranslation();
     const pluginPrioritiesModal = useDisclosure();
 
     return (
@@ -19,7 +21,7 @@ export function PluginManagementSection({type, plugins = []}: PluginManagementSe
             <div className="flex flex-row grow justify-between">
                 <h2 className="text-xl font-bold">{camelCaseToTitle(type)}</h2>
 
-                <Tooltip color="foreground" placement="left" content="Change plugin order">
+                <Tooltip color="foreground" placement="left" content={t('plugins.changeOrder')}>
                     <Button isIconOnly
                             variant="flat"
                             onPress={pluginPrioritiesModal.onOpen}
@@ -30,7 +32,7 @@ export function PluginManagementSection({type, plugins = []}: PluginManagementSe
             </div>
 
             {plugins.length === 0 && <div className="flex flex-row justify-center">
-                <p className="text-gray-500">No plugins of this type installed.</p>
+                <p className="text-gray-500">{t('plugins.noPluginsInstalled')}</p>
             </div>}
 
             {plugins.length > 0 && <div className="grid grid-cols-300px gap-4">

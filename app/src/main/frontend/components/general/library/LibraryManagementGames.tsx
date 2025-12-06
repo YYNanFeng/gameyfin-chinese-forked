@@ -29,12 +29,14 @@ import {GameAdminDto} from "Frontend/dtos/GameDtos";
 import MetadataCompletenessIndicator from "Frontend/components/general/MetadataCompletenessIndicator";
 import {metadataCompleteness} from "Frontend/util/utils";
 import ChipList from "Frontend/components/general/ChipList";
+import {useTranslation} from "react-i18next";
 
 interface LibraryManagementGamesProps {
     library: LibraryDto;
 }
 
 export default function LibraryManagementGames({library}: LibraryManagementGamesProps) {
+    const {t} = useTranslation();
     const rowsPerPage = 25;
 
     const state = useSnapshot(gameState);
@@ -123,7 +125,7 @@ export default function LibraryManagementGames({library}: LibraryManagementGames
     }
 
     return selectedGame && <div className="flex flex-col gap-4">
-        <h1 className="text-2xl font-bold">Manage games in library</h1>
+        <h1 className="text-2xl font-bold">{t('library.manageGamesInLibrary')}</h1>
         <div className="flex flex-row gap-2 justify-between">
             <Input
                 className="w-96"
@@ -139,7 +141,7 @@ export default function LibraryManagementGames({library}: LibraryManagementGames
                 onSelectionChange={keys => setFilter(Array.from(keys)[0] as any)}
                 className="w-64"
             >
-                <SelectItem key="all">Show all</SelectItem>
+                <SelectItem key="all">{t('library.showAll')}</SelectItem>
                 <SelectItem key="confirmed">Show only confirmed</SelectItem>
                 <SelectItem key="nonConfirmed">Show only non confirmed</SelectItem>
             </Select>
@@ -165,13 +167,13 @@ export default function LibraryManagementGames({library}: LibraryManagementGames
                 <TableColumn key="title" allowsSorting>Game</TableColumn>
                 <TableColumn key="platforms">Platforms</TableColumn>
                 <TableColumn key="addedToLibrary" allowsSorting>Added to library</TableColumn>
-                <TableColumn key="downloadCount" allowsSorting>Download count</TableColumn>
+                <TableColumn key="downloadCount" allowsSorting>{t('library.downloadCount')}</TableColumn>
                 <TableColumn>Path</TableColumn>
                 <TableColumn key="completeness" allowsSorting>Completeness</TableColumn>
                 {/* width={1} keeps the column as far to the right as possible*/}
                 <TableColumn width={1}>Actions</TableColumn>
             </TableHeader>
-            <TableBody emptyContent="Your filter did not match any games." items={pagedItems}>
+            <TableBody emptyContent={t('library.noMatchingGames')} items={pagedItems}>
                 {(item: GameAdminDto) => (
                     <TableRow key={item.id}>
                         <TableCell>
@@ -182,7 +184,7 @@ export default function LibraryManagementGames({library}: LibraryManagementGames
                             </Link>
                         </TableCell>
                         <TableCell>
-                            <ChipList items={item.platforms} maxVisible={1} defaultContent="Unspecified"/>
+                            <ChipList items={item.platforms} maxVisible={1} defaultContent={t('library.unspecifiedPlatform')}/>
                         </TableCell>
                         <TableCell>
                             {new Date(item.createdAt).toLocaleString()}
@@ -200,10 +202,10 @@ export default function LibraryManagementGames({library}: LibraryManagementGames
                             <div className="flex flex-row gap-2">
                                 <Button isIconOnly size="sm" onPress={() => toggleMatchConfirmed(item)}>
                                     {item.metadata.matchConfirmed ?
-                                        <Tooltip content="Unconfirm match">
+                                        <Tooltip content={t('game.unconfirmMatch')}>
                                             <CheckCircleIcon weight="fill" className="fill-success"/>
                                         </Tooltip> :
-                                        <Tooltip content="Confirm match">
+                                        <Tooltip content={t('game.confirmMatch')}>
                                             <CheckCircleIcon/>
                                         </Tooltip>}
                                 </Button>
@@ -211,7 +213,7 @@ export default function LibraryManagementGames({library}: LibraryManagementGames
                                     setSelectedGame(item);
                                     editGameModal.onOpenChange();
                                 }}>
-                                    <Tooltip content="Edit metadata">
+                                    <Tooltip content={t('game.editMetadata')}>
                                         <PencilIcon/>
                                     </Tooltip>
                                 </Button>
@@ -219,13 +221,13 @@ export default function LibraryManagementGames({library}: LibraryManagementGames
                                     setSelectedGame(item);
                                     matchGameModal.onOpenChange();
                                 }}>
-                                    <Tooltip content="Match game">
+                                    <Tooltip content={t('game.matchGame')}>
                                         <MagnifyingGlassIcon/>
                                     </Tooltip>
                                 </Button>
                                 <Button isIconOnly size="sm" color="danger"
                                         onPress={() => deleteGame(item)}>
-                                    <Tooltip content="Remove from library">
+                                    <Tooltip content={t('game.removeFromLibrary')}>
                                         <TrashIcon/>
                                     </Tooltip>
                                 </Button>

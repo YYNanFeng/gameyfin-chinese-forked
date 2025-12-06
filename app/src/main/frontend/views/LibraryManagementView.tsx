@@ -9,9 +9,11 @@ import {useSnapshot} from "valtio/react";
 import {libraryState} from "Frontend/state/LibraryState";
 import LibraryManagementIgnoredPaths from "Frontend/components/general/library/LibraryManagementIgnoredPaths";
 import LibraryAdminDto from "Frontend/generated/org/gameyfin/app/libraries/dto/LibraryAdminDto";
+import {useTranslation} from "react-i18next";
 
 
 export default function LibraryManagementView() {
+    const {t} = useTranslation();
     const {libraryId} = useParams();
     const {hash} = useLocation();
     const navigate = useNavigate();
@@ -28,19 +30,19 @@ export default function LibraryManagementView() {
             <Button isIconOnly variant="light" onPress={() => navigate("/administration/libraries")}>
                 <ArrowLeftIcon/>
             </Button>
-            <h1 className="text-2xl font-bold">Manage library</h1>
+            <h1 className="text-2xl font-bold">{t('library.manageLibrary')}</h1>
         </div>
         <LibraryHeader library={state.state[parseInt(libraryId)] as LibraryAdminDto} className="h-32"/>
         <Tabs color="primary" fullWidth
               selectedKey={hash.length > 0 ? hash : "#details"}
               onSelectionChange={(newKey) => navigate(newKey.toString(), {replace: true})}>
-            <Tab key="#details" title="Details">
+            <Tab key="#details" title={t('game.details')}>
                 <LibraryManagementDetails library={state.state[parseInt(libraryId)] as LibraryAdminDto}/>
             </Tab>
-            <Tab key="#games" title="Games">
+            <Tab key="#games" title={t('game.games')}>
                 <LibraryManagementGames library={state.state[parseInt(libraryId)] as LibraryAdminDto}/>
             </Tab>
-            <Tab key="#ignored-paths" title="Ignored paths">
+            <Tab key="#ignored-paths" title={t('game.ignoredPaths')}>
                 <LibraryManagementIgnoredPaths library={state.state[parseInt(libraryId)] as LibraryAdminDto}/>
             </Tab>
         </Tabs>

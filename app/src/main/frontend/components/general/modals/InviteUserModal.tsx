@@ -5,6 +5,7 @@ import TokenDto from "Frontend/generated/org/gameyfin/app/core/token/TokenDto";
 import {Form, Formik, FormikErrors} from "formik";
 import Input from "Frontend/components/general/input/Input";
 import * as Yup from "yup";
+import {useTranslation} from "react-i18next";
 
 interface InviteUserModalProps {
     isOpen: boolean;
@@ -12,6 +13,7 @@ interface InviteUserModalProps {
 }
 
 export default function InviteUserModal({isOpen, onOpenChange}: InviteUserModalProps) {
+    const {t} = useTranslation();
     const [token, setToken] = useState<TokenDto | null>(null);
     const [isMessageServiceEnabled, setIsMessageServiceEnabled] = useState<boolean>(false);
 
@@ -38,8 +40,8 @@ export default function InviteUserModal({isOpen, onOpenChange}: InviteUserModalP
 
         await RegistrationEndpoint.createInvitation(email);
         addToast({
-            title: "Invitation sent",
-            description: "The user will receive an email with further instructions shortly.",
+            title: t('modals.inviteUser.invitationSent'),
+            description: t('modals.inviteUser.emailSent'),
             color: "success"
         });
         onClose();
@@ -63,14 +65,14 @@ export default function InviteUserModal({isOpen, onOpenChange}: InviteUserModalP
                     >
                         {(formik) => (
                             <Form>
-                                <ModalHeader className="flex flex-col gap-1">Invite a new user</ModalHeader>
+                                <ModalHeader className="flex flex-col gap-1">{t('modals.inviteUser.title')}</ModalHeader>
                                 <ModalBody>
-                                    <p>Enter the email address of the user you want to invite:</p>
-                                    <Input label="E-Mail" name="email" type="email"/>
+                                    <p>{t('modals.inviteUser.enterEmail')}</p>
+                                    <Input label={t('modals.inviteUser.emailLabel')} name="email" type="email"/>
 
                                     {token && (
                                         <div className="flex flex-col gap-2">
-                                            <p>The user can accept the invitation using the following link:</p>
+                                            <p>{t('modals.inviteUser.acceptLink')}</p>
                                             <Snippet symbol="">
                                                 {`${document.baseURI}accept-invitation?token=${token.secret}`}
                                             </Snippet>
@@ -86,8 +88,8 @@ export default function InviteUserModal({isOpen, onOpenChange}: InviteUserModalP
                                             isLoading={formik.isSubmitting}
                                             isDisabled={!formik.isValid || token !== null}>
                                         {isMessageServiceEnabled ?
-                                            <p>Send invitation</p> :
-                                            <p>Generate invitation link</p>
+                                            <p>{t('user.sendInvitation')}</p> :
+                                            <p>{t('user.generateInvitationLink')}</p>
                                         }
                                     </Button>
                                 </ModalFooter>

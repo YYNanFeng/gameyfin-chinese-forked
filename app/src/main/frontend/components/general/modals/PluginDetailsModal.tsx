@@ -9,6 +9,7 @@ import PluginDto from "Frontend/generated/org/gameyfin/app/core/plugins/dto/Plug
 import { ArrowClockwiseIcon } from "@phosphor-icons/react";
 import PluginConfigMetadataDto from "Frontend/generated/org/gameyfin/app/core/plugins/dto/PluginConfigMetadataDto";
 import PluginConfigFormField from "Frontend/components/general/plugin/PluginConfigFormField";
+import {useTranslation} from "react-i18next";
 
 interface PluginDetailsModalProps {
     plugin: PluginDto;
@@ -24,13 +25,14 @@ enum ValidationState {
 }
 
 export default function PluginDetailsModal({plugin, isOpen, onOpenChange}: PluginDetailsModalProps) {
+    const {t} = useTranslation();
     const [configValidated, setConfigValidated] = useState<ValidationState>(ValidationState.UNCHECKED);
 
     async function saveConfig(values: Record<string, string>) {
         await PluginEndpoint.updateConfig(plugin.id, values);
         addToast({
-            title: "Configuration saved",
-            description: `Configuration for plugin ${plugin.name} saved!`,
+            title: t('modals.pluginDetails.configSaved'),
+            description: t('modals.pluginDetails.configSavedDesc', {name: plugin.name}),
             color: "success"
         });
     }
@@ -110,7 +112,7 @@ export default function PluginDetailsModal({plugin, isOpen, onOpenChange}: Plugi
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <p className="text-default-500">Description</p>
+                                            <p className="text-default-500">{t('modals.pluginDetails.description')}</p>
                                             <Markdown
                                                 remarkPlugins={[remarkBreaks]}
                                                 components={{
@@ -129,24 +131,24 @@ export default function PluginDetailsModal({plugin, isOpen, onOpenChange}: Plugi
                                         </div>
 
                                         <div className="flex flex-row items-center mt-4 gap-2">
-                                            <h4 className="text-l font-bold">Configuration</h4>
+                                            <h4 className="text-l font-bold">{t('modals.pluginDetails.configuration')}</h4>
                                             {(plugin.configMetadata && plugin.configMetadata.length > 0) && <>
                                                 <div className="flex-1"/>
                                                 {(() => {
                                                     switch (configValidated) {
                                                         case ValidationState.VALID:
                                                             return <p className="text-small text-success">
-                                                                Configuration valid
+                                                                {t('modals.pluginDetails.configValid')}
                                                             </p>;
                                                         case ValidationState.INVALID:
                                                             return <p className="text-small text-danger">
-                                                                Configuration invalid
+                                                                {t('modals.pluginDetails.configInvalid')}
                                                             </p>;
                                                         default:
                                                             return null;
                                                     }
                                                 })()}
-                                                <Tooltip content="Re-validate configuration" placement="bottom"
+                                                <Tooltip content={t('modals.pluginDetails.revalidate')} placement="bottom"
                                                          color="foreground">
                                                     <Button isIconOnly variant="light" size="sm"
                                                             isLoading={configValidated === ValidationState.IN_PROGRESS}
@@ -172,7 +174,7 @@ export default function PluginDetailsModal({plugin, isOpen, onOpenChange}: Plugi
                                                     key={entry.key}
                                                     pluginConfigMetadata={entry}
                                                     showErrorUntouched={true}/>
-                                            )) : "This plugin has no configuration options."
+                                            )) : t('modals.pluginDetails.noConfigOptions')
                                         }
                                     </ModalBody>
                                     <ModalFooter>

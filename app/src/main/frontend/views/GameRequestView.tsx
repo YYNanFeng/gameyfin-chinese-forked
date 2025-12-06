@@ -18,6 +18,7 @@ import {
 import RequestGameModal from "Frontend/components/general/modals/RequestGameModal";
 import {ArrowUpIcon, CheckIcon, InfoIcon, PlusCircleIcon, TrashIcon, XIcon} from "@phosphor-icons/react";
 import React, {useEffect, useMemo, useState} from "react";
+import {useTranslation} from "react-i18next";
 import {useAuth} from "Frontend/util/auth";
 import {ConfigEndpoint, GameRequestEndpoint} from "Frontend/generated/endpoints";
 import {gameRequestState} from "Frontend/state/GameRequestState";
@@ -28,6 +29,7 @@ import {isAdmin} from "Frontend/util/utils";
 import {SmallInfoField} from "Frontend/components/general/SmallInfoField";
 
 export default function GameRequestView() {
+    const {t} = useTranslation();
     const rowsPerPage = 25;
 
     const auth = useAuth();
@@ -145,26 +147,26 @@ export default function GameRequestView() {
         switch (status) {
             case GameRequestStatus.APPROVED:
                 return <Chip size="sm" radius="sm"
-                             className="text-xs bg-success text-success-foreground">Approved</Chip>;
+                             className="text-xs bg-success text-success-foreground">{t('requestsView.approved')}</Chip>;
             case GameRequestStatus.FULFILLED:
                 return <Chip size="sm" radius="sm"
-                             className="text-xs bg-success-100 text-success-foreground">Fulfilled</Chip>;
+                             className="text-xs bg-success-100 text-success-foreground">{t('requestsView.fulfilled')}</Chip>;
             case GameRequestStatus.REJECTED:
                 return <Chip size="sm" radius="sm"
-                             className="text-xs bg-danger-300 text-danger-foreground">Rejected</Chip>;
+                             className="text-xs bg-danger-300 text-danger-foreground">{t('requestsView.rejected')}</Chip>;
             case GameRequestStatus.PENDING:
             default:
-                return <Chip size="sm" radius="sm" className="text-xs">Pending</Chip>;
+                return <Chip size="sm" radius="sm" className="text-xs">{t('requestsView.pending')}</Chip>;
         }
     }
 
     return (<>
         <div className="flex flex-row justify-between mb-8">
-            <h1 className="text-2xl font-bold">Game Requests</h1>
+            <h1 className="text-2xl font-bold">{t('requestsView.title')}</h1>
             <div className="flex flex-row items-center gap-4">
                 {!areGameRequestsEnabled &&
                     <SmallInfoField icon={InfoIcon}
-                                    message="Request submission is disabled"
+                                    message={t('requestsView.submissionDisabled')}
                                     className="text-default-500"/>
                 }
                 <Button className="w-fit"
@@ -172,7 +174,7 @@ export default function GameRequestView() {
                         startContent={<PlusCircleIcon weight="fill"/>}
                         onPress={requestGameModal.onOpen}
                         isDisabled={!areGameRequestsEnabled || (!auth.state.user && !areGuestsAllowedToRequestGames)}>
-                    Request a Game
+                    {t('nav.requestGame')}
                 </Button>
             </div>
         </div>
@@ -182,7 +184,7 @@ export default function GameRequestView() {
             <Input
                 className="w-96"
                 isClearable
-                placeholder="Search"
+                placeholder={t('common.search')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onClear={() => setSearchTerm("")}
@@ -193,10 +195,10 @@ export default function GameRequestView() {
                 selectionMode="multiple"
                 className="w-64"
             >
-                <SelectItem key={GameRequestStatus.PENDING}>Pending</SelectItem>
-                <SelectItem key={GameRequestStatus.APPROVED}>Approved</SelectItem>
-                <SelectItem key={GameRequestStatus.REJECTED}>Rejected</SelectItem>
-                <SelectItem key={GameRequestStatus.FULFILLED}>Fulfilled</SelectItem>
+                <SelectItem key={GameRequestStatus.PENDING}>{t('requestsView.pending')}</SelectItem>
+                <SelectItem key={GameRequestStatus.APPROVED}>{t('requestsView.approved')}</SelectItem>
+                <SelectItem key={GameRequestStatus.REJECTED}>{t('requestsView.rejected')}</SelectItem>
+                <SelectItem key={GameRequestStatus.FULFILLED}>{t('requestsView.fulfilled')}</SelectItem>
             </Select>
         </div>
 
@@ -219,16 +221,16 @@ export default function GameRequestView() {
                }
         >
             <TableHeader>
-                <TableColumn key="title" allowsSorting>Title & Release</TableColumn>
-                <TableColumn key="platform">Platform</TableColumn>
-                <TableColumn>Submitted by</TableColumn>
-                <TableColumn key="createdAt" allowsSorting>Submitted</TableColumn>
-                <TableColumn key="updatedAt" allowsSorting>Updated</TableColumn>
-                <TableColumn key="status" allowsSorting>Status</TableColumn>
+                <TableColumn key="title" allowsSorting>{t('requestsView.titleRelease')}</TableColumn>
+                <TableColumn key="platform">{t('modals.requestGame.platform')}</TableColumn>
+                <TableColumn>{t('requestsView.submittedBy')}</TableColumn>
+                <TableColumn key="createdAt" allowsSorting>{t('requestsView.submitted')}</TableColumn>
+                <TableColumn key="updatedAt" allowsSorting>{t('requestsView.updated')}</TableColumn>
+                <TableColumn key="status" allowsSorting>{t('requestsView.status')}</TableColumn>
                 {/* width={1} keeps the column as far to the right as possible*/}
-                <TableColumn key="votes" allowsSorting width={1}>Votes</TableColumn>
+                <TableColumn key="votes" allowsSorting width={1}>{t('requestsView.votes')}</TableColumn>
             </TableHeader>
-            <TableBody emptyContent="Your search did not match any requests." items={pagedItems}>
+            <TableBody emptyContent={t('requestsView.noMatch')} items={pagedItems}>
                 {(item) => (
                     <TableRow key={item.id}>
                         <TableCell>
@@ -241,7 +243,7 @@ export default function GameRequestView() {
                             <p className="text-default-500">
                                 {item.requester ?
                                     item.requester.username :
-                                    "Guest"
+                                    t('requestsView.guest')
                                 }
                             </p>
                         </TableCell>
@@ -257,7 +259,7 @@ export default function GameRequestView() {
                         <TableCell>
                             <div className="flex flex-row gap-2">
                                 <Tooltip
-                                    content={auth.state.user ? (item.status === GameRequestStatus.FULFILLED ? "You cannot vote on closed requests" : "Vote for this request") : "You must be logged in to vote"}
+                                    content={auth.state.user ? (item.status === GameRequestStatus.FULFILLED ? t('requestsView.cannotVoteClosed') : t('requestsView.voteForRequest')) : t('requestsView.mustLoginToVote')}
                                     placement="left">
                                     <div>
                                         <Button size="sm"
@@ -271,7 +273,7 @@ export default function GameRequestView() {
                                     </div>
                                 </Tooltip>
                                 {isAdmin(auth) && <div className="flex flex-row gap-2">
-                                    <Tooltip content="Approve this request">
+                                    <Tooltip content={t('requestsView.approveRequest')}>
                                         <Button size="sm" isIconOnly
                                                 variant={item.status === GameRequestStatus.APPROVED ? "solid" : "bordered"}
                                                 color={item.status === GameRequestStatus.APPROVED ? "primary" : "default"}
@@ -280,7 +282,7 @@ export default function GameRequestView() {
                                             <CheckIcon/>
                                         </Button>
                                     </Tooltip>
-                                    <Tooltip content="Reject this request">
+                                    <Tooltip content={t('requestsView.rejectRequest')}>
                                         <Button size="sm" isIconOnly
                                                 variant={item.status === GameRequestStatus.REJECTED ? "solid" : "bordered"}
                                                 color={item.status === GameRequestStatus.REJECTED ? "primary" : "default"}
@@ -291,7 +293,7 @@ export default function GameRequestView() {
                                     </Tooltip>
                                 </div>}
                                 {(isAdmin(auth) || (auth.state.user && item.requester && auth.state.user.id === item.requester.id)) &&
-                                    <Tooltip content="Delete this request">
+                                    <Tooltip content={t('requestsView.deleteRequest')}>
                                         <Button size="sm" isIconOnly
                                                 color="danger"
                                                 onPress={async () => await deleteRequest(item.id)}>

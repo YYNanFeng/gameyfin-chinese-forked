@@ -3,6 +3,7 @@ import {addToast, Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHead
 import {Input as NextInput} from "@heroui/input";
 import { WarningCircleIcon } from "@phosphor-icons/react";
 import {MessageEndpoint, PasswordResetEndpoint} from "Frontend/generated/endpoints";
+import {useTranslation} from "react-i18next";
 
 interface PasswordResetModalProps {
     isOpen: boolean;
@@ -13,6 +14,7 @@ export default function PasswordResetModal({
                                                isOpen,
                                                onOpenChange
                                            }: PasswordResetModalProps) {
+    const {t} = useTranslation();
     const [canResetPassword, setCanResetPassword] = useState(false);
     const [resetEmail, setResetEmail] = useState<string>();
 
@@ -25,8 +27,8 @@ export default function PasswordResetModal({
 
         await PasswordResetEndpoint.requestPasswordReset(resetEmail);
         addToast({
-            title: "Password reset requested",
-            description: "If the email address is registered, you will receive a message with further instructions.",
+            title: t('modals.passwordReset.requested'),
+            description: t('modals.passwordReset.checkEmail'),
             color: "success"
         });
     }
@@ -36,7 +38,7 @@ export default function PasswordResetModal({
             <ModalContent>
                 {(onClose) => (
                     <>
-                        <ModalHeader className="flex flex-col gap-1">Request a password reset</ModalHeader>
+                        <ModalHeader className="flex flex-col gap-1">{t('modals.passwordReset.title')}</ModalHeader>
                         <ModalBody>
                             {canResetPassword ?
                                 <NextInput
@@ -44,20 +46,19 @@ export default function PasswordResetModal({
                                         setResetEmail(event.target.value);
                                     }}
                                     type="email"
-                                    placeholder="Email"
+                                    placeholder={t('modals.passwordReset.emailPlaceholder')}
                                 /> :
                                 <div className="flex flex-row items-center gap-4 text-warning">
                                     <WarningCircleIcon size={40}/>
                                     <p>
-                                        Password self-service is disabled.<br/>
-                                        To reset your password please contact your administrator.
+                                        {t('modals.passwordReset.disabled')}
                                     </p>
                                 </div>
                             }
                         </ModalBody>
                         <ModalFooter>
                             <Button color="danger" variant="light" onPress={onClose}>
-                                Cancel
+                                {t('common.cancel')}
                             </Button>
                             <Button color="primary"
                                     isDisabled={!canResetPassword}
@@ -65,7 +66,7 @@ export default function PasswordResetModal({
                                         await resetPassword();
                                         onClose();
                                     }}>
-                                Send request
+                                {t('modals.passwordReset.sendRequest')}
                             </Button>
                         </ModalFooter>
                     </>

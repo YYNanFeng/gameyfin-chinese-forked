@@ -8,64 +8,58 @@ import {addToast, Card} from "@heroui/react";
 import {SetupEndpoint} from "Frontend/generated/endpoints";
 import {ThemeSelector} from "Frontend/components/theming/ThemeSelector";
 import {useNavigate} from "react-router";
+import {useTranslation} from "react-i18next";
 
 function WelcomeStep() {
+    const {t} = useTranslation();
     return (
         <div className="flex flex-col size-full items-center">
             <div className="flex flex-col w-1/2 min-w-[468px] gap-12 items-center">
-                <h4>Welcome to Gameyfin 👋</h4>
+                <h4>{t('setup.welcome')}</h4>
                 <p className="place-content-center text-justify">
-                    Gameyfin is a cutting-edge software tailored for gamers seeking efficient management of their
-                    video
-                    game collections. <br/><br/> With its intuitive interface and comprehensive features, Gameyfin
-                    simplifies the organization of game libraries. Users can effortlessly add games through manual
-                    input
-                    or
-                    automated recognition, categorize them based on various criteria like genre or platform, track
-                    in-game
-                    progress, and share achievements with friends. <br/><br/> Notably, Gameyfin stands out for its
-                    user-friendly
-                    design and adaptability, offering ample customization options to meet diverse user preferences.
+                    {t('setup.description1')} <br/><br/> {t('setup.description2')} <br/><br/> {t('setup.description3')}
                 </p>
-                <h5>Let's get started!</h5>
+                <h5>{t('setup.letsGetStarted')}</h5>
             </div>
         </div>
     );
 }
 
 function ThemeStep() {
+    const {t} = useTranslation();
     return (
         <div className="flex flex-col grow gap-6 items-center">
-            <p className="text-2xl font-bold">Choose your style</p>
+            <p className="text-2xl font-bold">{t('setup.chooseStyle')}</p>
             <ThemeSelector/>
         </div>
     );
 }
 
 function UserStep() {
+    const {t} = useTranslation();
     return (
         <div className="flex flex-row grow justify-center">
             <div className="flex flex-col w-1/3 min-w-96 gap-6 items-center">
-                <p className="text-2xl font-bold">Create your account</p>
-                <p>This will set up the initial admin user account.</p>
+                <p className="text-2xl font-bold">{t('setup.createAccount')}</p>
+                <p>{t('setup.initialAdminDesc')}</p>
                 <div className="flex flex-col w-full">
                     <Input
-                        label="Username"
+                        label={t('profile.username')}
                         name="username"
                         type="text"
                     />
                     <Input
-                        label="E-Mail"
+                        label={t('profile.email')}
                         name="email"
                         type="email"
                     />
                     <Input
-                        label="Password"
+                        label={t('login.password')}
                         name="password"
                         type="password"
                     />
                     <Input
-                        label="Password (repeat)"
+                        label={t('invitation.passwordRepeat')}
                         name="passwordRepeat"
                         type="password"
                     />
@@ -76,6 +70,7 @@ function UserStep() {
 }
 
 function SetupView() {
+    const {t} = useTranslation();
     const navigate = useNavigate();
 
     return (
@@ -92,14 +87,14 @@ function SetupView() {
                                     email: values.email
                                 });
                                 addToast({
-                                    title: "Setup finished",
-                                    description: "Have fun with Gameyfin!",
+                                    title: t('setup.setupFinished'),
+                                    description: t('setup.haveFun'),
                                     color: "success"
                                 });
                             } catch (e) {
                                 addToast({
-                                    title: "Could not register super admin user",
-                                    description: "Maybe Gameyfin is already set up?",
+                                    title: t('setup.setupError'),
+                                    description: t('setup.setupErrorDesc'),
                                     color: "warning"
                                 });
                             } finally {
@@ -117,16 +112,16 @@ function SetupView() {
                     <WizardStep
                         validationSchema={Yup.object({
                             username: Yup.string()
-                                .required('Required'),
+                                .required(t('common.validation.required')),
                             password: Yup.string()
-                                .min(8, 'Password must be at least 8 characters long')
-                                .required('Required'),
+                                .min(8, t('common.validation.minLength'))
+                                .required(t('common.validation.required')),
                             email: Yup.string()
-                                .email()
-                                .required('Required'),
+                                .email(t('common.validation.invalidEmail'))
+                                .required(t('common.validation.required')),
                             passwordRepeat: Yup.string()
-                                .equals([Yup.ref('password')], 'Passwords do not match')
-                                .required('Required')
+                                .equals([Yup.ref('password')], t('common.validation.passwordMismatch'))
+                                .required(t('common.validation.required'))
                         })}
                         icon={<UserIcon/>}
                     >

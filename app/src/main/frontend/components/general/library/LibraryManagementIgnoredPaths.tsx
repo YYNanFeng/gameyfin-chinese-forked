@@ -15,6 +15,7 @@ import {
 import {MagnifyingGlassIcon, TrashIcon} from "@phosphor-icons/react";
 import {LibraryEndpoint} from "Frontend/generated/endpoints";
 import {useMemo, useState} from "react";
+import {useTranslation} from "react-i18next";
 import LibraryUpdateDto from "Frontend/generated/org/gameyfin/app/libraries/dto/LibraryUpdateDto";
 import {fileNameFromPath} from "Frontend/util/utils";
 import MatchGameModal from "Frontend/components/general/modals/MatchGameModal";
@@ -32,6 +33,7 @@ interface LibraryManagementIgnoredPathsProps {
 }
 
 export default function LibraryManagementIgnoredPaths({library}: LibraryManagementIgnoredPathsProps) {
+    const {t} = useTranslation();
     const plugins = useSnapshot(pluginState).state;
     const users = useSnapshot(userState).state;
 
@@ -94,30 +96,29 @@ export default function LibraryManagementIgnoredPaths({library}: LibraryManageme
         if (ignoredPath.sourceType === IgnoredPathSourceTypeDto.USER) {
             const userId = Number(ignoredPath.source);
             const user = users[userId];
-            return user ? `Manually added by user (${user.username})` : "Unknown user";
+            return user ? t('ignoredPaths.manuallyAddedBy', {username: user.username}) : t('ignoredPaths.unknownUser');
         } else if (ignoredPath.sourceType === IgnoredPathSourceTypeDto.PLUGIN) {
             const pluginIds: string[] = JSON.parse(ignoredPath.source)
             return pluginIds ?
                 <div className="flex flex-row gap-2 items-center">
-                    <p>Automatically added by plugins (</p>
+                    <p>{t('ignoredPaths.autoAddedByPlugins')}</p>
                     {pluginIds.map(id => {
                         const p = plugins[id];
                         return p ? <PluginIcon key={id} plugin={p as PluginDto}/>
-                            : "Unknown plugin";
+                            : t('ignoredPaths.unknownPlugin');
                     })}
-                    <p>)</p>
                 </div>
-                : "Unknown plugins"
+                : t('ignoredPaths.unknownPlugins')
         }
         return ignoredPath.source;
     }
 
     return <div className="flex flex-col gap-4">
-        <h1 className="text-2xl font-bold">Manage ignored paths</h1>
+        <h1 className="text-2xl font-bold">{t('ignoredPaths.title')}</h1>
         <Input
             className="w-96"
             isClearable
-            placeholder="Search"
+            placeholder={t('common.search')}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onClear={() => setSearchTerm("")}
@@ -140,11 +141,11 @@ export default function LibraryManagementIgnoredPaths({library}: LibraryManageme
                    </div>
                }>
             <TableHeader>
-                <TableColumn key="path" allowsSorting>Path</TableColumn>
-                <TableColumn key="source">Source</TableColumn>
-                <TableColumn width={1}>Actions</TableColumn>
+                <TableColumn key="path" allowsSorting>{t('ignoredPaths.path')}</TableColumn>
+                <TableColumn key="source">{t('ignoredPaths.source')}</TableColumn>
+                <TableColumn width={1}>{t('ignoredPaths.actions')}</TableColumn>
             </TableHeader>
-            <TableBody emptyContent="This library has no ignored paths." items={pagedPaths}>
+            <TableBody emptyContent={t('ignoredPaths.noIgnoredPaths')} items={pagedPaths}>
                 {(item) => (
                     <TableRow key={item.key}>
                         <TableCell>
@@ -155,7 +156,7 @@ export default function LibraryManagementIgnoredPaths({library}: LibraryManageme
                         </TableCell>
                         <TableCell>
                             <div className="flex flex-row gap-2">
-                                <Tooltip content="Match game">
+                                <Tooltip content={t('ignoredPaths.matchGame')}>
                                     <Button isIconOnly size="sm" onPress={() => {
                                         setSelectedPath(item.path);
                                         matchGameModal.onOpenChange();
@@ -163,7 +164,7 @@ export default function LibraryManagementIgnoredPaths({library}: LibraryManageme
                                         <MagnifyingGlassIcon/>
                                     </Button>
                                 </Tooltip>
-                                <Tooltip content="Remove entry from list">
+                                <Tooltip content={t('ignoredPaths.removeEntry')}>
                                     <Button isIconOnly size="sm" color="danger"
                                             onPress={() => deleteIgnoredPath(item.path)}><TrashIcon/>
                                     </Button>

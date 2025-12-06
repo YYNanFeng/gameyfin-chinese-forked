@@ -2,11 +2,13 @@ import React, {useEffect, useRef, useState} from "react";
 import {LogEndpoint} from "Frontend/generated/endpoints";
 import withConfigPage from "Frontend/components/administration/withConfigPage";
 import * as Yup from 'yup';
+import {useTranslation} from "react-i18next";
 import ConfigFormField from "Frontend/components/administration/ConfigFormField";
 import {addToast, Button, Code, Divider, Tooltip} from "@heroui/react";
 import { ArrowUDownLeftIcon, SortAscendingIcon } from "@phosphor-icons/react";
 
 function LogManagementLayout({getConfig, formik}: any) {
+    const {t} = useTranslation();
     const [logEntries, setLogEntries] = useState<string[]>([]);
     const [autoScroll, setAutoScroll] = useState(true);
     const [softWrap, setSoftWrap] = useState(false);
@@ -52,9 +54,9 @@ function LogManagementLayout({getConfig, formik}: any) {
 
             <div className="flex flex-col">
                 <div className="flex flex-row grow justify-between items-baseline">
-                    <h2 className={"text-xl font-bold mt-8 mb-1"}>Application logs</h2>
+                    <h2 className={"text-xl font-bold mt-8 mb-1"}>{t('logs.applicationLogs')}</h2>
                     <div className="flex flex-row gap-1">
-                        <Tooltip content="Soft-wrap" placement="bottom">
+                        <Tooltip content={t('logs.softWrap')} placement="bottom">
                             <Button isIconOnly
                                     onPress={() => setSoftWrap(!softWrap)}
                                     variant={softWrap ? "solid" : "ghost"}
@@ -62,7 +64,7 @@ function LogManagementLayout({getConfig, formik}: any) {
                                 <ArrowUDownLeftIcon/>
                             </Button>
                         </Tooltip>
-                        <Tooltip content="Auto-scroll" placement="bottom">
+                        <Tooltip content={t('logs.autoScroll')} placement="bottom">
                             <Button isIconOnly
                                     onPress={() => setAutoScroll(!autoScroll)}
                                     variant={autoScroll ? "solid" : "ghost"}

@@ -5,6 +5,7 @@ import { CaretUpDownIcon } from "@phosphor-icons/react";
 import {useListData} from "@react-stately/data";
 import PluginDto from "Frontend/generated/org/gameyfin/app/core/plugins/dto/PluginDto";
 import {PluginEndpoint} from "Frontend/generated/endpoints";
+import {useTranslation} from "react-i18next";
 
 interface PluginPrioritiesModalProps {
     plugins: PluginDto[];
@@ -13,7 +14,7 @@ interface PluginPrioritiesModalProps {
 }
 
 export default function PluginPrioritiesModal({plugins, isOpen, onOpenChange}: PluginPrioritiesModalProps) {
-
+    const {t} = useTranslation();
     const sortedPlugins = useListData({
         initialItems: plugins, // Already sorted in parent
         getKey: (plugin) => plugin.id
@@ -54,15 +55,15 @@ export default function PluginPrioritiesModal({plugins, isOpen, onOpenChange}: P
             await PluginEndpoint.setPluginPriorities(prioritiesMap);
 
             addToast({
-                title: "Plugin order updated",
-                description: "Plugin order has been updated successfully.",
+                title: t('modals.pluginPriorities.orderUpdated'),
+                description: t('modals.pluginPriorities.orderUpdatedDesc'),
                 color: "success"
             });
             onClose();
         } catch (e) {
             addToast({
-                title: "Error",
-                description: "An error occurred while updating plugin order.",
+                title: t('common.error'),
+                description: t('modals.pluginPriorities.updateError'),
                 color: "warning"
             });
         }
@@ -74,8 +75,8 @@ export default function PluginPrioritiesModal({plugins, isOpen, onOpenChange}: P
                 {(onClose) => (
                     <>
                         <ModalHeader className="flex flex-col gap-1">
-                            <p>Edit plugin order</p>
-                            <p className="text-small font-normal">Plugins higher on the list are preferred</p>
+                            <p>{t('modals.pluginPriorities.title')}</p>
+                            <p className="text-small font-normal">{t('modals.pluginPriorities.instruction')}</p>
                         </ModalHeader>
                         <ModalBody>
                             <ListBox items={sortedPlugins.items}

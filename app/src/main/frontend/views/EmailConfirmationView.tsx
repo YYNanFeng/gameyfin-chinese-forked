@@ -5,8 +5,10 @@ import {CheckCircleIcon, WarningCircleIcon, WarningIcon} from "@phosphor-icons/r
 import TokenValidationResult from "Frontend/generated/org/gameyfin/app/core/token/TokenValidationResult";
 import {EmailConfirmationEndpoint} from "Frontend/generated/endpoints";
 import {useAuth} from "Frontend/util/auth";
+import {useTranslation} from "react-i18next";
 
 export default function EmailConfirmationView() {
+    const {t} = useTranslation();
     const auth = useAuth();
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
@@ -48,24 +50,24 @@ export default function EmailConfirmationView() {
                         <div className="flex flex-row items-center gap-4 text-success">
                             <CheckCircleIcon size={40}/>
                             <p>
-                                Email confirmed<br/>
-                                You will be redirected shortly
+                                {t('emailConfirmation.success')}<br/>
+                                {t('emailConfirmation.successDesc')}
                             </p>
                         </div>
                         : validationResult === TokenValidationResult.EXPIRED ?
                             <div className="flex flex-row items-center gap-4 text-warning">
                                 <WarningCircleIcon size={40}/>
                                 <p>
-                                    Expired token<br/>
-                                    Please request a new one
+                                    {t('emailConfirmation.tokenExpired')}<br/>
+                                    {t('emailConfirmation.tokenExpiredDesc')}
                                 </p>
                             </div>
                             :
                             <div className="flex flex-row items-center gap-4 text-danger">
                                 <WarningIcon size={40}/>
                                 <p>
-                                    Invalid token<br/>
-                                    Please try again
+                                    {t('emailConfirmation.invalidToken')}<br/>
+                                    {t('emailConfirmation.invalidTokenDesc')}
                                 </p>
                             </div>
                     }

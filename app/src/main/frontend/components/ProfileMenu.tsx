@@ -5,30 +5,32 @@ import {useNavigate} from "react-router";
 import Avatar from "Frontend/components/general/Avatar";
 import {CollectionElement} from "@react-types/shared";
 import {isAdmin} from "Frontend/util/utils";
+import {useTranslation} from "react-i18next";
 
 export default function ProfileMenu() {
     const auth = useAuth();
     const navigate = useNavigate();
+    const {t} = useTranslation();
 
     const profileMenuItems = [
         {
-            label: "My Profile",
+            label: t('profile.myProfile'),
             icon: <UserIcon/>,
             onClick: () => navigate("/settings/profile")
         },
         {
-            label: "Administration",
+            label: t('routes.administration'),
             icon: <GearFineIcon/>,
             onClick: () => navigate("/administration/libraries"),
             showIf: isAdmin(auth)
         },
         {
-            label: "Help",
+            label: t('profile.help'),
             icon: <QuestionIcon/>,
             onClick: () => window.open("https://gameyfin.org", "_blank")
         },
         {
-            label: "Sign Out",
+            label: t('profile.signOut'),
             icon: <SignOutIcon/>,
             onClick: auth.logout,
             color: "primary"
@@ -53,7 +55,7 @@ export default function ProfileMenu() {
             </DropdownTrigger>
             <DropdownMenu disabledKeys={["username"]}>
                 <DropdownItem key="username" textValue={auth.state.user?.username}>
-                    <p className="font-bold">Signed in as {auth.state.user?.username}</p>
+                    <p className="font-bold">{t('profile.signedInAs', {username: auth.state.user?.username})}</p>
                 </DropdownItem>
                 {profileMenuItems.filter(item => item.showIf !== false).map(({label, icon, onClick, color}) => {
                     return (

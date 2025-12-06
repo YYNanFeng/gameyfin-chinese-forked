@@ -10,6 +10,7 @@ import LibraryAdminDto from "Frontend/generated/org/gameyfin/app/libraries/dto/L
 import ArrayInputAutocomplete from "Frontend/components/general/input/ArrayInputAutocomplete";
 import {useSnapshot} from "valtio/react";
 import {platformState} from "Frontend/state/PlatformState";
+import {useTranslation} from "react-i18next";
 
 interface LibraryCreationModalProps {
     isOpen: boolean;
@@ -20,7 +21,7 @@ export default function LibraryCreationModal({
                                                  isOpen,
                                                  onOpenChange
                                              }: LibraryCreationModalProps) {
-
+    const {t} = useTranslation();
     const [scanAfterCreation, setScanAfterCreation] = useState<boolean>(true);
     const availablePlatforms = useSnapshot(platformState).available;
 
@@ -28,8 +29,8 @@ export default function LibraryCreationModal({
         await LibraryEndpoint.createLibrary(library as LibraryAdminDto, scanAfterCreation);
 
         addToast({
-            title: "New library created",
-            description: `Library ${library.name} created!`,
+            title: t('modals.libraryCreation.created'),
+            description: t('modals.libraryCreation.createdDesc', {name: library.name}),
             color: "success"
         });
     }
@@ -56,7 +57,7 @@ export default function LibraryCreationModal({
                         >
                             {(formik) =>
                                 <Form>
-                                    <ModalHeader className="flex flex-col gap-1">Add a new library</ModalHeader>
+                                    <ModalHeader className="flex flex-col gap-1">{t('modals.libraryCreation.title')}</ModalHeader>
                                     <ModalBody>
                                         <div className="flex flex-col gap-2">
                                             <Input
@@ -75,8 +76,9 @@ export default function LibraryCreationModal({
                                         </div>
                                     </ModalBody>
                                     <ModalFooter className="flex flex-row justify-between">
-                                        <Checkbox isSelected={scanAfterCreation} onValueChange={setScanAfterCreation}>Scan
-                                            after creation?</Checkbox>
+                                        <Checkbox isSelected={scanAfterCreation} onValueChange={setScanAfterCreation}>
+                                            {t('modals.libraryCreation.scanAfterCreation')}
+                                        </Checkbox>
                                         <div className="flex flex-row">
                                             <Button variant="light" onPress={onClose}>
                                                 Cancel

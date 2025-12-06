@@ -11,6 +11,7 @@ import {gameState} from "Frontend/state/GameState";
 import IconBackgroundPattern from "Frontend/components/general/IconBackgroundPattern";
 import LibraryAdminDto from "Frontend/generated/org/gameyfin/app/libraries/dto/LibraryAdminDto";
 import ChipList from "Frontend/components/general/ChipList";
+import {useTranslation} from "react-i18next";
 
 interface LibraryOverviewCardProps {
     library: LibraryAdminDto;
@@ -18,6 +19,7 @@ interface LibraryOverviewCardProps {
 
 export function LibraryOverviewCard({library}: LibraryOverviewCardProps) {
     const MAX_COVER_COUNT = 5;
+    const {t} = useTranslation();
     const navigate = useNavigate();
     const state = useSnapshot(gameState);
     const randomGames = getRandomGames();
@@ -49,17 +51,17 @@ export function LibraryOverviewCard({library}: LibraryOverviewCardProps) {
                 <p className="absolute text-2xl font-bold">{library.name}</p>
 
                 <div className="absolute right-0 top-0 flex flex-row">
-                    <Tooltip content="Scan library (quick)" placement="bottom" color="foreground">
+                    <Tooltip content={t('library.scanLibraryQuick')} placement="bottom" color="foreground">
                         <Button isIconOnly variant="light" onPress={() => triggerScan(ScanType.QUICK)}>
                             <MagnifyingGlassIcon/>
                         </Button>
                     </Tooltip>
-                    <Tooltip content="Scan library (full)" placement="bottom" color="foreground">
+                    <Tooltip content={t('library.scanLibraryFull')} placement="bottom" color="foreground">
                         <Button isIconOnly variant="light" onPress={() => triggerScan(ScanType.FULL)}>
                             <MagnifyingGlassPlusIcon/>
                         </Button>
                     </Tooltip>
-                    <Tooltip content="Configuration" placement="bottom" color="foreground">
+                    <Tooltip content={t('library.libraryConfiguration')} placement="bottom" color="foreground">
                         <Button isIconOnly variant="light" onPress={() => navigate('library/' + library.id)}>
                             <SlidersHorizontalIcon/>
                         </Button>
@@ -74,7 +76,7 @@ export function LibraryOverviewCard({library}: LibraryOverviewCardProps) {
                     <p>Platforms</p>
                     <p className="font-bold">{library.stats.gamesCount}</p>
                     <p className="font-bold">{library.stats.downloadedGamesCount}</p>
-                    <ChipList items={library.platforms} maxVisible={0} defaultContent="All"/>
+                    <ChipList items={library.platforms} maxVisible={0} defaultContent={t('library.allPlatforms')}/>
                 </div>
             }
         </Card>

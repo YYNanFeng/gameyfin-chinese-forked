@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {GameCover} from "Frontend/components/general/covers/GameCover";
 import GameDto from "Frontend/generated/org/gameyfin/app/games/dto/GameDto";
 import {ArrowRightIcon} from "@phosphor-icons/react";
+import {useTranslation} from "react-i18next";
 
 interface CoverRowProps {
     games: GameDto[];
@@ -14,7 +15,7 @@ const defaultImageHeight = 300; // default height for the image
 const defaultImageWidth = aspectRatio * defaultImageHeight; // default width for the image
 
 export function CoverRow({games, title, onPressShowMore}: CoverRowProps) {
-
+    const {t} = useTranslation();
     const containerRef = useRef<HTMLDivElement>(null);
     const [visibleCount, setVisibleCount] = useState(games.length);
 
@@ -57,7 +58,7 @@ export function CoverRow({games, title, onPressShowMore}: CoverRowProps) {
                         transition-all duration-300 ease-in-out hover:opacity-80"/>
                         <div
                             className="absolute h-full right-0 bottom-0 flex flex-row items-center gap-2 pointer-events-none">
-                            <p className="text-xl font-semibold">Show more</p>
+                            <p className="text-xl font-semibold">{t('game.showMore')}</p>
                             <ArrowRightIcon weight="bold"/>
                         </div>
                     </div>

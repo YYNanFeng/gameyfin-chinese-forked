@@ -22,6 +22,7 @@ import {pluginState} from "Frontend/state/PluginState";
 import PluginDto from "Frontend/generated/org/gameyfin/app/core/plugins/dto/PluginDto";
 import {libraryState} from "Frontend/state/LibraryState";
 import LibraryAdminDto from "Frontend/generated/org/gameyfin/app/libraries/dto/LibraryAdminDto";
+import {useTranslation} from "react-i18next";
 
 interface MatchGameModalProps {
     path: string;
@@ -40,10 +41,11 @@ export default function MatchGameModal({
                                            isOpen,
                                            onOpenChange
                                        }: MatchGameModalProps) {
+    const {t} = useTranslation();
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState<GameSearchResultDto[]>([]);
     const [isSearching, setIsSearching] = useState(false);
-    const [isMatching, setIsMatching] = useState<string | null>(null);
+    const [isMatchingGame, setIsMatchingGame] = useState<string | null>(null);
 
     const state = useSnapshot(pluginState).state;
     const librariesState = useSnapshot(libraryState).state;
@@ -67,8 +69,8 @@ export default function MatchGameModal({
     return (
         <Modal isOpen={isOpen} onOpenChange={onOpenChange}
                hideCloseButton
-               isDismissable={!isSearching && !isMatching}
-               isKeyboardDismissDisabled={!isSearching && !isMatching}
+               isDismissable={!isSearching && !isMatchingGame}
+               isKeyboardDismissDisabled={!isSearching && !isMatchingGame}
                backdrop="opaque" size="5xl">
             <ModalContent>
                 {(onClose) => (
@@ -105,7 +107,7 @@ export default function MatchGameModal({
                                     <TableColumn>Sources</TableColumn>
                                     <TableColumn width={1}> </TableColumn>
                                 </TableHeader>
-                                <TableBody emptyContent="Your filter did not match any games." items={searchResults}>
+                                <TableBody emptyContent={t('requestsView.noMatchGames')} items={searchResults}>
                                     {(item) => (
                                         <TableRow key={item.id}>
                                             <TableCell>
@@ -134,14 +136,14 @@ export default function MatchGameModal({
                                                 </div>
                                             </TableCell>
                                             <TableCell>
-                                                <Tooltip content="Pick this result">
+                                                <Tooltip content={t('requestsView.pickResult')}>
                                                     <Button isIconOnly size="sm"
-                                                            isDisabled={isMatching !== null}
-                                                            isLoading={isMatching === item.id}
+                                                            isDisabled={isMatchingGame !== null}
+                                                            isLoading={isMatchingGame === item.id}
                                                             onPress={async () => {
-                                                                setIsMatching(item.id);
+                                                                setIsMatchingGame(item.id);
                                                                 await matchGame(item);
-                                                                setIsMatching(null);
+                                                                setIsMatchingGame(null);
                                                                 onClose();
                                                             }}>
                                                         <ArrowRightIcon/>

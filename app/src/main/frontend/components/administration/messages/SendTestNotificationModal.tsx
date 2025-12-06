@@ -5,6 +5,7 @@ import Input from "Frontend/components/general/input/Input";
 import {MessageEndpoint} from "Frontend/generated/endpoints";
 import * as Yup from "yup";
 import MessageTemplateDto from "Frontend/generated/org/gameyfin/app/messages/templates/MessageTemplateDto";
+import {useTranslation} from "react-i18next";
 
 interface SendTestNotificationModalProps {
     isOpen: boolean;
@@ -17,6 +18,7 @@ export default function SendTestNotificationModal({
                                                       onOpenChange,
                                                       selectedTemplate
                                                   }: SendTestNotificationModalProps) {
+    const {t} = useTranslation();
 
     function generateValidationSchema(placeholders: string[]) {
         const shape: { [key: string]: Yup.StringSchema } = {};
@@ -48,11 +50,10 @@ export default function SendTestNotificationModal({
                             {(formik) => (
                                 <Form>
                                     <ModalHeader className="flex flex-col gap-1">
-                                        Send {selectedTemplate?.name} Test Message
+                                        {t('modals.sendTestNotification.title', {template: selectedTemplate?.name})}
                                     </ModalHeader>
                                     <ModalBody>
-                                        <p className="text-ls font-semibold mb-4">Fill the placeholders of the
-                                            template</p>
+                                        <p className="text-ls font-semibold mb-4">{t('modals.sendTestNotification.fillPlaceholders')}</p>
                                         {selectedTemplate.availablePlaceholders.map((placeholder) =>
                                             <Input key={placeholder} label={placeholder} name={placeholder}/>
                                         )}

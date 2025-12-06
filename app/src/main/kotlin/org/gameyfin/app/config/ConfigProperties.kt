@@ -20,7 +20,7 @@ sealed class ConfigProperties<T : Serializable>(
         data object AllowPublicAccess : ConfigProperties<Boolean>(
             Boolean::class,
             "library.allow-public-access",
-            "Allow access to Gameyfin without login",
+            "允许无需登录访问 Gameyfin",
             false
         )
 
@@ -28,35 +28,35 @@ sealed class ConfigProperties<T : Serializable>(
             data object EnableFilesystemWatcher : ConfigProperties<Boolean>(
                 Boolean::class,
                 "library.scan.enable-filesystem-watcher",
-                "Enable automatic library scanning using file system watchers (coming soon™)",
+                "启用使用文件系统监视器的自动库扫描（即将推出™）",
                 false
             )
 
             data object ScanEmptyDirectories : ConfigProperties<Boolean>(
                 Boolean::class,
                 "library.scan.scan-empty-directories",
-                "Scan empty directories",
+                "扫描空目录",
                 false
             )
 
             data object ExtractTitleUsingRegex : ConfigProperties<Boolean>(
                 Boolean::class,
                 "library.scan.extract-title-using-regex",
-                "Extract title from file names using regex",
+                "使用正则表达式从文件名提取标题",
                 false
             )
 
             data object TitleExtractionRegex : ConfigProperties<String>(
                 String::class,
                 "library.scan.title-extraction-regex",
-                "Regex to extract title from file names",
+                "从文件名提取标题的正则表达式",
                 "^[^\\[]+"
             )
 
             data object TitleMatchMinRatio : ConfigProperties<Int>(
                 Int::class,
                 "library.scan.title-match-min-ratio",
-                "Minimum ratio for title matching. Higher values mean stricter matching.",
+                "标题匹配的最小比率。值越高匹配越严格。",
                 default = 90,
                 min = 0,
                 max = 100,
@@ -66,7 +66,7 @@ sealed class ConfigProperties<T : Serializable>(
             data object GameFileExtensions : ConfigProperties<Array<String>>(
                 Array<String>::class,
                 "library.scan.game-file-extensions",
-                "File extensions to consider as games",
+                "被视为游戏的文件扩展名",
                 arrayOf(
                     "zip",
                     "tar",
@@ -96,14 +96,14 @@ sealed class ConfigProperties<T : Serializable>(
             data object UpdateEnabled : ConfigProperties<Boolean>(
                 Boolean::class,
                 "library.metadata.update.enabled",
-                "Enable periodic refresh of video game metadata",
+                "启用视频游戏元数据的定期刷新",
                 true
             )
 
             data object UpdateSchedule : ConfigProperties<String>(
                 String::class,
                 "library.metadata.update.schedule",
-                "Schedule for periodic metadata refresh in Spring cron format",
+                "元数据定期刷新的计划（Spring cron 格式）",
                 "@daily"
             )
         }
@@ -115,21 +115,21 @@ sealed class ConfigProperties<T : Serializable>(
             data object Enabled : ConfigProperties<Boolean>(
                 Boolean::class,
                 "requests.games.enabled",
-                "Enable submission of game requests",
+                "启用游戏请求提交",
                 true
             )
 
             data object AllowGuestsToRequestGames : ConfigProperties<Boolean>(
                 Boolean::class,
                 "requests.games.allow-guests-to-request-games",
-                "Allow guests (not logged in) to create game requests",
+                "允许访客（未登录）创建游戏请求",
                 false
             )
 
             data object MaxOpenRequestsPerUser : ConfigProperties<Int>(
                 Int::class,
                 "requests.games.max-open-requests-per-user",
-                "Maximum number of pending requests per user. Set to 0 for unlimited.",
+                "每个用户的最大待处理请求数。设置为 0 表示无限制。",
                 10
             )
         }
@@ -140,14 +140,14 @@ sealed class ConfigProperties<T : Serializable>(
         data object BandwidthLimitEnabled : ConfigProperties<Boolean>(
             Boolean::class,
             "downloads.bandwidth-limit.enabled",
-            "Enable per-user bandwidth limiting for downloads",
+            "启用每用户下载带宽限制",
             false
         )
 
         data object BandwidthLimitMbps : ConfigProperties<Int>(
             Int::class,
             "downloads.bandwidth-limit.mbps",
-            "Maximum download speed in Megabits per second (Mbps)",
+            "最大下载速度（Mbps - 兆比特每秒）",
             100
         )
     }
@@ -158,14 +158,14 @@ sealed class ConfigProperties<T : Serializable>(
             data object Allow : ConfigProperties<Boolean>(
                 Boolean::class,
                 "users.sign-ups.allow",
-                "Allow new users to sign up by themselves",
+                "允许新用户自行注册",
                 false
             )
 
             data object ConfirmationRequired : ConfigProperties<Boolean>(
                 Boolean::class,
                 "users.sign-ups.confirmation-required",
-                "Admins need to confirm new users",
+                "管理员需要确认新用户",
                 true
             )
         }
@@ -177,14 +177,14 @@ sealed class ConfigProperties<T : Serializable>(
             data object Enabled : ConfigProperties<Boolean>(
                 Boolean::class,
                 "sso.oidc.enabled",
-                "Enable SSO via OIDC/OAuth2",
+                "启用通过 OIDC/OAuth2 的单点登录",
                 false
             )
 
             data object MatchExistingUsersBy : ConfigProperties<MatchUsersBy>(
                 MatchUsersBy::class,
                 "sso.oidc.match-existing-users-by",
-                "Match existing users by",
+                "匹配现有用户的方式",
                 MatchUsersBy.username,
                 MatchUsersBy.entries
             )
@@ -192,58 +192,58 @@ sealed class ConfigProperties<T : Serializable>(
             data object AutoRegisterNewUsers : ConfigProperties<Boolean>(
                 Boolean::class,
                 "sso.oidc.auto-register-new-users",
-                "Automatically create new users after registration",
+                "注册后自动创建新用户",
                 true
             )
 
             data object RolesClaim : ConfigProperties<String>(
                 String::class,
                 "sso.oidc.roles-claim",
-                "JWT claim to extract roles from",
+                "用于提取角色的 JWT 声明",
                 "roles"
             )
 
             data object OAuthScopes : ConfigProperties<Array<String>>(
                 Array<String>::class,
                 "sso.oidc.oauth-scopes",
-                "OAuth2 scopes to request",
+                "要请求的 OAuth2 作用域",
                 arrayOf("openid", "profile", "email", "roles")
             )
 
             data object ClientId : ConfigProperties<String>(
                 String::class,
                 "sso.oidc.client-id",
-                "Client ID"
+                "客户端 ID"
             )
 
             data object ClientSecret : ConfigProperties<String>(
                 String::class,
                 "sso.oidc.client-secret",
-                "Client secret"
+                "客户端密钥"
             )
 
             data object IssuerUrl : ConfigProperties<String>(
                 String::class,
                 "sso.oidc.issuer-url",
-                "Issuer URL"
+                "签发者 URL"
             )
 
             data object AuthorizeUrl : ConfigProperties<String>(
                 String::class,
                 "sso.oidc.authorize-url",
-                "Authorize URL"
+                "授权 URL"
             )
 
             data object TokenUrl : ConfigProperties<String>(
                 String::class,
                 "sso.oidc.token-url",
-                "Token URL"
+                "令牌 URL"
             )
 
             data object UserInfoUrl : ConfigProperties<String>(
                 String::class,
                 "sso.oidc.userinfo-url",
-                "Userinfo URL"
+                "用户信息 URL"
             )
 
             data object JwksUrl : ConfigProperties<String>(
@@ -255,7 +255,7 @@ sealed class ConfigProperties<T : Serializable>(
             data object LogoutUrl : ConfigProperties<String>(
                 String::class,
                 "sso.oidc.logout-url",
-                "Logout URL"
+                "登出 URL"
             )
         }
     }
@@ -267,33 +267,33 @@ sealed class ConfigProperties<T : Serializable>(
                 data object Enabled : ConfigProperties<Boolean>(
                     Boolean::class,
                     "messages.providers.email.enabled",
-                    "Enable E-Mail notifications",
+                    "启用电子邮件通知",
                     false
                 )
 
                 data object Host : ConfigProperties<String>(
                     String::class,
                     "messages.providers.email.host",
-                    "URL of the email server"
+                    "邮件服务器地址"
                 )
 
                 data object Port : ConfigProperties<Int>(
                     Int::class,
                     "messages.providers.email.port",
-                    "Port of the email server",
+                    "邮件服务器端口",
                     587
                 )
 
                 data object Username : ConfigProperties<String>(
                     String::class,
                     "messages.providers.email.username",
-                    "Username for the email account"
+                    "邮件账户用户名"
                 )
 
                 data object Password : ConfigProperties<String>(
                     String::class,
                     "messages.providers.email.password",
-                    "Password for the email account"
+                    "邮件账户密码"
                 )
             }
         }
@@ -304,14 +304,14 @@ sealed class ConfigProperties<T : Serializable>(
         data object Folder : ConfigProperties<String>(
             String::class,
             "logs.folder",
-            "Storage folder for log files",
+            "日志文件存储文件夹",
             "./logs"
         )
 
         data object MaxHistoryDays : ConfigProperties<Int>(
             Int::class,
             "logs.max-history-days",
-            "Log retention in days",
+            "日志保留天数",
             30
         )
 
@@ -319,7 +319,7 @@ sealed class ConfigProperties<T : Serializable>(
             data object Gameyfin : ConfigProperties<LogLevel>(
                 LogLevel::class,
                 "logs.level.gameyfin",
-                "Log level (Gameyfin)",
+                "日志级别（Gameyfin）",
                 LogLevel.INFO,
                 LogLevel.entries
             )
@@ -327,7 +327,7 @@ sealed class ConfigProperties<T : Serializable>(
             data object Root : ConfigProperties<LogLevel>(
                 LogLevel::class,
                 "logs.level.root",
-                "Log level (Root)",
+                "日志级别（根级别）",
                 LogLevel.WARN,
                 LogLevel.entries
             )

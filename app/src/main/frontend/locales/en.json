@@ -58,6 +58,7 @@
     "confirm": "Confirm",
     "close": "Close",
     "search": "Search",
+    "searchPlaceholder": "Type to search...",
     "filter": "Filter",
     "sort": "Sort",
     "settings": "Settings",
@@ -81,7 +82,10 @@
     "no": "No",
     "test": "Test",
     "validation": {
-      "required": "Required"
+      "required": "Required",
+      "minLength": "Password must be at least 8 characters long",
+      "passwordMismatch": "Passwords do not match",
+      "invalidEmail": "Invalid email format"
     }
   },
   "login": {
@@ -91,6 +95,86 @@
     "signUp": "Sign up",
     "logIn": "Log in",
     "invalidCredentials": "Invalid username and/or password."
+  },
+  "passwordReset": {
+    "title": "Password Reset",
+    "success": "Password reset",
+    "successDesc": "Password reset successfully",
+    "tokenExpired": "Token expired",
+    "tokenExpiredDesc": "Token is expired",
+    "invalidToken": "Invalid token",
+    "invalidTokenDesc": "Token is invalid",
+    "newPassword": "New password",
+    "resetButton": "Reset password"
+  },
+  "emailConfirmation": {
+    "title": "Email Confirmation",
+    "success": "Email confirmed",
+    "successDesc": "You will be redirected shortly",
+    "tokenExpired": "Expired token",
+    "tokenExpiredDesc": "Please request a new one",
+    "invalidToken": "Invalid token",
+    "invalidTokenDesc": "Please try again"
+  },
+  "invitation": {
+    "title": "Register a new account",
+    "success": "Registration successful",
+    "successDesc": "Your account has been created",
+    "usernameTaken": "Username is already taken",
+    "tokenExpired": "Token expired",
+    "tokenExpiredDesc": "Token is expired",
+    "invalidToken": "Invalid token",
+    "invalidTokenDesc": "Token is invalid",
+    "createAccount": "Create account",
+    "passwordRepeat": "Password (repeat)"
+  },
+  "setup": {
+    "welcome": "Welcome to Gameyfin 👋",
+    "description1": "Gameyfin is a cutting-edge software tailored for gamers seeking efficient management of their video game collections.",
+    "description2": "With its intuitive interface and comprehensive features, Gameyfin simplifies the organization of game libraries. Users can effortlessly add games through manual input or automated recognition, categorize them based on various criteria like genre or platform, track in-game progress, and share achievements with friends.",
+    "description3": "Notably, Gameyfin stands out for its user-friendly design and adaptability, offering ample customization options to meet diverse user preferences.",
+    "letsGetStarted": "Let's get started!",
+    "chooseStyle": "Choose your style",
+    "createAccount": "Create your account",
+    "initialAdminDesc": "This will set up the initial admin user account.",
+    "setupFinished": "Setup finished",
+    "haveFun": "Have fun with Gameyfin!",
+    "setupError": "Could not register super admin user",
+    "setupErrorDesc": "Maybe Gameyfin is already set up?"
+  },
+  "theme": {
+    "themeMode": "Theme mode",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "game": {
+    "details": "Details",
+    "games": "Games",
+    "ignoredPaths": "Ignored paths",
+    "confirmMatch": "Confirm match",
+    "unconfirmMatch": "Unconfirm match",
+    "editMetadata": "Edit metadata",
+    "searchMetadata": "Search for metadata",
+    "removeFromLibrary": "Remove from library",
+    "gameDeleted": "Game deleted",
+    "missingData": "Missing data",
+    "matchGame": "Match game",
+    "noData": "no data",
+    "developedBy": "Developed by",
+    "publishedBy": "Published by",
+    "editCover": "Edit cover",
+    "showMore": "Show more"
+  },
+  "user": {
+    "enableUser": "Enable user",
+    "disableUser": "Disable user",
+    "removeAvatar": "Remove avatar",
+    "assignRole": "Assign role",
+    "resetPassword": "Reset password",
+    "deleteUser": "Delete user",
+    "anonymousUser": "Anonymous User",
+    "sendInvitation": "Send invitation",
+    "generateInvitationLink": "Generate invitation link"
   },
   "proxy": {
     "title": "Proxy Server Settings",
@@ -155,7 +239,17 @@
     "updateSuccess": "Library updated",
     "updateSuccessDesc": "Library {{name}} has been updated.",
     "removeSuccess": "Library removed",
-    "removeSuccessDesc": "Library {{name}} has been removed."
+    "removeSuccessDesc": "Library {{name}} has been removed.",
+    "manageGamesInLibrary": "Manage games in library",
+    "showAll": "Show all",
+    "downloadCount": "Download count",
+    "scanLibraryQuick": "Scan library (quick)",
+    "scanLibraryFull": "Scan library (full)",
+    "libraryConfiguration": "Configuration",
+    "allPlatforms": "All",
+    "unspecifiedPlatform": "Unspecified",
+    "noMatchingGames": "Your filter did not match any games.",
+    "manageLibrary": "Manage library"
   },
   "gameRequests": {
     "configuration": "Game requests configuration",
@@ -225,6 +319,7 @@
     "managedExternally": "Your account is managed externally.",
     "logoutAllSessions": "You will be logged out of all current sessions",
     "upload": "Upload",
+    "help": "Help",
     "removeAvatar": "Remove your current avatar",
     "personalInformation": "Personal information",
     "username": "Username",
@@ -238,10 +333,218 @@
     "emailConfirmationSent": "Email confirmation message sent",
     "checkInbox": "Please check your inbox",
     "emailServicesDisabled": "Email services are disabled. Please contact your administrator.",
+    "signOut": "Sign Out",
+    "signedInAs": "Signed in as {{username}}",
     "validation": {
       "passwordMinLength": "Password must be at least 8 characters long",
       "passwordsNoMatch": "Passwords do not match"
     }
+  }
+
+  ,"avatar": {
+    "errorUploading": "Error uploading avatar",
+    "errorRemoving": "Error removing avatar"
+  },
+  "search": {
+    "typePlaceholder": "Type to search...",
+    "hideFilters": "Hide filters",
+    "showFilters": "Show filters",
+    "toggleFilters": "Toggle filters",
+    "clearFilters": "Clear filters",
+    "clearAllFilters": "Clear All Filters",
+    "libraries": "Libraries",
+    "filterByLibrary": "Filter by library",
+    "minRating": "Minimum Rating",
+    "minRatingPlaceholder": "Minimum rating",
+    "developers": "Developers",
+    "filterByDeveloper": "Filter by developer",
+    "genres": "Genres",
+    "filterByGenre": "Filter by genre",
+    "themes": "Themes",
+    "filterByTheme": "Filter by theme",
+    "features": "Features",
+    "filterByFeature": "Filter by feature",
+    "perspectives": "Perspectives",
+    "filterByPerspective": "Filter by perspective",
+    "keywords": "Keywords",
+    "filterByKeyword": "Filter by keyword"
+  },
+  "logs": {
+    "applicationLogs": "Application logs",
+    "softWrap": "Soft-wrap",
+    "autoScroll": "Auto-scroll"
+  },
+  "modals": {
+    "requestGame": {
+      "title": "Request a game",
+      "platform": "Platform"
+    },
+    "signUp": {
+      "title": "Register a new account",
+      "accountCreated": "Account created",
+      "emailInstructions": "You will receive an email with further instructions shortly.",
+      "registrationFailed": "Registration failed",
+      "registrationError": "An error occurred while registering your account."
+    },
+    "passwordReset": {
+      "title": "Request a password reset",
+      "emailPlaceholder": "Email",
+      "disabled": "Password self-service is disabled.\\nTo reset your password please contact your administrator.",
+      "sendRequest": "Send request",
+      "requested": "Password reset requested",
+      "checkEmail": "If the email address is registered, you will receive a message with further instructions."
+    },
+    "libraryCreation": {
+      "title": "Add a new library",
+      "scanAfterCreation": "Scan after creation?",
+      "created": "New library created",
+      "createdDesc": "Library {{name}} created!"
+    },
+    "inviteUser": {
+      "title": "Invite a new user",
+      "enterEmail": "Enter the email address of the user you want to invite:",
+      "emailLabel": "E-Mail",
+      "acceptLink": "The user can accept the invitation using the following link:",
+      "invitationSent": "Invitation sent",
+      "emailSent": "The user will receive an email with further instructions shortly."
+    },
+    "confirmDeletion": {
+      "title": "Confirm user deletion",
+      "message": "Confirm deletion of user {{username}} by entering the username below",
+      "confirmButton": "Confirm deletion"
+    },
+    "assignRoles": {
+      "title": "Assign roles to {{username}}"
+    },
+    "sendTestNotification": {
+      "title": "Send {{template}} Test Message",
+      "fillPlaceholders": "Fill the placeholders of the template"
+    },
+    "gameCoverPicker": {
+      "title": "Enter a URL or search for a cover",
+      "urlPlaceholder": "Enter a URL",
+      "searchPlaceholder": "Search",
+      "noResults": "No results found.",
+      "searching": "Searching..."
+    },
+    "pathPicker": {
+      "title": "Select a folder"
+    },
+    "pluginDetails": {
+      "description": "Description",
+      "configuration": "Configuration",
+      "configValid": "Configuration valid",
+      "configInvalid": "Configuration invalid",
+      "revalidate": "Re-validate configuration",
+      "noConfigOptions": "This plugin has no configuration options.",
+      "configSaved": "Configuration saved",
+      "configSavedDesc": "Configuration for plugin {{name}} saved!",
+      "officialPlugin": "Official plugin",
+      "bundledPlugin": "Bundled plugin",
+      "thirdPartyPlugin": "3rd party plugin",
+      "invalidSignature": "Invalid plugin signature",
+      "unknownVerification": "Unkown verification status"
+    },
+    "pluginPriorities": {
+      "title": "Edit plugin order",
+      "instruction": "Plugins higher on the list are preferred",
+      "orderUpdated": "Plugin order updated",
+      "orderUpdatedDesc": "Plugin order has been updated successfully.",
+      "updateError": "An error occurred while updating plugin order."
+    }
+  },
+  "requestsView": {
+    "title": "Game Requests",
+    "submissionDisabled": "Request submission is disabled",
+    "pending": "Pending",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "fulfilled": "Fulfilled",
+    "titleRelease": "Title & Release",
+    "submittedBy": "Submitted by",
+    "submitted": "Submitted",
+    "updated": "Updated",
+    "status": "Status",
+    "votes": "Votes",
+    "noMatch": "Your search did not match any requests.",
+    "noMatchGames": "Your search did not match any games.",
+    "pickResult": "Pick this result",
+    "guest": "Guest",
+    "cannotVoteClosed": "You cannot vote on closed requests",
+    "voteForRequest": "Vote for this request",
+    "mustLoginToVote": "You must be logged in to vote",
+    "approveRequest": "Approve this request",
+    "rejectRequest": "Reject this request",
+    "deleteRequest": "Delete this request"
+  },
+  "libraryDetails": {
+    "editTitle": "Edit library details",
+    "libraryName": "Library name",
+    "platforms": "Platforms",
+    "dangerZone": "Danger zone",
+    "deleteLibrary": "Delete library",
+    "deleted": "Library deleted",
+    "deletedDesc": "Library {{name}} deleted!",
+    "deleteError": "Error deleting library",
+    "deleteErrorDesc": "Library {{name}} could not be deleted!"
+  },
+  "ignoredPaths": {
+    "title": "Manage ignored paths",
+    "path": "Path",
+    "source": "Source",
+    "actions": "Actions",
+    "noIgnoredPaths": "This library has no ignored paths.",
+    "manuallyAddedBy": "Manually added by user ({{username}})",
+    "unknownUser": "Unknown user",
+    "autoAddedByPlugins": "Automatically added by plugins (",
+    "unknownPlugin": "Unknown plugin",
+    "unknownPlugins": "Unknown plugins",
+    "matchGame": "Match game",
+    "removeEntry": "Remove entry from list"
+  },
+  "plugins": {
+    "changeOrder": "Change plugin order",
+    "noPluginsInstalled": "No plugins of this type installed."
+  },
+  "config": {
+    "library_allow-public-access": "Allow access to Gameyfin without login",
+    "library_scan_enable-filesystem-watcher": "Enable automatic library scanning using file system watchers (coming soon™)",
+    "library_scan_scan-empty-directories": "Scan empty directories",
+    "library_scan_extract-title-using-regex": "Extract title from file names using regex",
+    "library_scan_title-extraction-regex": "Regex to extract title from file names",
+    "library_scan_title-match-min-ratio": "Minimum ratio for title matching. Higher values mean stricter matching.",
+    "library_scan_game-file-extensions": "File extensions to consider as games",
+    "library_metadata_update_enabled": "Enable periodic refresh of video game metadata",
+    "library_metadata_update_schedule": "Schedule for periodic metadata refresh in Spring cron format",
+    "requests_games_enabled": "Enable submission of game requests",
+    "requests_games_allow-guests-to-request-games": "Allow guests (not logged in) to create game requests",
+    "requests_games_max-open-requests-per-user": "Maximum number of pending requests per user. Set to 0 for unlimited.",
+    "downloads_bandwidth-limit_enabled": "Enable per-user bandwidth limiting for downloads",
+    "downloads_bandwidth-limit_mbps": "Maximum download speed in Megabits per second (Mbps)",
+    "users_sign-ups_allow": "Allow new users to sign up by themselves",
+    "users_sign-ups_confirmation-required": "Admins need to confirm new users",
+    "sso_oidc_enabled": "Enable SSO via OIDC/OAuth2",
+    "sso_oidc_match-existing-users-by": "Match existing users by",
+    "sso_oidc_auto-register-new-users": "Automatically create new users after registration",
+    "sso_oidc_roles-claim": "JWT claim to extract roles from",
+    "sso_oidc_oauth-scopes": "OAuth2 scopes to request",
+    "sso_oidc_client-id": "Client ID",
+    "sso_oidc_client-secret": "Client secret",
+    "sso_oidc_issuer-url": "Issuer URL",
+    "sso_oidc_authorize-url": "Authorize URL",
+    "sso_oidc_token-url": "Token URL",
+    "sso_oidc_userinfo-url": "Userinfo URL",
+    "sso_oidc_jwks-url": "JWKS URL",
+    "sso_oidc_logout-url": "Logout URL",
+    "messages_providers_email_enabled": "Enable E-Mail notifications",
+    "messages_providers_email_host": "URL of the email server",
+    "messages_providers_email_port": "Port of the email server",
+    "messages_providers_email_username": "Username for the email account",
+    "messages_providers_email_password": "Password for the email account",
+    "logs_folder": "Storage folder for log files",
+    "logs_max-history-days": "Log retention in days",
+    "logs_level_gameyfin": "Log level (Gameyfin)",
+    "logs_level_root": "Log level (Root)"
   }
 }
 

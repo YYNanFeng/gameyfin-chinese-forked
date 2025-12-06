@@ -15,6 +15,7 @@ import {UserEndpoint} from "Frontend/generated/endpoints";
 import RoleChip from "Frontend/components/general/RoleChip";
 import RoleAssignmentResult from "Frontend/generated/org/gameyfin/app/users/enums/RoleAssignmentResult";
 import ExtendedUserInfoDto from "Frontend/generated/org/gameyfin/app/users/dto/ExtendedUserInfoDto";
+import {useTranslation} from "react-i18next";
 
 interface AssignRolesModalProps {
     isOpen: boolean;
@@ -27,6 +28,7 @@ interface Role {
 }
 
 export default function AssignRolesModal({isOpen, onOpenChange, user}: AssignRolesModalProps) {
+    const {t} = useTranslation();
     const [availableRoles, setAvailableRoles] = useState<Role[]>([]);
     const [selectedRole, setSelectedRole] = useState<Selection>();
     const [error, setError] = useState<string>();
@@ -72,7 +74,7 @@ export default function AssignRolesModal({isOpen, onOpenChange, user}: AssignRol
             <ModalContent>
                 {(onClose) => (
                     <>
-                        <ModalHeader className="flex flex-col gap-1">Assign roles to {user.username}</ModalHeader>
+                        <ModalHeader className="flex flex-col gap-1">{t('modals.assignRoles.title', {username: user.username})}</ModalHeader>
                         <ModalBody className="flex flex-col gap-2">
                             <Select
                                 items={availableRoles}

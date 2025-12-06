@@ -11,8 +11,10 @@ import PluginConfigValidationResult
     from "Frontend/generated/org/gameyfin/pluginapi/core/config/PluginConfigValidationResult";
 import PluginConfigValidationResultType
     from "Frontend/generated/org/gameyfin/pluginapi/core/config/PluginConfigValidationResultType";
+import {useTranslation} from "react-i18next";
 
 export function PluginManagementCard({plugin}: { plugin: PluginDto }) {
+    const {t} = useTranslation();
     const pluginDetailsModal = useDisclosure();
 
     function borderColor(state: PluginState | undefined, trustLevel: PluginTrustLevel | undefined): "success" | "warning" | "danger" | "default" {
@@ -56,19 +58,19 @@ export function PluginManagementCard({plugin}: { plugin: PluginDto }) {
     function configValidationResultToChip(validationResult: PluginConfigValidationResult | undefined): ReactNode {
         switch (validationResult?.result) {
             case PluginConfigValidationResultType.VALID:
-                return <Tooltip content="Config valid" placement="bottom" color="foreground">
+                return <Tooltip content={t('modals.pluginDetails.configValid')} placement="bottom" color="foreground">
                     <Chip size="sm" radius="sm" className="text-xs" color="success">
                         <CheckCircleIcon/>
                     </Chip>
                 </Tooltip>
             case PluginConfigValidationResultType.INVALID:
-                return <Tooltip content="Config invalid" placement="bottom" color="foreground">
+                return <Tooltip content={t('modals.pluginDetails.configInvalid')} placement="bottom" color="foreground">
                     <Chip size="sm" radius="sm" className="text-xs" color="danger">
                         <WarningCircleIcon/>
                     </Chip>
                 </Tooltip>;
             default:
-                return <Tooltip content="Config could not be validated" placement="bottom" color="foreground">
+                return <Tooltip content={t('modals.pluginDetails.configInvalid')} placement="bottom" color="foreground">
                     <Chip size="sm" radius="sm" className="text-xs">
                         <QuestionIcon/>
                     </Chip>
@@ -79,23 +81,23 @@ export function PluginManagementCard({plugin}: { plugin: PluginDto }) {
     function trustLevelToBadge(trustLevel: PluginTrustLevel | undefined): React.ReactNode {
         switch (trustLevel) {
             case PluginTrustLevel.OFFICIAL:
-                return <Tooltip color="foreground" placement="bottom" content="Official plugin">
+                return <Tooltip color="foreground" placement="bottom" content={t('modals.pluginDetails.officialPlugin')}>
                     <SealCheckIcon className="fill-success"/>
                 </Tooltip>;
             case PluginTrustLevel.BUNDLED:
-                return <Tooltip color="foreground" placement="bottom" content="Bundled plugin">
+                return <Tooltip color="foreground" placement="bottom" content={t('modals.pluginDetails.bundledPlugin')}>
                     <SealCheckIcon/>
                 </Tooltip>;
             case PluginTrustLevel.THIRD_PARTY:
-                return <Tooltip color="foreground" placement="bottom" content="3rd party plugin">
+                return <Tooltip color="foreground" placement="bottom" content={t('modals.pluginDetails.thirdPartyPlugin')}>
                     <SealWarningIcon/>
                 </Tooltip>;
             case PluginTrustLevel.UNTRUSTED:
-                return <Tooltip color="foreground" placement="bottom" content="Invalid plugin signature">
+                return <Tooltip color="foreground" placement="bottom" content={t('modals.pluginDetails.invalidSignature')}>
                     <SealWarningIcon className="fill-danger"/>
                 </Tooltip>;
             default:
-                return <Tooltip color="foreground" placement="bottom" content="Unkown verification status">
+                return <Tooltip color="foreground" placement="bottom" content={t('modals.pluginDetails.unknownVerification')}>
                     <SealQuestionIcon/>
                 </Tooltip>;
         }
@@ -129,7 +131,7 @@ export function PluginManagementCard({plugin}: { plugin: PluginDto }) {
                             <PowerIcon/>
                         </Button>
                     </Tooltip>
-                    <Tooltip content="Configuration" placement="bottom" color="foreground">
+                    <Tooltip content={t('modals.pluginDetails.configuration')} placement="bottom" color="foreground">
                         <Button isIconOnly variant="light" onPress={pluginDetailsModal.onOpen}>
                             <SlidersHorizontalIcon/>
                         </Button>

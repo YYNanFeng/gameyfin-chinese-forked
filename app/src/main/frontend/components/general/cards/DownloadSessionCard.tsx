@@ -2,6 +2,7 @@ import {useSnapshot} from "valtio/react";
 import {downloadSessionState} from "Frontend/state/DownloadSessionState";
 import {Card, Chip, Tooltip} from "@heroui/react";
 import {InfoIcon} from "@phosphor-icons/react";
+import {useTranslation} from "react-i18next";
 import {convertBpsToMbps, hslToHex, humanFileSize, timeUntil} from "Frontend/util/utils";
 import {gameState} from "Frontend/state/GameState";
 import RealtimeChart, {RealtimeChartData, RealtimeChartOptions} from "react-realtime-chart";
@@ -10,6 +11,7 @@ import {useNavigate} from "react-router";
 import {libraryState} from "Frontend/state/LibraryState";
 
 export function DownloadSessionCard({sessionId}: { sessionId: string }) {
+    const {t} = useTranslation();
     const navigate = useNavigate();
 
     const session = useSnapshot(downloadSessionState).byId[sessionId];
@@ -86,7 +88,7 @@ export function DownloadSessionCard({sessionId}: { sessionId: string }) {
             <div className="flex flex-row items-center">
                 <p className="flex flex-row items-center flex-1">
                     <b>User:</b>&nbsp;
-                    {session.username ?? "Anonymous User"}&nbsp;
+                    {session.username ?? t('user.anonymousUser')}&nbsp;
                     <Tooltip
                         content={<pre>Session ID: {session.sessionId}</pre>}
                         placement="right"

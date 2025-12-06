@@ -36,13 +36,11 @@ class SteamGridDbApiClient(private val apiKey: String) {
 
             // Configure proxy from system properties
             engine {
-                proxy = io.ktor.client.engine.ProxyBuilder.http(
-                    System.getProperty("http.proxyHost")?.let { host ->
-                        System.getProperty("http.proxyPort")?.toIntOrNull()?.let { port ->
-                            java.net.URL("http://$host:$port")
-                        }
-                    } ?: return@http null
-                )
+                proxy = System.getProperty("http.proxyHost")?.let { host ->
+                    System.getProperty("http.proxyPort")?.toIntOrNull()?.let { port ->
+                        io.ktor.client.engine.ProxyBuilder.http(Url("http://$host:$port"))
+                    }
+                }
             }
         }
     }

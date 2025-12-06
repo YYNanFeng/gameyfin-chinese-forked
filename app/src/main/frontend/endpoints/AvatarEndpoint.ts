@@ -1,5 +1,6 @@
 import {fetchWithAuth} from "Frontend/util/utils";
 import {addToast} from "@heroui/react";
+import i18n from "Frontend/i18n";
 
 export async function uploadAvatar(avatar: any) {
     const formData = new FormData();
@@ -13,7 +14,7 @@ export async function uploadAvatar(avatar: any) {
         window.location.reload();
     } else {
         addToast({
-            title: "Error uploading avatar",
+            title: i18n.t('avatar.errorUploading'),
             description: result,
             color: "danger"
         });
@@ -29,7 +30,7 @@ export async function removeAvatar() {
         window.location.reload();
     } else {
         addToast({
-            title: "Error removing avatar",
+            title: i18n.t('avatar.errorRemoving'),
             description: result,
             color: "danger"
         });
@@ -45,7 +46,7 @@ export async function removeAvatarByName(name: string) {
         window.location.reload();
     } else {
         addToast({
-            title: "Error removing avatar",
+            title: i18n.t('avatar.errorRemoving'),
             description: result,
             color: "danger"
         });

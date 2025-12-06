@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Plugin-Class: org.gameyfin.plugins.metadata.bangumi.BangumiPlugin
+Plugin-Id: org.gameyfin.plugins.metadata.bangumi
+Plugin-Name: Bangumi Metadata
+Plugin-Version: 1.0.0
+Plugin-Description: Fetches metadata from Bangumi (bgm.tv) for Japanese games.<br>Bangumi is a community database for ACG (Anime, Comics, Games) content.
+Plugin-Short-Description: Bangumi game metadata provider
+Plugin-Author: Gameyfin Contributors
+Plugin-License: MIT
+Plugin-Url: https://github.com/gameyfin

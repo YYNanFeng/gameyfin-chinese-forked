@@ -5,6 +5,7 @@ import Input from "Frontend/components/general/input/Input";
 import FileTreeView from "Frontend/components/general/input/FileTreeView";
 import DirectoryMappingDto from "Frontend/generated/org/gameyfin/app/libraries/dto/DirectoryMappingDto";
 import { ArrowRightIcon } from "@phosphor-icons/react";
+import {useTranslation} from "react-i18next";
 
 interface PathPickerModalProps {
     returnSelectedPath: (path: DirectoryMappingDto) => void;
@@ -13,6 +14,7 @@ interface PathPickerModalProps {
 }
 
 export default function PathPickerModal({returnSelectedPath, isOpen, onOpenChange}: PathPickerModalProps) {
+    const {t} = useTranslation();
     const [internalPath, setInternalPath] = useState("");
     const [externalPath, setExternalPath] = useState("");
 
@@ -34,7 +36,7 @@ export default function PathPickerModal({returnSelectedPath, isOpen, onOpenChang
 
                             return (
                                 <Form>
-                                    <ModalHeader className="flex flex-col gap-1">Select a folder</ModalHeader>
+                                    <ModalHeader className="flex flex-col gap-1">{t('modals.pathPicker.title')}</ModalHeader>
                                     <ModalBody>
                                         <div className="flex flex-row gap-2 items-center">
                                             <Input

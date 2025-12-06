@@ -6,9 +6,10 @@ import {Theme} from "Frontend/theming/theme";
 import ThemePreview from "Frontend/components/theming/ThemePreview";
 import {toTitleCase} from "Frontend/util/utils";
 import {useUserPreferenceService} from "Frontend/util/user-preference-service";
+import {useTranslation} from "react-i18next";
 
 export function ThemeSelector() {
-
+    const {t} = useTranslation();
     const {theme, setTheme} = useTheme();
     const [selectedTheme, setSelectedTheme] = useState(theme?.substring(0, theme?.lastIndexOf("-")));
     const [selectedMode, setSelectedMode] = useState<Selection>();
@@ -31,17 +32,17 @@ export function ThemeSelector() {
 
     return (
         <div className="flex flex-col items-center gap-8">
-            <Select label="Theme mode" className="max-w-xs"
+            <Select label={t('theme.themeMode')} className="max-w-xs"
                     disallowEmptySelection
                     selectionMode={"single"}
                     defaultSelectedKeys={selectedMode}
                     onSelectionChange={setSelectedMode}
                     selectedKeys={selectedMode}>
                 <SelectItem key="light">
-                    Light
+                    {t('theme.light')}
                 </SelectItem>
                 <SelectItem key="dark">
-                    Dark
+                    {t('theme.dark')}
                 </SelectItem>
             </Select>
             <div className="grid grid-flow-row grid-cols-8 gap-8">

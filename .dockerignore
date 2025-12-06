@@ -33,7 +33,7 @@ data/
 db/
 logs/
 plugindata/
-
+playnite/
 # Docker intermediate artifacts
 **/.DS_Store
 

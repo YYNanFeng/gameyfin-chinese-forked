@@ -1,14 +1,15 @@
 import { PaletteIcon, UserIcon } from "@phosphor-icons/react";
 import withSideMenu from "Frontend/components/general/withSideMenu";
+import i18n from "Frontend/i18n";
 
 const menuItems = [
     {
-        title: "My Profile",
+        title: () => i18n.t('profile.myProfile'),
         url: "profile",
         icon: <UserIcon/>
     },
     {
-        title: "Appearance",
+        title: () => i18n.t('routes.appearance'),
         url: "appearance",
         icon: <PaletteIcon/>
     },

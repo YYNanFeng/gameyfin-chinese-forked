@@ -5,9 +5,10 @@ import {gameState} from "Frontend/state/GameState";
 import GameDto from "Frontend/generated/org/gameyfin/app/games/dto/GameDto";
 import {useNavigate} from "react-router";
 import {GameCover} from "Frontend/components/general/covers/GameCover";
+import {useTranslation} from "react-i18next";
 
 export default function SearchBar() {
-
+    const {t} = useTranslation();
     const navigate = useNavigate();
     const state = useSnapshot(gameState);
     const games = state.games as GameDto[];
@@ -40,7 +41,7 @@ export default function SearchBar() {
                 ],
             },
         }}
-        placeholder="Type to search..."
+        placeholder={t('common.searchPlaceholder')}
         startContent={<MagnifyingGlassIcon/>}
         isVirtualized={true}
         maxListboxHeight={300}

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Button, Code, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader} from "@heroui/react";
 import {UserEndpoint} from "Frontend/generated/endpoints";
 import UserInfoDto from "Frontend/generated/org/gameyfin/app/users/dto/UserInfoDto";
+import {useTranslation} from "react-i18next";
 
 interface ConfirmUserDeletionModalProps {
     isOpen: boolean;
@@ -10,6 +11,7 @@ interface ConfirmUserDeletionModalProps {
 }
 
 export default function ConfirmUserDeletionModal({isOpen, onOpenChange, user}: ConfirmUserDeletionModalProps) {
+    const {t} = useTranslation();
     const [confirmUsername, setConfirmUsername] = useState<string>("");
 
     useEffect(() => {
@@ -27,21 +29,20 @@ export default function ConfirmUserDeletionModal({isOpen, onOpenChange, user}: C
             <ModalContent>
                 {(onClose) => (
                     <>
-                        <ModalHeader className="flex flex-col gap-1">Confirm user deletion</ModalHeader>
+                        <ModalHeader className="flex flex-col gap-1">{t('modals.confirmDeletion.title')}</ModalHeader>
                         <ModalBody>
                             <p>
-                                Confirm deletion of user <Code>{user.username}</Code> by entering the username
-                                below
+                                {t('modals.confirmDeletion.message', {username: user.username})}
                             </p>
                             <Input onChange={(e) => setConfirmUsername(e.target.value)}/>
                         </ModalBody>
                         <ModalFooter>
                             <Button variant="light" onPress={onClose}>
-                                Cancel
+                                {t('common.cancel')}
                             </Button>
                             <Button color="danger" onPress={deleteUser}
                                     isDisabled={confirmUsername != user.username}>
-                                Confirm deletion
+                                {t('modals.confirmDeletion.confirmButton')}
                             </Button>
                         </ModalFooter>
                     </>

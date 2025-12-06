@@ -1,0 +1,324 @@
+2025-12-05T12:13:58.727+08:00  INFO 45536 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 45536 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-05T12:13:58.732+08:00  INFO 45536 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-05T12:14:02.690+08:00  INFO 45536 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.030s)
+2025-12-05T12:14:02.696+08:00  INFO 45536 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 2.3.0.1
+2025-12-05T12:14:02.698+08:00  INFO 45536 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
+2025-12-05T12:14:09.598+08:00  INFO 45536 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 11.464 seconds (process running for 11.992)
+2025-12-05T12:14:09.700 ERROR o.g.app.core.security.AppKeyValidator    : APP_KEY environment variable is not set or empty
+2025-12-05T12:14:55.644+08:00  INFO 46964 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 46964 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-05T12:14:55.645+08:00  INFO 46964 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-05T12:14:57.591+08:00  INFO 46964 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.014s)
+2025-12-05T12:14:57.596+08:00  INFO 46964 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 2.3.0.1
+2025-12-05T12:14:57.598+08:00  INFO 46964 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
+2025-12-05T12:15:02.601+08:00  INFO 46964 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 7.337 seconds (process running for 7.694)
+2025-12-05T12:15:02.686 ERROR o.g.app.core.security.AppKeyValidator    : APP_KEY environment variable is not set or empty
+2025-12-05T12:15:52.116+08:00  INFO 48032 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 48032 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-05T12:15:52.118+08:00  INFO 48032 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-05T12:15:54.031+08:00  INFO 48032 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.015s)
+2025-12-05T12:15:54.036+08:00  INFO 48032 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 2.3.0.1
+2025-12-05T12:15:54.037+08:00  INFO 48032 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
+2025-12-05T12:15:59.144+08:00  INFO 48032 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 7.402 seconds (process running for 7.792)
+2025-12-05T12:15:59.224 ERROR o.g.app.core.security.AppKeyValidator    : APP_KEY environment variable is not set or empty
+2025-12-05T12:16:07.715+08:00  INFO 46696 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 46696 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-05T12:16:07.716+08:00  INFO 46696 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-05T12:16:09.552+08:00  INFO 46696 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.013s)
+2025-12-05T12:16:09.556+08:00  INFO 46696 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 2.3.0.1
+2025-12-05T12:16:09.558+08:00  INFO 46696 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
+2025-12-05T12:16:14.338+08:00  INFO 46696 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 6.979 seconds (process running for 7.339)
+2025-12-05T12:16:14.427 WARN  org.pf4j.AbstractPluginManager           : No 'plugins' root
+2025-12-05T12:16:14.430 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: []
+2025-12-05T12:16:14.474 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-05T12:16:14.488 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-05T12:17:28.417+08:00  INFO 44080 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 44080 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-05T12:17:28.419+08:00  INFO 44080 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-05T12:17:30.193+08:00  INFO 44080 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.010s)
+2025-12-05T12:17:30.213+08:00  INFO 44080 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": << Empty Schema >>
+2025-12-05T12:17:30.220+08:00  INFO 44080 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.0.0 - Initial schema creation"
+2025-12-05T12:17:30.260+08:00  INFO 44080 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.1 - Drop game image uniques and rename constraints"
+2025-12-05T12:17:30.275+08:00  INFO 44080 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.2 - Create game requests table"
+2025-12-05T12:17:30.279+08:00  INFO 44080 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.1 - Recreate game image fks without unique indexes"
+2025-12-05T12:17:30.284+08:00  INFO 44080 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.1 - Fix game images uniqueness"
+2025-12-05T12:17:30.287+08:00  INFO 44080 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.2 - Cleanup unreferenced images"
+2025-12-05T12:17:30.292+08:00  INFO 44080 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.1 - Remove obsolete library games table"
+2025-12-05T12:17:30.296+08:00  INFO 44080 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.2 - Disable length limit for config values"
+2025-12-05T12:17:30.302+08:00  INFO 44080 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.3 - Multi platform support"
+2025-12-05T12:17:30.308+08:00  INFO 44080 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.4 - Refactor unmatched paths to ignored paths"
+2025-12-05T12:17:30.312+08:00  INFO 44080 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.3.0.1 - Create proxy config table"
+2025-12-05T12:17:30.321+08:00  INFO 44080 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Successfully applied 11 migrations to schema "PUBLIC", now at version v2.3.0.1 (execution time 00:00.066s)
+2025-12-05T12:17:35.435+08:00  INFO 44080 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 7.362 seconds (process running for 7.711)
+2025-12-05T12:17:35.589 INFO  org.gameyfin.app.core.SetupDataLoader    : Looks like this is the first time you're starting Gameyfin.
+2025-12-05T12:17:35.592 INFO  org.gameyfin.app.core.SetupDataLoader    : Visit http://DESKTOP-T6M7IA5:8080/setup to complete the setup
+2025-12-05T12:17:35.593 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-05T12:17:35.588 WARN  org.pf4j.AbstractPluginManager           : No 'plugins' root
+2025-12-05T12:17:35.596 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: []
+2025-12-05T12:17:35.628 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-05T12:48:30.943+08:00  INFO 52220 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 52220 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-05T12:48:30.944+08:00  INFO 52220 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-05T12:48:32.766+08:00  INFO 52220 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.015s)
+2025-12-05T12:48:32.771+08:00  INFO 52220 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 2.3.0.1
+2025-12-05T12:48:32.773+08:00  INFO 52220 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
+2025-12-05T12:48:37.716+08:00  INFO 52220 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 7.125 seconds (process running for 7.467)
+2025-12-05T12:48:37.799 WARN  org.pf4j.AbstractPluginManager           : No 'plugins' root
+2025-12-05T12:48:37.801 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: []
+2025-12-05T12:48:37.845 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-05T12:48:37.860 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-05T12:50:11.922+08:00  INFO 51680 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 51680 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-05T12:50:11.924+08:00  INFO 51680 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-05T12:50:13.868+08:00  INFO 51680 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.014s)
+2025-12-05T12:50:13.873+08:00  INFO 51680 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 2.3.0.1
+2025-12-05T12:50:13.874+08:00  INFO 51680 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
+2025-12-05T12:50:19.068+08:00  INFO 51680 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 7.508 seconds (process running for 7.863)
+2025-12-05T12:50:19.198 WARN  org.pf4j.AbstractPluginManager           : No 'plugins' root
+2025-12-05T12:50:19.201 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: []
+2025-12-05T12:50:19.269 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-05T12:50:19.285 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-05T18:00:54.080+08:00  INFO 31764 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 31764 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-05T18:00:54.081+08:00  INFO 31764 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-05T18:00:56.270+08:00  INFO 31764 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.086s)
+2025-12-05T18:00:56.275+08:00  INFO 31764 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 2.3.0.1
+2025-12-05T18:00:56.277+08:00  INFO 31764 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
+2025-12-05T18:01:02.185+08:00  INFO 31764 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 8.494 seconds (process running for 8.868)
+2025-12-05T18:01:02.328 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-05T18:01:02.326 WARN  org.pf4j.AbstractPluginManager           : No 'plugins' root
+2025-12-05T18:01:02.335 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: []
+2025-12-05T18:01:02.363 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-05T18:03:19.785 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\2'
+2025-12-05T18:03:19.785 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆'
+2025-12-05T18:03:19.785 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆.rar'
+2025-12-05T18:03:19.785 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\赛博朋克'
+2025-12-05T18:05:32.231 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\2'
+2025-12-05T18:05:32.231 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆'
+2025-12-05T18:05:32.231 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\family.rar'
+2025-12-05T18:05:32.231 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\赛博朋克'
+2025-12-05T18:05:32.231 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆.rar'
+2025-12-05T18:05:34.583 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\family.rar'
+2025-12-05T18:05:34.583 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆.rar'
+2025-12-05T18:05:34.583 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆'
+2025-12-05T18:05:34.583 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\2'
+2025-12-05T18:05:34.584 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\赛博朋克'
+2025-12-05T18:05:35.422 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\2'
+2025-12-05T18:05:35.422 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\family.rar'
+2025-12-05T18:05:35.423 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\赛博朋克'
+2025-12-05T18:05:35.422 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆.rar'
+2025-12-05T18:05:35.423 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆'
+2025-12-05T18:05:56.578 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\family.rar'
+2025-12-05T18:05:56.578 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆'
+2025-12-05T18:05:56.578 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆.rar'
+2025-12-05T18:05:56.578 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\赛博朋克'
+2025-12-05T18:05:56.578 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\2'
+2025-12-05T18:06:40.706 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\2'
+2025-12-05T18:06:40.706 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\family.rar'
+2025-12-05T18:06:40.706 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆.rar'
+2025-12-05T18:06:40.706 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆'
+2025-12-05T18:06:40.706 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\赛博朋克'
+2025-12-05T18:06:51.827 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\family.rar'
+2025-12-05T18:06:51.827 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\2'
+2025-12-05T18:06:51.827 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆.rar'
+2025-12-05T18:06:51.827 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆'
+2025-12-05T18:06:51.827 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\赛博朋克'
+2025-12-05T18:07:00.567 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\2'
+2025-12-05T18:07:00.567 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\赛博朋克'
+2025-12-05T18:07:00.567 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆.rar'
+2025-12-05T18:07:00.567 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\family.rar'
+2025-12-05T18:07:00.567 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆'
+2025-12-05T18:13:49.419+08:00  INFO 56516 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 56516 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-05T18:13:49.420+08:00  INFO 56516 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-05T18:13:51.554+08:00  INFO 56516 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.014s)
+2025-12-05T18:13:51.559+08:00  INFO 56516 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 2.3.0.1
+2025-12-05T18:13:51.561+08:00  INFO 56516 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
+2025-12-05T18:13:57.083+08:00  INFO 56516 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 8.076 seconds (process running for 8.46)
+2025-12-05T18:13:57.237 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-05T18:13:57.249 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-05T18:13:57.389 ERROR o.g.a.c.p.m.GameyfinPluginManager        : Failed to load plugin 'plugins\bangumi-1.0.0.jar': Plugin-Name not found in manifest
+2025-12-05T18:13:57.390 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: [org.gameyfin.plugins.metadata.igdb, org.gameyfin.plugins.metadata.steam, org.gameyfin.plugins.download.torrent, org.gameyfin.plugins.metadata.steamgriddb, org.gameyfin.plugins.download.direct]
+2025-12-05T18:17:44.526+08:00  INFO 37796 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 37796 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-05T18:17:44.527+08:00  INFO 37796 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-05T18:17:46.575+08:00  INFO 37796 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.010s)
+2025-12-05T18:17:46.596+08:00  INFO 37796 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": << Empty Schema >>
+2025-12-05T18:17:46.605+08:00  INFO 37796 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.0.0 - Initial schema creation"
+2025-12-05T18:17:46.656+08:00  INFO 37796 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.1 - Drop game image uniques and rename constraints"
+2025-12-05T18:17:46.673+08:00  INFO 37796 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.2 - Create game requests table"
+2025-12-05T18:17:46.678+08:00  INFO 37796 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.1 - Recreate game image fks without unique indexes"
+2025-12-05T18:17:46.684+08:00  INFO 37796 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.1 - Fix game images uniqueness"
+2025-12-05T18:17:46.686+08:00  INFO 37796 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.2 - Cleanup unreferenced images"
+2025-12-05T18:17:46.692+08:00  INFO 37796 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.1 - Remove obsolete library games table"
+2025-12-05T18:17:46.699+08:00  INFO 37796 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.2 - Disable length limit for config values"
+2025-12-05T18:17:46.705+08:00  INFO 37796 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.3 - Multi platform support"
+2025-12-05T18:17:46.712+08:00  INFO 37796 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.4 - Refactor unmatched paths to ignored paths"
+2025-12-05T18:17:46.717+08:00  INFO 37796 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.3.0.1 - Create proxy config table"
+2025-12-05T18:17:46.723+08:00  INFO 37796 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Successfully applied 11 migrations to schema "PUBLIC", now at version v2.3.0.1 (execution time 00:00.081s)
+2025-12-05T18:17:52.534+08:00  INFO 37796 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 8.396 seconds (process running for 8.784)
+2025-12-05T18:17:52.639 INFO  org.gameyfin.app.core.SetupDataLoader    : Looks like this is the first time you're starting Gameyfin.
+2025-12-05T18:17:52.642 INFO  org.gameyfin.app.core.SetupDataLoader    : Visit http://DESKTOP-T6M7IA5:8080/setup to complete the setup
+2025-12-05T18:17:52.642 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-05T18:17:52.659 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.direct verified, starting
+2025-12-05T18:17:52.662 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-05T18:17:52.664 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.download.direct@1.0.1'
+2025-12-05T18:17:52.694 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb verified, starting
+2025-12-05T18:17:52.697 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb has invalid configuration
+2025-12-05T18:17:52.730 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.torrent verified, starting
+2025-12-05T18:17:52.733 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.download.torrent@2.0.0'
+2025-12-05T18:17:52.739 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb verified, starting
+2025-12-05T18:17:52.741 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb has invalid configuration
+2025-12-05T18:17:52.747 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steam verified, starting
+2025-12-05T18:17:52.766 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.metadata.steam@1.2.0'
+2025-12-05T18:17:52.768 ERROR o.g.a.c.p.m.GameyfinPluginManager        : Failed to load plugin 'plugins\bangumi-1.0.0.jar': Plugin-Name not found in manifest
+2025-12-05T18:17:52.769 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb changed state to RESOLVED
+2025-12-05T18:17:52.769 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb changed state to RESOLVED
+2025-12-05T18:17:52.771 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb has invalid configuration
+2025-12-05T18:17:52.771 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb has invalid configuration
+2025-12-05T18:17:52.772 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: [org.gameyfin.plugins.metadata.igdb, org.gameyfin.plugins.metadata.steam, org.gameyfin.plugins.download.torrent, org.gameyfin.plugins.metadata.steamgriddb, org.gameyfin.plugins.download.direct]
+2025-12-05T18:20:54.701+08:00  INFO 54812 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 54812 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-05T18:20:54.703+08:00  INFO 54812 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-05T18:20:56.833+08:00  INFO 54812 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.011s)
+2025-12-05T18:20:56.853+08:00  INFO 54812 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": << Empty Schema >>
+2025-12-05T18:20:56.862+08:00  INFO 54812 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.0.0 - Initial schema creation"
+2025-12-05T18:20:56.905+08:00  INFO 54812 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.1 - Drop game image uniques and rename constraints"
+2025-12-05T18:20:56.920+08:00  INFO 54812 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.2 - Create game requests table"
+2025-12-05T18:20:56.925+08:00  INFO 54812 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.1 - Recreate game image fks without unique indexes"
+2025-12-05T18:20:56.930+08:00  INFO 54812 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.1 - Fix game images uniqueness"
+2025-12-05T18:20:56.934+08:00  INFO 54812 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.2 - Cleanup unreferenced images"
+2025-12-05T18:20:56.939+08:00  INFO 54812 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.1 - Remove obsolete library games table"
+2025-12-05T18:20:56.943+08:00  INFO 54812 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.2 - Disable length limit for config values"
+2025-12-05T18:20:56.948+08:00  INFO 54812 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.3 - Multi platform support"
+2025-12-05T18:20:56.953+08:00  INFO 54812 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.4 - Refactor unmatched paths to ignored paths"
+2025-12-05T18:20:56.957+08:00  INFO 54812 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.3.0.1 - Create proxy config table"
+2025-12-05T18:20:56.964+08:00  INFO 54812 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Successfully applied 11 migrations to schema "PUBLIC", now at version v2.3.0.1 (execution time 00:00.066s)
+2025-12-05T18:21:02.544+08:00  INFO 54812 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 8.242 seconds (process running for 8.624)
+2025-12-05T18:21:02.643 INFO  org.gameyfin.app.core.SetupDataLoader    : Looks like this is the first time you're starting Gameyfin.
+2025-12-05T18:21:02.646 INFO  org.gameyfin.app.core.SetupDataLoader    : Visit http://DESKTOP-T6M7IA5:8080/setup to complete the setup
+2025-12-05T18:21:02.647 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-05T18:21:02.665 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.direct verified, starting
+2025-12-05T18:21:02.665 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-05T18:21:02.669 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.download.direct@1.0.1'
+2025-12-05T18:21:02.702 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb verified, starting
+2025-12-05T18:21:02.704 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb has invalid configuration
+2025-12-05T18:21:02.737 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.torrent verified, starting
+2025-12-05T18:21:02.741 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.download.torrent@2.0.0'
+2025-12-05T18:21:02.746 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb verified, starting
+2025-12-05T18:21:02.748 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb has invalid configuration
+2025-12-05T18:21:02.752 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steam verified, starting
+2025-12-05T18:21:02.759 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.metadata.steam@1.2.0'
+2025-12-05T18:21:02.773 ERROR o.g.a.c.p.m.GameyfinPluginManager        : Failed to load plugin 'plugins\bangumi-1.0.0.jar': Plugin-Name not found in manifest
+2025-12-05T18:21:02.774 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb changed state to RESOLVED
+2025-12-05T18:21:02.775 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb changed state to RESOLVED
+2025-12-05T18:21:02.779 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb has invalid configuration
+2025-12-05T18:21:02.780 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb has invalid configuration
+2025-12-05T18:21:02.780 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: [org.gameyfin.plugins.metadata.igdb, org.gameyfin.plugins.metadata.steam, org.gameyfin.plugins.download.torrent, org.gameyfin.plugins.metadata.steamgriddb, org.gameyfin.plugins.download.direct]
+2025-12-05T18:58:13.240+08:00  INFO 49592 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 49592 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-05T18:58:13.241+08:00  INFO 49592 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-05T18:58:15.173+08:00  INFO 49592 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.011s)
+2025-12-05T18:58:15.193+08:00  INFO 49592 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": << Empty Schema >>
+2025-12-05T18:58:15.202+08:00  INFO 49592 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.0.0 - Initial schema creation"
+2025-12-05T18:58:15.255+08:00  INFO 49592 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.1 - Drop game image uniques and rename constraints"
+2025-12-05T18:58:15.273+08:00  INFO 49592 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.2 - Create game requests table"
+2025-12-05T18:58:15.279+08:00  INFO 49592 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.1 - Recreate game image fks without unique indexes"
+2025-12-05T18:58:15.285+08:00  INFO 49592 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.1 - Fix game images uniqueness"
+2025-12-05T18:58:15.290+08:00  INFO 49592 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.2 - Cleanup unreferenced images"
+2025-12-05T18:58:15.299+08:00  INFO 49592 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.1 - Remove obsolete library games table"
+2025-12-05T18:58:15.304+08:00  INFO 49592 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.2 - Disable length limit for config values"
+2025-12-05T18:58:15.309+08:00  INFO 49592 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.3 - Multi platform support"
+2025-12-05T18:58:15.316+08:00  INFO 49592 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.4 - Refactor unmatched paths to ignored paths"
+2025-12-05T18:58:15.321+08:00  INFO 49592 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.3.0.1 - Create proxy config table"
+2025-12-05T18:58:15.330+08:00  INFO 49592 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Successfully applied 11 migrations to schema "PUBLIC", now at version v2.3.0.1 (execution time 00:00.083s)
+2025-12-05T18:58:21.168+08:00  INFO 49592 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 8.347 seconds (process running for 8.751)
+2025-12-05T18:58:21.267 INFO  org.gameyfin.app.core.SetupDataLoader    : Looks like this is the first time you're starting Gameyfin.
+2025-12-05T18:58:21.270 INFO  org.gameyfin.app.core.SetupDataLoader    : Visit http://DESKTOP-T6M7IA5:8080/setup to complete the setup
+2025-12-05T18:58:21.270 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-05T18:58:21.289 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.direct verified, starting
+2025-12-05T18:58:21.290 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-05T18:58:21.297 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.download.direct@1.0.1'
+2025-12-05T18:58:21.334 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb verified, starting
+2025-12-05T18:58:21.336 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb has invalid configuration
+2025-12-05T18:58:21.398 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.torrent verified, starting
+2025-12-05T18:58:21.403 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.download.torrent@2.0.0'
+2025-12-05T18:58:21.416 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb verified, starting
+2025-12-05T18:58:21.419 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb has invalid configuration
+2025-12-05T18:58:21.425 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steam verified, starting
+2025-12-05T18:58:21.433 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.metadata.steam@1.2.0'
+2025-12-05T18:58:21.445 ERROR o.g.a.c.p.m.GameyfinPluginManager        : Failed to load plugin 'plugins\bangumi-1.0.0.jar': Plugin-Name not found in manifest
+2025-12-05T18:58:21.446 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb changed state to RESOLVED
+2025-12-05T18:58:21.447 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb changed state to RESOLVED
+2025-12-05T18:58:21.449 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb has invalid configuration
+2025-12-05T18:58:21.450 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb has invalid configuration
+2025-12-05T18:58:21.450 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: [org.gameyfin.plugins.metadata.igdb, org.gameyfin.plugins.metadata.steam, org.gameyfin.plugins.download.torrent, org.gameyfin.plugins.metadata.steamgriddb, org.gameyfin.plugins.download.direct]
+2025-12-05T19:05:47.582+08:00  INFO 41756 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 41756 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-05T19:05:47.584+08:00  INFO 41756 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-05T19:05:49.640+08:00  INFO 41756 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.012s)
+2025-12-05T19:05:49.662+08:00  INFO 41756 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": << Empty Schema >>
+2025-12-05T19:05:49.671+08:00  INFO 41756 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.0.0 - Initial schema creation"
+2025-12-05T19:05:49.720+08:00  INFO 41756 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.1 - Drop game image uniques and rename constraints"
+2025-12-05T19:05:49.740+08:00  INFO 41756 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.2 - Create game requests table"
+2025-12-05T19:05:49.745+08:00  INFO 41756 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.1 - Recreate game image fks without unique indexes"
+2025-12-05T19:05:49.751+08:00  INFO 41756 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.1 - Fix game images uniqueness"
+2025-12-05T19:05:49.754+08:00  INFO 41756 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.2 - Cleanup unreferenced images"
+2025-12-05T19:05:49.759+08:00  INFO 41756 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.1 - Remove obsolete library games table"
+2025-12-05T19:05:49.766+08:00  INFO 41756 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.2 - Disable length limit for config values"
+2025-12-05T19:05:49.772+08:00  INFO 41756 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.3 - Multi platform support"
+2025-12-05T19:05:49.777+08:00  INFO 41756 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.4 - Refactor unmatched paths to ignored paths"
+2025-12-05T19:05:49.782+08:00  INFO 41756 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.3.0.1 - Create proxy config table"
+2025-12-05T19:05:49.791+08:00  INFO 41756 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Successfully applied 11 migrations to schema "PUBLIC", now at version v2.3.0.1 (execution time 00:00.078s)
+2025-12-05T19:05:55.283+08:00  INFO 41756 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 8.096 seconds (process running for 8.473)
+2025-12-05T19:05:55.430 INFO  org.gameyfin.app.core.SetupDataLoader    : Looks like this is the first time you're starting Gameyfin.
+2025-12-05T19:05:55.433 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.direct verified, starting
+2025-12-05T19:05:55.434 INFO  org.gameyfin.app.core.SetupDataLoader    : Visit http://DESKTOP-T6M7IA5:8080/setup to complete the setup
+2025-12-05T19:05:55.434 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-05T19:05:55.437 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.download.direct@1.0.1'
+2025-12-05T19:05:55.444 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-05T19:05:55.468 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb verified, starting
+2025-12-05T19:05:55.470 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb has invalid configuration
+2025-12-05T19:05:55.501 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.torrent verified, starting
+2025-12-05T19:05:55.504 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.download.torrent@2.0.0'
+2025-12-05T19:05:55.509 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb verified, starting
+2025-12-05T19:05:55.511 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb has invalid configuration
+2025-12-05T19:05:55.515 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steam verified, starting
+2025-12-05T19:05:55.524 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.metadata.steam@1.2.0'
+2025-12-05T19:05:55.538 ERROR o.g.a.c.p.m.GameyfinPluginManager        : Failed to load plugin 'plugins\bangumi-1.0.0.jar': Plugin-Name not found in manifest
+2025-12-05T19:05:55.539 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb changed state to RESOLVED
+2025-12-05T19:05:55.539 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb changed state to RESOLVED
+2025-12-05T19:05:55.541 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb has invalid configuration
+2025-12-05T19:05:55.542 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb has invalid configuration
+2025-12-05T19:05:55.542 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: [org.gameyfin.plugins.metadata.igdb, org.gameyfin.plugins.metadata.steam, org.gameyfin.plugins.download.torrent, org.gameyfin.plugins.metadata.steamgriddb, org.gameyfin.plugins.download.direct]
+2025-12-05T19:13:59.343+08:00  INFO 50776 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 50776 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-05T19:13:59.345+08:00  INFO 50776 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-05T19:14:01.894+08:00  INFO 50776 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.011s)
+2025-12-05T19:14:01.935+08:00  INFO 50776 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": << Empty Schema >>
+2025-12-05T19:14:01.945+08:00  INFO 50776 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.0.0 - Initial schema creation"
+2025-12-05T19:14:02.005+08:00  INFO 50776 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.1 - Drop game image uniques and rename constraints"
+2025-12-05T19:14:02.032+08:00  INFO 50776 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.2 - Create game requests table"
+2025-12-05T19:14:02.039+08:00  INFO 50776 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.1 - Recreate game image fks without unique indexes"
+2025-12-05T19:14:02.045+08:00  INFO 50776 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.1 - Fix game images uniqueness"
+2025-12-05T19:14:02.049+08:00  INFO 50776 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.2 - Cleanup unreferenced images"
+2025-12-05T19:14:02.059+08:00  INFO 50776 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.1 - Remove obsolete library games table"
+2025-12-05T19:14:02.063+08:00  INFO 50776 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.2 - Disable length limit for config values"
+2025-12-05T19:14:02.069+08:00  INFO 50776 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.3 - Multi platform support"
+2025-12-05T19:14:02.074+08:00  INFO 50776 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.4 - Refactor unmatched paths to ignored paths"
+2025-12-05T19:14:02.079+08:00  INFO 50776 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.3.0.1 - Create proxy config table"
+2025-12-05T19:14:02.086+08:00  INFO 50776 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Successfully applied 11 migrations to schema "PUBLIC", now at version v2.3.0.1 (execution time 00:00.097s)
+2025-12-05T19:14:08.430+08:00  INFO 50776 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 9.583 seconds (process running for 9.99)
+2025-12-05T19:14:08.586 INFO  org.gameyfin.app.core.SetupDataLoader    : Looks like this is the first time you're starting Gameyfin.
+2025-12-05T19:14:08.589 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.direct verified, starting
+2025-12-05T19:14:08.590 INFO  org.gameyfin.app.core.SetupDataLoader    : Visit http://DESKTOP-T6M7IA5:8080/setup to complete the setup
+2025-12-05T19:14:08.590 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-05T19:14:08.594 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.download.direct@1.0.1'
+2025-12-05T19:14:08.614 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-05T19:14:08.639 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb verified, starting
+2025-12-05T19:14:08.643 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb has invalid configuration
+2025-12-05T19:14:08.734 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.torrent verified, starting
+2025-12-05T19:14:08.740 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.download.torrent@2.0.0'
+2025-12-05T19:14:08.745 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb verified, starting
+2025-12-05T19:14:08.747 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb has invalid configuration
+2025-12-05T19:14:08.752 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steam verified, starting
+2025-12-05T19:14:08.760 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.metadata.steam@1.2.0'
+2025-12-05T19:14:08.763 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.bangumi verified, starting
+2025-12-05T19:14:08.764 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.bangumi has invalid configuration
+2025-12-05T19:14:08.768 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb changed state to RESOLVED
+2025-12-05T19:14:08.769 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb changed state to RESOLVED
+2025-12-05T19:14:08.769 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.bangumi changed state to RESOLVED
+2025-12-05T19:14:08.770 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb has invalid configuration
+2025-12-05T19:14:08.771 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb has invalid configuration
+2025-12-05T19:14:08.771 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.bangumi has invalid configuration
+2025-12-05T19:14:08.771 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: [org.gameyfin.plugins.metadata.igdb, org.gameyfin.plugins.metadata.steam, org.gameyfin.plugins.download.torrent, org.gameyfin.plugins.metadata.steamgriddb, org.gameyfin.plugins.download.direct, org.gameyfin.plugins.metadata.bangumi]
+2025-12-05T19:15:33.200 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\2'
+2025-12-05T19:15:33.200 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆'
+2025-12-05T19:15:33.200 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\赛博朋克'

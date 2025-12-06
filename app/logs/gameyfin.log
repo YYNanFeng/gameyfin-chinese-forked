@@ -1,254 +1,371 @@
-2025-12-04T19:20:01.496 ERROR o.g.app.core.security.AppKeyValidator    : APP_KEY environment variable is not set or empty
-2025-12-04T19:28:24.198 ERROR o.s.boot.SpringApplication               : Application run failed
-java.lang.IllegalArgumentException: Illegal base64 character 2d
-	at java.base/java.util.Base64$Decoder.decode0(Base64.java:852)
-	at java.base/java.util.Base64$Decoder.decode(Base64.java:570)
-	at java.base/java.util.Base64$Decoder.decode(Base64.java:593)
-	at org.gameyfin.app.core.security.AppKeyValidator.hasValidAppKey(AppKeyValidator.kt:26)
-	at org.gameyfin.app.core.security.AppKeyValidator.run(AppKeyValidator.kt:17)
-	at org.springframework.boot.SpringApplication.lambda$callRunner$5(SpringApplication.java:788)
-	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82)
-	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60)
-	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86)
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:796)
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:787)
-	at org.springframework.boot.SpringApplication.lambda$callRunners$3(SpringApplication.java:772)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
-	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:571)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
-	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
-	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:636)
-	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:772)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
-	at org.gameyfin.app.GameyfinApplicationKt.main(GameyfinApplication.kt:17)
+2025-12-06T12:46:26.798+08:00  INFO 13364 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 13364 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-06T12:46:26.800+08:00  INFO 13364 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-06T12:46:28.987+08:00  INFO 13364 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.092s)
+2025-12-06T12:46:29.009+08:00  INFO 13364 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": << Empty Schema >>
+2025-12-06T12:46:29.017+08:00  INFO 13364 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.0.0 - Initial schema creation"
+2025-12-06T12:46:29.061+08:00  INFO 13364 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.1 - Drop game image uniques and rename constraints"
+2025-12-06T12:46:29.079+08:00  INFO 13364 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.2 - Create game requests table"
+2025-12-06T12:46:29.084+08:00  INFO 13364 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.1 - Recreate game image fks without unique indexes"
+2025-12-06T12:46:29.089+08:00  INFO 13364 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.1 - Fix game images uniqueness"
+2025-12-06T12:46:29.092+08:00  INFO 13364 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.2 - Cleanup unreferenced images"
+2025-12-06T12:46:29.098+08:00  INFO 13364 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.1 - Remove obsolete library games table"
+2025-12-06T12:46:29.104+08:00  INFO 13364 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.2 - Disable length limit for config values"
+2025-12-06T12:46:29.109+08:00  INFO 13364 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.3 - Multi platform support"
+2025-12-06T12:46:29.117+08:00  INFO 13364 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.4 - Refactor unmatched paths to ignored paths"
+2025-12-06T12:46:29.122+08:00  INFO 13364 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.3.0.1 - Create proxy config table"
+2025-12-06T12:46:29.134+08:00  INFO 13364 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Successfully applied 11 migrations to schema "PUBLIC", now at version v2.3.0.1 (execution time 00:00.072s)
+2025-12-06T12:46:35.230+08:00  INFO 13364 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 8.847 seconds (process running for 9.241)
+2025-12-06T12:46:35.374 INFO  org.gameyfin.app.core.SetupDataLoader    : Looks like this is the first time you're starting Gameyfin.
+2025-12-06T12:46:35.377 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.direct verified, starting
+2025-12-06T12:46:35.378 INFO  org.gameyfin.app.core.SetupDataLoader    : Visit http://DESKTOP-T6M7IA5:8080/setup to complete the setup
+2025-12-06T12:46:35.379 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-06T12:46:35.382 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.download.direct@1.0.1'
+2025-12-06T12:46:35.390 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-06T12:46:35.428 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb verified, starting
+2025-12-06T12:46:35.430 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb has invalid configuration
+2025-12-06T12:46:35.472 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.torrent verified, starting
+2025-12-06T12:46:35.476 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.download.torrent@2.0.0'
+2025-12-06T12:46:35.490 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb verified, starting
+2025-12-06T12:46:35.493 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb has invalid configuration
+2025-12-06T12:46:35.509 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steam verified, starting
+2025-12-06T12:46:35.525 WARN  org.pf4j.AbstractPluginManager           : Cannot start an unresolved plugin 'org.gameyfin.plugins.metadata.steam@1.2.0'
+2025-12-06T12:46:35.542 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.bangumi verified, starting
+2025-12-06T12:46:35.544 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.bangumi has invalid configuration
+2025-12-06T12:46:35.548 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb changed state to RESOLVED
+2025-12-06T12:46:35.548 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb changed state to RESOLVED
+2025-12-06T12:46:35.548 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.bangumi changed state to RESOLVED
+2025-12-06T12:46:35.550 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb has invalid configuration
+2025-12-06T12:46:35.550 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb has invalid configuration
+2025-12-06T12:46:35.551 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.bangumi has invalid configuration
+2025-12-06T12:46:35.551 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: [org.gameyfin.plugins.metadata.igdb, org.gameyfin.plugins.metadata.steam, org.gameyfin.plugins.download.torrent, org.gameyfin.plugins.metadata.steamgriddb, org.gameyfin.plugins.download.direct, org.gameyfin.plugins.metadata.bangumi]
+2025-12-06T12:48:22.190+08:00  INFO 26344 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 26344 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-06T12:48:22.191+08:00  INFO 26344 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-06T12:48:24.148+08:00  INFO 26344 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.015s)
+2025-12-06T12:48:24.153+08:00  INFO 26344 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 2.3.0.1
+2025-12-06T12:48:24.155+08:00  INFO 26344 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
+2025-12-06T12:48:29.382+08:00  INFO 26344 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 7.582 seconds (process running for 7.963)
+2025-12-06T12:48:29.571 INFO  org.gameyfin.app.core.SetupDataLoader    : Looks like this is the first time you're starting Gameyfin.
+2025-12-06T12:48:29.574 INFO  org.gameyfin.app.core.SetupDataLoader    : Visit http://DESKTOP-T6M7IA5:8080/setup to complete the setup
+2025-12-06T12:48:29.574 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-06T12:48:29.587 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-06T12:48:29.645 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb changed state to RESOLVED
+2025-12-06T12:48:29.646 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steam changed state to RESOLVED
+2025-12-06T12:48:29.646 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.torrent changed state to RESOLVED
+2025-12-06T12:48:29.646 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb changed state to RESOLVED
+2025-12-06T12:48:29.646 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.direct changed state to RESOLVED
+2025-12-06T12:48:29.647 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.bangumi changed state to RESOLVED
+2025-12-06T12:48:29.649 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb has invalid configuration
+2025-12-06T12:48:29.650 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steam changed state to STARTED
+2025-12-06T12:48:29.675 INFO  o.g.p.download.torrent.TorrentTracker    : Tracker started on port 6969
+2025-12-06T12:48:29.777 INFO  o.g.p.download.torrent.TorrentClient     : Configured TorrentClient with performance mode: Balanced
+2025-12-06T12:48:29.779 INFO  o.g.p.download.torrent.TorrentClient     : No external host override set; using default announce IP behavior
+2025-12-06T12:48:29.780 INFO  o.g.p.download.torrent.TorrentClient     : Configured disk I/O for Windows (default disk I/O)
+2025-12-06T12:48:29.791 INFO  o.g.p.download.torrent.TorrentClient     : BitTorrent client started. Listen interfaces: 0.0.0.0:6881,[::]:6881
+2025-12-06T12:48:29.791 INFO  o.g.p.download.torrent.TorrentClient     : TorrentClient started
+2025-12-06T12:48:29.802 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.torrent changed state to STARTED
+2025-12-06T12:48:29.803 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb has invalid configuration
+2025-12-06T12:48:29.804 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.direct changed state to STARTED
+2025-12-06T12:48:29.805 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.bangumi has invalid configuration
+2025-12-06T12:48:29.805 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: [org.gameyfin.plugins.metadata.igdb, org.gameyfin.plugins.metadata.steam, org.gameyfin.plugins.download.torrent, org.gameyfin.plugins.metadata.steamgriddb, org.gameyfin.plugins.download.direct, org.gameyfin.plugins.metadata.bangumi]
+2025-12-06T12:50:08.553+08:00  INFO 48648 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 48648 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-06T12:50:08.554+08:00  INFO 48648 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-06T12:50:11.244+08:00  INFO 48648 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.018s)
+2025-12-06T12:50:11.251+08:00  INFO 48648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 2.3.0.1
+2025-12-06T12:50:11.253+08:00  INFO 48648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
+2025-12-06T12:50:17.548+08:00  INFO 48648 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 9.556 seconds (process running for 9.955)
+2025-12-06T12:50:17.640 INFO  org.gameyfin.app.core.SetupDataLoader    : Looks like this is the first time you're starting Gameyfin.
+2025-12-06T12:50:17.643 INFO  org.gameyfin.app.core.SetupDataLoader    : Visit http://DESKTOP-T6M7IA5:8080/setup to complete the setup
+2025-12-06T12:50:17.643 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-06T12:50:17.659 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-06T12:50:17.738 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb changed state to RESOLVED
+2025-12-06T12:50:17.738 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steam changed state to RESOLVED
+2025-12-06T12:50:17.739 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.torrent changed state to RESOLVED
+2025-12-06T12:50:17.739 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb changed state to RESOLVED
+2025-12-06T12:50:17.739 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.direct changed state to RESOLVED
+2025-12-06T12:50:17.739 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.bangumi changed state to RESOLVED
+2025-12-06T12:50:17.743 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb has invalid configuration
+2025-12-06T12:50:17.744 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steam changed state to STARTED
+2025-12-06T12:50:17.758 INFO  o.g.p.download.torrent.TorrentTracker    : Tracker started on port 6969
+2025-12-06T12:50:17.862 INFO  o.g.p.download.torrent.TorrentClient     : Configured TorrentClient with performance mode: Balanced
+2025-12-06T12:50:17.863 INFO  o.g.p.download.torrent.TorrentClient     : No external host override set; using default announce IP behavior
+2025-12-06T12:50:17.864 INFO  o.g.p.download.torrent.TorrentClient     : Configured disk I/O for Windows (default disk I/O)
+2025-12-06T12:50:17.875 INFO  o.g.p.download.torrent.TorrentClient     : BitTorrent client started. Listen interfaces: 0.0.0.0:6881,[::]:6881
+2025-12-06T12:50:17.875 INFO  o.g.p.download.torrent.TorrentClient     : TorrentClient started
+2025-12-06T12:50:17.899 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.torrent changed state to STARTED
+2025-12-06T12:50:17.901 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb has invalid configuration
+2025-12-06T12:50:17.901 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.direct changed state to STARTED
+2025-12-06T12:50:17.902 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.bangumi has invalid configuration
+2025-12-06T12:50:17.903 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: [org.gameyfin.plugins.metadata.igdb, org.gameyfin.plugins.metadata.steam, org.gameyfin.plugins.download.torrent, org.gameyfin.plugins.metadata.steamgriddb, org.gameyfin.plugins.download.direct, org.gameyfin.plugins.metadata.bangumi]
+2025-12-06T12:51:06.408+08:00  INFO 27764 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 27764 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
+2025-12-06T12:51:06.409+08:00  INFO 27764 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2025-12-06T12:51:08.391+08:00  INFO 27764 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.014s)
+2025-12-06T12:51:08.396+08:00  INFO 27764 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 2.3.0.1
+2025-12-06T12:51:08.397+08:00  INFO 27764 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
+2025-12-06T12:51:13.813+08:00  INFO 27764 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 7.781 seconds (process running for 8.153)
+2025-12-06T12:51:13.976 INFO  org.gameyfin.app.core.SetupDataLoader    : Looks like this is the first time you're starting Gameyfin.
+2025-12-06T12:51:13.979 INFO  org.gameyfin.app.core.SetupDataLoader    : Visit http://DESKTOP-T6M7IA5:8080/setup to complete the setup
+2025-12-06T12:51:13.980 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
+2025-12-06T12:51:14.002 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
+2025-12-06T12:51:14.076 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb changed state to RESOLVED
+2025-12-06T12:51:14.076 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steam changed state to RESOLVED
+2025-12-06T12:51:14.077 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.torrent changed state to RESOLVED
+2025-12-06T12:51:14.077 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb changed state to RESOLVED
+2025-12-06T12:51:14.077 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.direct changed state to RESOLVED
+2025-12-06T12:51:14.077 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.bangumi changed state to RESOLVED
+2025-12-06T12:51:14.079 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.igdb has invalid configuration
+2025-12-06T12:51:14.080 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steam changed state to STARTED
+2025-12-06T12:51:14.092 INFO  o.g.p.download.torrent.TorrentTracker    : Tracker started on port 6969
+2025-12-06T12:51:14.183 INFO  o.g.p.download.torrent.TorrentClient     : Configured TorrentClient with performance mode: Balanced
+2025-12-06T12:51:14.185 INFO  o.g.p.download.torrent.TorrentClient     : No external host override set; using default announce IP behavior
+2025-12-06T12:51:14.186 INFO  o.g.p.download.torrent.TorrentClient     : Configured disk I/O for Windows (default disk I/O)
+2025-12-06T12:51:14.196 INFO  o.g.p.download.torrent.TorrentClient     : BitTorrent client started. Listen interfaces: 0.0.0.0:6881,[::]:6881
+2025-12-06T12:51:14.196 INFO  o.g.p.download.torrent.TorrentClient     : TorrentClient started
+2025-12-06T12:51:14.220 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.torrent changed state to STARTED
+2025-12-06T12:51:14.222 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.steamgriddb has invalid configuration
+2025-12-06T12:51:14.222 INFO  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.download.direct changed state to STARTED
+2025-12-06T12:51:14.223 WARN  o.g.a.c.p.m.GameyfinPluginManager        : Plugin org.gameyfin.plugins.metadata.bangumi has invalid configuration
+2025-12-06T12:51:14.223 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: [org.gameyfin.plugins.metadata.igdb, org.gameyfin.plugins.metadata.steam, org.gameyfin.plugins.download.torrent, org.gameyfin.plugins.metadata.steamgriddb, org.gameyfin.plugins.download.direct, org.gameyfin.plugins.metadata.bangumi]
+2025-12-06T12:53:42.239 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\赛博朋克'
+2025-12-06T12:53:44.078 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆'
+2025-12-06T12:56:54.778 WARN  .p.m.s.SteamPlugin$SteamMetadataProvider : Failed to fetch details for app 1091500: Connect timeout has expired [url=https://store.steampowered.com/api/appdetails?appids=1091500&cc=en&l=en, connect_timeout=unknown ms]
+2025-12-06T12:56:54.778 ERROR org.gameyfin.app.games.GameService       : No results found for originalIds: {org.gameyfin.plugins.metadata.steam.SteamPlugin$SteamMetadataProvider=org.gameyfin.plugins.metadata.steam:1091500}
+2025-12-06T12:57:04.423 WARN  .p.m.s.SteamPlugin$SteamMetadataProvider : Failed to fetch details for app 1091500: Request timeout has expired [url=https://store.steampowered.com/api/appdetails?appids=1091500&cc=en&l=en, request_timeout=unknown ms]
+2025-12-06T12:57:04.423 ERROR org.gameyfin.app.games.GameService       : No results found for originalIds: {org.gameyfin.plugins.metadata.steam.SteamPlugin$SteamMetadataProvider=org.gameyfin.plugins.metadata.steam:1091500}
+2025-12-06T12:57:12.996 WARN  o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 23505, SQLState: 23505
+2025-12-06T12:57:12.997 ERROR o.h.engine.jdbc.spi.SqlExceptionHelper   : Unique index or primary key violation: "PUBLIC.UK4WXN9FPXFQ8QXPSB7FY0O3NOA_INDEX_2 ON PUBLIC.GAME(PATH NULLS FIRST) VALUES ( /* 2 */ U&'E:\\\\Project\\\\game store sever\\\\release\\\\server\\\\data\\\\resources\\\\\\8d5b\\535a\\670b\\514b' )"; SQL statement:
+insert into game (comment,cover_image_id,created_at,critic_rating,header_image_id,library_id,download_count,file_size,match_confirmed,path,release,summary,title,updated_at,user_rating,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) [23505-232]
+2025-12-06T12:57:13.001 ERROR com.vaadin.hilla.EndpointInvoker         : Endpoint 'GameEndpoint' method 'matchManually' execution failure
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:119)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at com.vaadin.hilla.EndpointInvoker.invokeVaadinEndpointMethod(EndpointInvoker.java:465)
+	at com.vaadin.hilla.EndpointInvoker.invoke(EndpointInvoker.java:181)
+	at com.vaadin.hilla.EndpointController.doServeEndpoint(EndpointController.java:311)
+	at com.vaadin.hilla.EndpointController.serveEndpoint(EndpointController.java:191)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-2025-12-04T19:31:01.556 WARN  org.pf4j.AbstractPluginManager           : No 'plugins' root
-2025-12-04T19:31:01.558 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: []
-2025-12-04T19:31:01.601 INFO  org.gameyfin.app.core.SetupDataLoader    : Looks like this is the first time you're starting Gameyfin.
-2025-12-04T19:31:01.603 INFO  org.gameyfin.app.core.SetupDataLoader    : Visit http://DESKTOP-T6M7IA5:8080/setup to complete the setup
-2025-12-04T19:31:01.603 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
-2025-12-04T19:31:01.617 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
-2025-12-04T19:38:16.695 WARN  org.pf4j.AbstractPluginManager           : No 'plugins' root
-2025-12-04T19:38:16.698 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: []
-2025-12-04T19:38:16.745 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
-2025-12-04T19:38:16.760 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
-2025-12-04T19:38:47.091 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/components/administration/ProxySettings.tsx from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
-2025-12-04T19:38:47.091 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/views/PasswordResetView.tsx from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
-2025-12-04T19:38:47.091 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/views/EmailConfirmationView.tsx from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
-2025-12-04T19:38:47.091 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/components/administration/LogManagement.tsx from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
-2025-12-04T19:38:47.092 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/views/InvitationRegistrationView.tsx from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
-2025-12-04T19:38:47.094 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/views/GameView.tsx from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
-2025-12-04T19:38:47.094 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/views/SearchView.tsx from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
-2025-12-04T19:38:47.094 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/@fs/E:/Project/gameyfin/app/node_modules/.vite/deps/@vaadin_hilla-file-router_runtime__js.js from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
-2025-12-04T19:38:47.095 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/@fs/E:/Project/gameyfin/app/node_modules/.vite/deps/formik.js from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
-2025-12-04T19:38:47.097 ERROR c.vaadin.flow.server.StaticFileServer    : Unable to load /VAADIN/@fs/E:/Project/gameyfin/app/node_modules/.vite/deps/@heroui_react.js from the frontend dev server: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
-2025-12-04T20:46:44.412+08:00 ERROR %PARSER_ERROR[pid] --- [  restartedMain] o.s.boot.SpringApplication               : Application run failed
-java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@5cdffb88 - There is no conversion supplier registered for conversion word [pid]
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@5cdffb88 - [pid] is not a valid conversion word
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@5c35dd0b - There is no conversion supplier registered for conversion word [pid]
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@5c35dd0b - [pid] is not a valid conversion word
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:347)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:138)
-	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136)
-	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:81)
-	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:64)
-	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
-	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118)
-	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112)
-	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:63)
-	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:353)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:313)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
-	at org.gameyfin.app.GameyfinApplicationKt.main(GameyfinApplication.kt:17)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.gameyfin.app.setup.SetupFilter.doFilter(SetupFilter.kt:27)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:490)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:351)
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:83)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:129)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:151)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:129)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:235)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:229)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:134)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:334)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:225)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:466)
+Caused by: org.springframework.dao.DataIntegrityViolationException: could not execute statement [Unique index or primary key violation: "PUBLIC.UK4WXN9FPXFQ8QXPSB7FY0O3NOA_INDEX_2 ON PUBLIC.GAME(PATH NULLS FIRST) VALUES ( /* 2 */ U&'E:\\\\Project\\\\game store sever\\\\release\\\\server\\\\data\\\\resources\\\\\\8d5b\\535a\\670b\\514b' )"; SQL statement:
+insert into game (comment,cover_image_id,created_at,critic_rating,header_image_id,library_id,download_count,file_size,match_confirmed,path,release,summary,title,updated_at,user_rating,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) [23505-232]] [insert into game (comment,cover_image_id,created_at,critic_rating,header_image_id,library_id,download_count,file_size,match_confirmed,path,release,summary,title,updated_at,user_rating,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)]; SQL [insert into game (comment,cover_image_id,created_at,critic_rating,header_image_id,library_id,download_count,file_size,match_confirmed,path,release,summary,title,updated_at,user_rating,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)]; constraint [PUBLIC.UK4WXN9FPXFQ8QXPSB7FY0O3NOA_INDEX_2]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:294)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:256)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:567)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:795)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:758)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:698)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:416)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:165)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.util.NullnessMethodInvocationValidator.invoke(NullnessMethodInvocationValidator.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
+	at jdk.proxy3/jdk.proxy3.$Proxy210.save(Unknown Source)
+	at org.gameyfin.app.games.GameService.create(GameService.kt:130)
+	at org.gameyfin.app.games.GameService.matchManually(GameService.kt:633)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@5cdffb88 - There is no conversion supplier registered for conversion word [pid]
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@5cdffb88 - [pid] is not a valid conversion word
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@5c35dd0b - There is no conversion supplier registered for conversion word [pid]
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@5c35dd0b - [pid] is not a valid conversion word
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:289)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:267)
-	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:81)
-	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:61)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:195)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:332)
-	... 22 common frames omitted
-2025-12-04T20:47:00.052+08:00 ERROR %PARSER_ERROR[pid] --- [  restartedMain] o.s.boot.SpringApplication               : Application run failed
-java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@5cdffb88 - There is no conversion supplier registered for conversion word [pid]
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@5cdffb88 - [pid] is not a valid conversion word
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@5c35dd0b - There is no conversion supplier registered for conversion word [pid]
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@5c35dd0b - [pid] is not a valid conversion word
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:347)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:138)
-	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136)
-	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:81)
-	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:64)
-	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
-	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118)
-	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112)
-	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:63)
-	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:353)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:313)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
-	at org.gameyfin.app.GameyfinApplicationKt.main(GameyfinApplication.kt:17)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:724)
+	at org.gameyfin.app.games.GameService$$SpringCGLIB$$0.matchManually(<generated>)
+	at org.gameyfin.app.games.GameService.matchManually$default(GameService.kt:580)
+	at org.gameyfin.app.games.GameEndpoint.matchManually(GameEndpoint.kt:56)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@5cdffb88 - There is no conversion supplier registered for conversion word [pid]
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@5cdffb88 - [pid] is not a valid conversion word
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@5c35dd0b - There is no conversion supplier registered for conversion word [pid]
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@5c35dd0b - [pid] is not a valid conversion word
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:289)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:267)
-	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:81)
-	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:61)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:195)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:332)
-	... 22 common frames omitted
-2025-12-04T20:47:45.388+08:00 ERROR %PARSER_ERROR[pid] --- [  restartedMain] o.s.boot.SpringApplication               : Application run failed
-java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@e78aeae - There is no conversion supplier registered for conversion word [pid]
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@e78aeae - [pid] is not a valid conversion word
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@2da10c76 - There is no conversion supplier registered for conversion word [pid]
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@2da10c76 - [pid] is not a valid conversion word
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:347)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:138)
-	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136)
-	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:81)
-	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:64)
-	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
-	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118)
-	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112)
-	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:63)
-	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:353)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:313)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
-	at org.gameyfin.app.GameyfinApplicationKt.main(GameyfinApplication.kt:17)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@e78aeae - There is no conversion supplier registered for conversion word [pid]
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@e78aeae - [pid] is not a valid conversion word
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@2da10c76 - There is no conversion supplier registered for conversion word [pid]
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@2da10c76 - [pid] is not a valid conversion word
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:289)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:267)
-	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:81)
-	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:61)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:195)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:332)
-	... 22 common frames omitted
-2025-12-04T20:48:18.223+08:00 ERROR %PARSER_ERROR[pid] --- [  restartedMain] o.s.boot.SpringApplication               : Application run failed
-java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@e78aeae - There is no conversion supplier registered for conversion word [pid]
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@e78aeae - [pid] is not a valid conversion word
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@2da10c76 - There is no conversion supplier registered for conversion word [pid]
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@2da10c76 - [pid] is not a valid conversion word
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:347)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:138)
-	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136)
-	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:81)
-	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:64)
-	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
-	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118)
-	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112)
-	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:63)
-	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:353)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:313)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
-	at org.gameyfin.app.GameyfinApplicationKt.main(GameyfinApplication.kt:17)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@e78aeae - There is no conversion supplier registered for conversion word [pid]
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@e78aeae - [pid] is not a valid conversion word
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@2da10c76 - There is no conversion supplier registered for conversion word [pid]
-ERROR in ch.qos.logback.core.pattern.parser.Compiler@2da10c76 - [pid] is not a valid conversion word
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:289)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:267)
-	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:81)
-	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:61)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:195)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:332)
-	... 22 common frames omitted
-2025-12-04T20:49:10.277+08:00  INFO 27524 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 27524 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
-2025-12-04T20:49:10.279+08:00  INFO 27524 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
-2025-12-04T20:49:12.132+08:00  INFO 27524 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.013s)
-2025-12-04T20:49:12.137+08:00  INFO 27524 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 2.3.0.1
-2025-12-04T20:49:12.138+08:00  INFO 27524 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
-2025-12-04T20:49:17.127+08:00  INFO 27524 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 7.194 seconds (process running for 7.52)
-2025-12-04T20:49:17.216 WARN  org.pf4j.AbstractPluginManager           : No 'plugins' root
-2025-12-04T20:49:17.219 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: []
-2025-12-04T20:49:17.274 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
-2025-12-04T20:49:17.297 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
-2025-12-04T20:54:08.056+08:00  INFO 60648 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Starting GameyfinApplicationKt using Java 24 with PID 60648 (E:\Project\gameyfin\app\build\classes\kotlin\main started by administered in E:\Project\gameyfin\app)
-2025-12-04T20:54:08.057+08:00  INFO 60648 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : No active profile set, falling back to 1 default profile: "default"
-2025-12-04T20:54:09.886+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.010s)
-2025-12-04T20:54:09.906+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": << Empty Schema >>
-2025-12-04T20:54:09.914+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.0.0 - Initial schema creation"
-2025-12-04T20:54:09.955+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.1 - Drop game image uniques and rename constraints"
-2025-12-04T20:54:09.972+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.0.2 - Create game requests table"
-2025-12-04T20:54:09.977+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.1 - Recreate game image fks without unique indexes"
-2025-12-04T20:54:09.985+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.1 - Fix game images uniqueness"
-2025-12-04T20:54:09.988+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.1.2.2 - Cleanup unreferenced images"
-2025-12-04T20:54:09.994+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.1 - Remove obsolete library games table"
-2025-12-04T20:54:09.999+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.2 - Disable length limit for config values"
-2025-12-04T20:54:10.004+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.3 - Multi platform support"
-2025-12-04T20:54:10.010+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.2.0.4 - Refactor unmatched paths to ignored paths"
-2025-12-04T20:54:10.015+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2.3.0.1 - Create proxy config table"
-2025-12-04T20:54:10.025+08:00  INFO 60648 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Successfully applied 11 migrations to schema "PUBLIC", now at version v2.3.0.1 (execution time 00:00.068s)
-2025-12-04T20:54:15.124+08:00  INFO 60648 --- [  restartedMain] org.gameyfin.app.GameyfinApplicationKt   : Started GameyfinApplicationKt in 7.437 seconds (process running for 7.776)
-2025-12-04T20:54:15.313 INFO  org.gameyfin.app.core.SetupDataLoader    : Looks like this is the first time you're starting Gameyfin.
-2025-12-04T20:54:15.312 WARN  org.pf4j.AbstractPluginManager           : No 'plugins' root
-2025-12-04T20:54:15.316 INFO  o.g.a.c.p.m.PluginManagerConfig          : Loaded plugins: []
-2025-12-04T20:54:15.316 INFO  org.gameyfin.app.core.SetupDataLoader    : Visit http://DESKTOP-T6M7IA5:8080/setup to complete the setup
-2025-12-04T20:54:15.316 INFO  o.g.app.platforms.PlatformService        : Initializing platform caches at startup
-2025-12-04T20:54:15.335 INFO  o.gameyfin.app.proxy.ProxyInitializer    : No proxy configuration found or proxy is disabled
-2025-12-04T20:57:57.122 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\2'
-2025-12-04T20:57:57.122 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\赛博朋克'
-2025-12-04T20:57:57.122 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆'
-2025-12-04T20:58:10.349 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\2'
-2025-12-04T20:58:10.349 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\赛博朋克'
-2025-12-04T20:58:10.349 INFO  org.gameyfin.app.games.GameService       : Could not identify game at path 'E:\Project\game store sever\release\server\data\resources\家族计划1追忆'
+	... 151 common frames omitted
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement [Unique index or primary key violation: "PUBLIC.UK4WXN9FPXFQ8QXPSB7FY0O3NOA_INDEX_2 ON PUBLIC.GAME(PATH NULLS FIRST) VALUES ( /* 2 */ U&'E:\\\\Project\\\\game store sever\\\\release\\\\server\\\\data\\\\resources\\\\\\8d5b\\535a\\670b\\514b' )"; SQL statement:
+insert into game (comment,cover_image_id,created_at,critic_rating,header_image_id,library_id,download_count,file_size,match_confirmed,path,release,summary,title,updated_at,user_rating,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) [23505-232]] [insert into game (comment,cover_image_id,created_at,critic_rating,header_image_id,library_id,download_count,file_size,match_confirmed,path,release,summary,title,updated_at,user_rating,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)]
+	at org.hibernate.dialect.H2Dialect.lambda$buildSQLExceptionConversionDelegate$3(H2Dialect.java:759)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.performNonBatchedMutation(AbstractMutationExecutor.java:134)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:55)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:104)
+	at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:110)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:644)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:511)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:414)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:41)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.doFlush(SessionImpl.java:1429)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:491)
+	at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:2354)
+	at org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:1978)
+	at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:439)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:169)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:267)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:101)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:563)
+	... 175 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Unique index or primary key violation: "PUBLIC.UK4WXN9FPXFQ8QXPSB7FY0O3NOA_INDEX_2 ON PUBLIC.GAME(PATH NULLS FIRST) VALUES ( /* 2 */ U&'E:\\\\Project\\\\game store sever\\\\release\\\\server\\\\data\\\\resources\\\\\\8d5b\\535a\\670b\\514b' )"; SQL statement:
+insert into game (comment,cover_image_id,created_at,critic_rating,header_image_id,library_id,download_count,file_size,match_confirmed,path,release,summary,title,updated_at,user_rating,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) [23505-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:520)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.index.Index.getDuplicateKeyException(Index.java:523)
+	at org.h2.mvstore.db.MVSecondaryIndex.checkUnique(MVSecondaryIndex.java:223)
+	at org.h2.mvstore.db.MVSecondaryIndex.add(MVSecondaryIndex.java:184)
+	at org.h2.mvstore.db.MVTable.addRow(MVTable.java:517)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:174)
+	at org.h2.command.dml.Insert.update(Insert.java:135)
+	at org.h2.command.dml.DataChangeStatement.update(DataChangeStatement.java:74)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at org.h2.command.Command.executeUpdate(Command.java:304)
+	at org.h2.command.Command.executeUpdate(Command.java:248)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:213)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:172)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
+	... 196 common frames omitted

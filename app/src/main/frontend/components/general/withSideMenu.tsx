@@ -2,6 +2,7 @@ import {Outlet} from "react-router";
 import {Icon} from "@phosphor-icons/react";
 import {Listbox, ListboxItem} from "@heroui/react";
 import {ReactElement, useState} from "react";
+import {useTranslation} from "react-i18next";
 
 export type MenuItem = {
     title: string | (() => string),
@@ -11,6 +12,7 @@ export type MenuItem = {
 
 export default function withSideMenu(baseUrl: string, menuItems: MenuItem[]) {
     return function PageWithSideMenu() {
+        const {t} = useTranslation();
         const [selectedItem, setSelectedItem] = useState<string>(initialSelected)
 
         /**

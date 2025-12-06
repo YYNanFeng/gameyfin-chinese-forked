@@ -1,6 +1,7 @@
 import {Button, Card, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, useDisclosure} from "@heroui/react";
 import {DotsThreeVerticalIcon} from "@phosphor-icons/react";
 import React, {useEffect, useState} from "react";
+import {useTranslation} from "react-i18next";
 import {MessageEndpoint, PasswordResetEndpoint, UserEndpoint} from "Frontend/generated/endpoints";
 import {AvatarEndpoint} from "Frontend/endpoints/endpoints";
 import Avatar from "Frontend/components/general/Avatar";
@@ -12,6 +13,7 @@ import AssignRolesModal from "Frontend/components/general/modals/AssignRolesModa
 import ExtendedUserInfoDto from "Frontend/generated/org/gameyfin/app/users/dto/ExtendedUserInfoDto";
 
 export function UserManagementCard({user}: { user: ExtendedUserInfoDto }) {
+    const {t} = useTranslation();
     const userDeletionConfirmationModal = useDisclosure();
     const passwordResetTokenModal = useDisclosure();
     const roleAssignmentModal = useDisclosure();
@@ -58,7 +60,7 @@ export function UserManagementCard({user}: { user: ExtendedUserInfoDto }) {
                                 setUserEnabled(true);
                             })
                         },
-                        label: "Enable user"
+                        label: t('user.enableUser')
                     }
                 );
             } else {
@@ -70,7 +72,7 @@ export function UserManagementCard({user}: { user: ExtendedUserInfoDto }) {
                                 setUserEnabled(false);
                             })
                         },
-                        label: "Disable user"
+                        label: t('user.disableUser')
                     }
                 );
             }
@@ -79,17 +81,17 @@ export function UserManagementCard({user}: { user: ExtendedUserInfoDto }) {
                 {
                     key: "removeAvatar",
                     onPress: () => AvatarEndpoint.removeAvatarByName(user.username!),
-                    label: "Remove avatar"
+                    label: t('user.removeAvatar')
                 },
                 {
                     key: "assignRole",
                     onPress: roleAssignmentModal.onOpen,
-                    label: "Assign role"
+                    label: t('user.assignRole')
                 },
                 {
                     key: "resetPassword",
                     onPress: resetPassword,
-                    label: "Reset password"
+                    label: t('user.resetPassword')
                 }
             );
         }
@@ -97,7 +99,7 @@ export function UserManagementCard({user}: { user: ExtendedUserInfoDto }) {
         items.push({
                 key: "delete",
                 onPress: userDeletionConfirmationModal.onOpen,
-                label: "Delete user"
+                label: t('user.deleteUser')
             }
         );
 

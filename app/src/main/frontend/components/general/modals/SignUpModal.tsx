@@ -5,6 +5,7 @@ import UserRegistrationDto from "Frontend/generated/org/gameyfin/app/users/dto/U
 import {Form, Formik} from "formik";
 import * as Yup from "yup";
 import Input from "Frontend/components/general/input/Input";
+import {useTranslation} from "react-i18next";
 
 interface SignUpModalProps {
     isOpen: boolean;
@@ -15,6 +16,7 @@ export default function SignUpModal({
                                         isOpen,
                                         onOpenChange
                                     }: SignUpModalProps) {
+    const {t} = useTranslation();
 
     async function signUp(registration: UserRegistrationDto, onClose: () => void) {
         try {
@@ -27,14 +29,14 @@ export default function SignUpModal({
             onClose();
 
             addToast({
-                title: "Account created",
-                description: "You will receive an email with further instructions shortly.",
+                title: t('modals.signUp.accountCreated'),
+                description: t('modals.signUp.emailInstructions'),
                 color: "success"
             });
         } catch (_) {
             addToast({
-                title: "Registration failed",
-                description: "An error occurred while registering your account.",
+                title: t('modals.signUp.registrationFailed'),
+                description: t('modals.signUp.registrationError'),
                 color: "danger"
             });
             return;
@@ -69,7 +71,7 @@ export default function SignUpModal({
                                     .required('Required')
                             })}>
                         <Form>
-                            <ModalHeader className="flex flex-col gap-1">Register a new account</ModalHeader>
+                            <ModalHeader className="flex flex-col gap-1">{t('modals.signUp.title')}</ModalHeader>
                             <ModalBody>
                                 <div className="flex flex-col">
                                     <Input

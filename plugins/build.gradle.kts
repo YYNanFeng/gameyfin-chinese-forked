@@ -46,8 +46,8 @@ subprojects {
         isZip64 = true
         archiveBaseName.set(project.name)
 
-        // Ensure KSP runs before JAR is created
-        dependsOn("kspKotlin")
+        // Ensure KSP runs before JAR is created (only if KSP task exists)
+        tasks.findByName("kspKotlin")?.let { dependsOn(it) }
 
         manifest {
             from("./src/main/resources/MANIFEST.MF")
@@ -61,8 +61,11 @@ subprojects {
         from(sourceSets["main"].output.classesDirs)
         from(sourceSets["main"].resources)
 
-        // Include KSP-generated resources (extensions.idx)
-        from(layout.buildDirectory.get().asFile.resolve("generated/ksp/main/resources"))
+        // Include KSP-generated resources (extensions.idx) if they exist
+        val kspResourcesDir = layout.buildDirectory.get().asFile.resolve("generated/ksp/main/resources")
+        if (kspResourcesDir.exists()) {
+            from(kspResourcesDir)
+        }
 
         // Include logo file under META-INF/resources
         from("src/main/resources") {

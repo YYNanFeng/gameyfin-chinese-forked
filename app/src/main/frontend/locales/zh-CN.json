@@ -58,6 +58,7 @@
     "confirm": "确认",
     "close": "关闭",
     "search": "搜索",
+    "searchPlaceholder": "输入搜索内容...",
     "filter": "筛选",
     "sort": "排序",
     "settings": "设置",
@@ -81,7 +82,10 @@
     "no": "否",
     "test": "测试",
     "validation": {
-      "required": "必填项"
+      "required": "必填项",
+      "minLength": "密码至少需要 8 个字符",
+      "passwordMismatch": "密码不匹配",
+      "invalidEmail": "邮箱格式无效"
     }
   },
   "login": {
@@ -91,6 +95,86 @@
     "signUp": "注册",
     "logIn": "登录",
     "invalidCredentials": "用户名和/或密码无效。"
+  },
+  "passwordReset": {
+    "title": "重置密码",
+    "success": "密码重置成功",
+    "successDesc": "密码已成功重置",
+    "tokenExpired": "令牌已过期",
+    "tokenExpiredDesc": "令牌已过期",
+    "invalidToken": "无效令牌",
+    "invalidTokenDesc": "令牌无效",
+    "newPassword": "新密码",
+    "resetButton": "重置密码"
+  },
+  "emailConfirmation": {
+    "title": "邮箱确认",
+    "success": "邮箱已确认",
+    "successDesc": "您将很快被重定向",
+    "tokenExpired": "令牌已过期",
+    "tokenExpiredDesc": "请请求新的令牌",
+    "invalidToken": "无效令牌",
+    "invalidTokenDesc": "请重试"
+  },
+  "invitation": {
+    "title": "注册新账户",
+    "success": "注册成功",
+    "successDesc": "您的账户已创建",
+    "usernameTaken": "用户名已被使用",
+    "tokenExpired": "令牌已过期",
+    "tokenExpiredDesc": "令牌已过期",
+    "invalidToken": "无效令牌",
+    "invalidTokenDesc": "令牌无效",
+    "createAccount": "创建账户",
+    "passwordRepeat": "重复密码"
+  },
+  "setup": {
+    "welcome": "欢迎来到 Gameyfin 👋",
+    "description1": "Gameyfin 是一款为游戏玩家量身定制的尖端软件，旨在高效管理视频游戏收藏。",
+    "description2": "凭借直观的界面和全面的功能，Gameyfin 简化了游戏库的组织。用户可以通过手动输入或自动识别轻松添加游戏，根据类型或平台等各种标准对其进行分类，跟踪游戏进度，并与朋友分享成就。",
+    "description3": "值得注意的是，Gameyfin 以其用户友好的设计和适应性而脱颖而出，提供充足的自定义选项以满足不同的用户偏好。",
+    "letsGetStarted": "让我们开始吧！",
+    "chooseStyle": "选择您的风格",
+    "createAccount": "创建您的账户",
+    "initialAdminDesc": "这将设置初始管理员用户账户。",
+    "setupFinished": "设置完成",
+    "haveFun": "尽情享受 Gameyfin！",
+    "setupError": "无法注册超级管理员用户",
+    "setupErrorDesc": "也许 Gameyfin 已经设置好了？"
+  },
+  "theme": {
+    "themeMode": "主题模式",
+    "light": "浅色",
+    "dark": "深色"
+  },
+  "game": {
+    "details": "详情",
+    "games": "游戏",
+    "ignoredPaths": "忽略的路径",
+    "confirmMatch": "确认匹配",
+    "unconfirmMatch": "取消确认匹配",
+    "editMetadata": "编辑元数据",
+    "searchMetadata": "搜索元数据",
+    "removeFromLibrary": "从库中删除",
+    "gameDeleted": "游戏已删除",
+    "missingData": "缺少数据",
+    "matchGame": "匹配游戏",
+    "noData": "无数据",
+    "developedBy": "开发者",
+    "publishedBy": "发行商",
+    "editCover": "编辑封面",
+    "showMore": "显示更多"
+  },
+  "user": {
+    "enableUser": "启用用户",
+    "disableUser": "禁用用户",
+    "removeAvatar": "删除头像",
+    "assignRole": "分配角色",
+    "resetPassword": "重置密码",
+    "deleteUser": "删除用户",
+    "anonymousUser": "匿名用户",
+    "sendInvitation": "发送邀请",
+    "generateInvitationLink": "生成邀请链接"
   },
   "proxy": {
     "title": "代理服务器设置",
@@ -155,7 +239,17 @@
     "updateSuccess": "库已更新",
     "updateSuccessDesc": "库 {{name}} 已更新。",
     "removeSuccess": "库已删除",
-    "removeSuccessDesc": "库 {{name}} 已删除。"
+    "removeSuccessDesc": "库 {{name}} 已删除。",
+    "manageGamesInLibrary": "管理库中的游戏",
+    "showAll": "显示全部",
+    "downloadCount": "下载次数",
+    "scanLibraryQuick": "扫描库（快速）",
+    "scanLibraryFull": "扫描库（完整）",
+    "libraryConfiguration": "库配置",
+    "allPlatforms": "全部",
+    "unspecifiedPlatform": "未指定",
+    "noMatchingGames": "您的筛选未匹配任何游戏。",
+    "manageLibrary": "管理库"
   },
   "gameRequests": {
     "configuration": "游戏请求配置",
@@ -225,6 +319,7 @@
     "managedExternally": "您的账户由外部管理。",
     "logoutAllSessions": "您将从所有当前会话中登出",
     "upload": "上传",
+    "help": "帮助",
     "removeAvatar": "删除您的当前头像",
     "personalInformation": "个人信息",
     "username": "用户名",
@@ -238,9 +333,217 @@
     "emailConfirmationSent": "邮箱确认消息已发送",
     "checkInbox": "请检查您的收件箱",
     "emailServicesDisabled": "电子邮件服务已禁用。请联系您的管理员。",
+    "signOut": "退出登录",
+    "signedInAs": "已登录：{{username}}",
     "validation": {
       "passwordMinLength": "密码必须至少为 8 个字符",
       "passwordsNoMatch": "密码不匹配"
     }
+  }
+
+  ,"avatar": {
+    "errorUploading": "上传头像出错",
+    "errorRemoving": "删除头像出错"
+  },
+  "search": {
+    "typePlaceholder": "输入以搜索...",
+    "hideFilters": "隐藏筛选器",
+    "showFilters": "显示筛选器",
+    "toggleFilters": "切换筛选器",
+    "clearFilters": "清除筛选器",
+    "clearAllFilters": "清除所有筛选器",
+    "libraries": "库",
+    "filterByLibrary": "按库筛选",
+    "minRating": "最低评分",
+    "minRatingPlaceholder": "最低评分",
+    "developers": "开发者",
+    "filterByDeveloper": "按开发者筛选",
+    "genres": "类型",
+    "filterByGenre": "按类型筛选",
+    "themes": "主题",
+    "filterByTheme": "按主题筛选",
+    "features": "特性",
+    "filterByFeature": "按特性筛选",
+    "perspectives": "视角",
+    "filterByPerspective": "按视角筛选",
+    "keywords": "关键词",
+    "filterByKeyword": "按关键词筛选"
+  },
+  "logs": {
+    "applicationLogs": "应用程序日志",
+    "softWrap": "软换行",
+    "autoScroll": "自动滚动"
+  },
+  "modals": {
+    "requestGame": {
+      "title": "请求游戏",
+      "platform": "平台"
+    },
+    "signUp": {
+      "title": "注册新账户",
+      "accountCreated": "账户已创建",
+      "emailInstructions": "您将很快收到包含进一步说明的电子邮件。",
+      "registrationFailed": "注册失败",
+      "registrationError": "注册您的账户时发生错误。"
+    },
+    "passwordReset": {
+      "title": "请求重置密码",
+      "emailPlaceholder": "电子邮件",
+      "disabled": "密码自助服务已禁用。\\n要重置密码，请联系您的管理员。",
+      "sendRequest": "发送请求",
+      "requested": "已请求密码重置",
+      "checkEmail": "如果该电子邮件地址已注册，您将收到包含进一步说明的消息。"
+    },
+    "libraryCreation": {
+      "title": "添加新库",
+      "scanAfterCreation": "创建后扫描？",
+      "created": "新库已创建",
+      "createdDesc": "库 {{name}} 已创建！"
+    },
+    "inviteUser": {
+      "title": "邀请新用户",
+      "enterEmail": "输入您要邀请的用户的电子邮件地址：",
+      "emailLabel": "电子邮件",
+      "acceptLink": "用户可以使用以下链接接受邀请：",
+      "invitationSent": "邀请已发送",
+      "emailSent": "用户将很快收到包含进一步说明的电子邮件。"
+    },
+    "confirmDeletion": {
+      "title": "确认删除用户",
+      "message": "通过在下方输入用户名来确认删除用户 {{username}}",
+      "confirmButton": "确认删除"
+    },
+    "assignRoles": {
+      "title": "为 {{username}} 分配角色"
+    },
+    "sendTestNotification": {
+      "title": "发送 {{template}} 测试消息",
+      "fillPlaceholders": "填充模板的占位符"
+    },
+    "gameCoverPicker": {
+      "title": "输入URL或搜索封面",
+      "urlPlaceholder": "输入URL",
+      "searchPlaceholder": "搜索",
+      "noResults": "未找到结果。",
+      "searching": "搜索中..."
+    },
+    "pathPicker": {
+      "title": "选择文件夹"
+    },
+    "pluginDetails": {
+      "description": "描述",
+      "configuration": "配置",
+      "configValid": "配置有效",
+      "configInvalid": "配置无效",
+      "revalidate": "重新验证配置",
+      "noConfigOptions": "此插件没有配置选项。",
+      "configSaved": "配置已保存",
+      "configSavedDesc": "插件 {{name}} 的配置已保存！",
+      "officialPlugin": "官方插件",
+      "bundledPlugin": "捆绑插件",
+      "thirdPartyPlugin": "第三方插件",
+      "invalidSignature": "插件签名无效",
+      "unknownVerification": "未知验证状态"
+    },
+    "pluginPriorities": {
+      "title": "编辑插件顺序",
+      "instruction": "列表中靠上的插件优先级更高",
+      "orderUpdated": "插件顺序已更新",
+      "orderUpdatedDesc": "插件顺序已成功更新。",
+      "updateError": "更新插件顺序时发生错误。"
+    }
+  },
+  "requestsView": {
+    "title": "游戏请求",
+    "submissionDisabled": "请求提交已禁用",
+    "pending": "待处理",
+    "approved": "已批准",
+    "rejected": "已拒绝",
+    "fulfilled": "已完成",
+    "titleRelease": "标题与发行年份",
+    "submittedBy": "提交者",
+    "submitted": "提交时间",
+    "updated": "更新时间",
+    "status": "状态",
+    "votes": "投票",
+    "noMatch": "您的搜索未匹配任何请求。",
+    "noMatchGames": "您的搜索未匹配任何游戏。",
+    "pickResult": "选择此结果",
+    "guest": "访客",
+    "cannotVoteClosed": "您无法为已关闭的请求投票",
+    "voteForRequest": "为此请求投票",
+    "mustLoginToVote": "您必须登录才能投票",
+    "approveRequest": "批准此请求",
+    "rejectRequest": "拒绝此请求",
+    "deleteRequest": "删除此请求"
+  },
+  "libraryDetails": {
+    "editTitle": "编辑库详情",
+    "libraryName": "库名称",
+    "platforms": "平台",
+    "dangerZone": "危险区域",
+    "deleteLibrary": "删除库",
+    "deleted": "库已删除",
+    "deletedDesc": "库 {{name}} 已删除！",
+    "deleteError": "删除库时出错",
+    "deleteErrorDesc": "库 {{name}} 无法删除！"
+  },
+  "ignoredPaths": {
+    "title": "管理忽略的路径",
+    "path": "路径",
+    "source": "来源",
+    "actions": "操作",
+    "noIgnoredPaths": "此库没有忽略的路径。",
+    "manuallyAddedBy": "由用户手动添加 ({{username}})",
+    "unknownUser": "未知用户",
+    "autoAddedByPlugins": "由插件自动添加 (",
+    "unknownPlugin": "未知插件",
+    "unknownPlugins": "未知插件",
+    "matchGame": "匹配游戏",
+    "removeEntry": "从列表中删除"
+  },
+  "plugins": {
+    "changeOrder": "更改插件顺序",
+    "noPluginsInstalled": "未安装此类型的插件。"
+  },
+  "config": {
+    "library_allow-public-access": "允许无需登录访问 Gameyfin",
+    "library_scan_enable-filesystem-watcher": "启用使用文件系统监视器的自动库扫描（即将推出™）",
+    "library_scan_scan-empty-directories": "扫描空目录",
+    "library_scan_extract-title-using-regex": "使用正则表达式从文件名提取标题",
+    "library_scan_title-extraction-regex": "从文件名提取标题的正则表达式",
+    "library_scan_title-match-min-ratio": "标题匹配的最小比率。值越高匹配越严格。",
+    "library_scan_game-file-extensions": "被视为游戏的文件扩展名",
+    "library_metadata_update_enabled": "启用视频游戏元数据的定期刷新",
+    "library_metadata_update_schedule": "元数据定期刷新的计划（Spring cron 格式）",
+    "requests_games_enabled": "启用游戏请求提交",
+    "requests_games_allow-guests-to-request-games": "允许访客（未登录）创建游戏请求",
+    "requests_games_max-open-requests-per-user": "每个用户的最大待处理请求数。设置为 0 表示无限制。",
+    "downloads_bandwidth-limit_enabled": "启用每用户下载带宽限制",
+    "downloads_bandwidth-limit_mbps": "最大下载速度（Mbps - 兆比特每秒）",
+    "users_sign-ups_allow": "允许新用户自行注册",
+    "users_sign-ups_confirmation-required": "管理员需要确认新用户",
+    "sso_oidc_enabled": "启用通过 OIDC/OAuth2 的单点登录",
+    "sso_oidc_match-existing-users-by": "匹配现有用户的方式",
+    "sso_oidc_auto-register-new-users": "注册后自动创建新用户",
+    "sso_oidc_roles-claim": "用于提取角色的 JWT 声明",
+    "sso_oidc_oauth-scopes": "要请求的 OAuth2 作用域",
+    "sso_oidc_client-id": "客户端 ID",
+    "sso_oidc_client-secret": "客户端密钥",
+    "sso_oidc_issuer-url": "签发者 URL",
+    "sso_oidc_authorize-url": "授权 URL",
+    "sso_oidc_token-url": "令牌 URL",
+    "sso_oidc_userinfo-url": "用户信息 URL",
+    "sso_oidc_jwks-url": "JWKS URL",
+    "sso_oidc_logout-url": "登出 URL",
+    "messages_providers_email_enabled": "启用电子邮件通知",
+    "messages_providers_email_host": "邮件服务器地址",
+    "messages_providers_email_port": "邮件服务器端口",
+    "messages_providers_email_username": "邮件账户用户名",
+    "messages_providers_email_password": "邮件账户密码",
+    "logs_folder": "日志文件存储文件夹",
+    "logs_max-history-days": "日志保留天数",
+    "logs_level_gameyfin": "日志级别（Gameyfin）",
+    "logs_level_root": "日志级别（根级别）"
   }
 }
